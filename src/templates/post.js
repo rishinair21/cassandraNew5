@@ -5,7 +5,8 @@ import Layout from '../components/layout'
 const LinkPostPage = ({ data }) => (
     <Layout>
         <div>
-            {JSON.stringify(data.allAnantCassandralinks.edges)}
+            <h2>{data.allAnantCassandralinks.edges[0].node['title']}</h2>
+            <div dangerouslySetInnerHTML={{ __html: data.allAnantCassandralinks.edges[0].node['content'] }} />
         </div>
     </Layout>
 );

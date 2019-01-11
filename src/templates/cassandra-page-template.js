@@ -1,28 +1,27 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
-import _ from "lodash";
 import Layout from '../components/layout'
+import {Card} from "../components/card";
 
 
 const LinksListPage = ({ data, pageContext }) => (
     <Layout>
-        {_.map(data.posts.edges, (value, key) => {
-            return(
-                <div key={key}><Link to={`/post/${value.node.alternative_id}`}>{value.node.title}</Link></div>
-            )
-        })}
+        <Card obj={data.posts.edges}/>  
         <br/>
+        <div  className="pagination">
         {pageContext && pageContext.hasPreviousPage && (
             <Link class="flex items-center" to={pageContext.previousPageLink}>
               <small>Previous page</small>
             </Link>
         )}
-        <br/>
+        &nbsp;
+        &nbsp;
         {pageContext && pageContext.hasNextPage && (
             <Link class="flex items-center" to={pageContext.nextPageLink}>
               <small>Next page</small>
             </Link>
         )}
+        </div>
     </Layout>
 );
 
@@ -38,6 +37,8 @@ export const pageQuery = graphql`
                 node {
                     title
                     alternative_id
+                    preview_picture
+                    domain_name
                 }
             }
         }

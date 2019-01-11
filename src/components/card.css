@@ -1,0 +1,84 @@
+.card {
+	display: grid;
+	grid-gap: 10px;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.card .card-inner {
+	background-color: #fff;
+	padding: 10px;
+}
+
+.card .card-inner .card-image {
+	height: 150px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.card .card-inner a{
+	text-decoration: none;
+	color: #333;
+	font-size: 18px;
+	line-height: 25px;
+}
+
+.card .card-inner .title {
+	max-height: 50px;
+	overflow: hidden;
+	font-size: 1.2em;
+	margin-bottom: 18px;
+}
+
+.yt-card-inner {
+	display: grid;
+	grid-template-columns: 40% 60%;
+	grid-gap: 10px;
+	height: 120px;
+}
+
+.yt-card .yt-card-inner {
+	border-bottom: 2px solid #777;
+	padding: 10px 0px;
+}
+.yt-card .yt-card-inner .yt-meta{
+	padding: 0px 10px;
+}
+
+.yt-card .yt-card-inner .yt-card-image {
+	height: 120px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.yt-card .yt-card-inner .yt-card-image .yt-layer{
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0,0,0,0.5);
+	position: relative;
+}
+
+.yt-card .yt-card-inner .yt-card-image .yt-layer .yt-play-btn{
+	width: 30px;
+	height: 30px;
+	overflow: auto;
+	margin: auto;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.yt-card .yt-card-inner .yt-card-image .yt-layer .yt-play-btn .btn {
+	width: 30px;
+	height: 30px;
+	border-style: solid;
+	border-width: 15px;
+	border-color: #fff;
+	border-width: 15px 0px 15px 30px;
+	box-sizing: border-box;
+	border-color: transparent transparent transparent #fff;
+	cursor: pointer;
+}

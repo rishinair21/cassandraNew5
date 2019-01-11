@@ -18,12 +18,16 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <>
+      <div
+          style={{
+            backgroundColor: '#f6f5f2'
+          }}
+        >
         <Helmet
           title="Cassandra.Link | Anant Corporation"
           meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
+            { name: 'description', content: 'Cassandra.Link | Anant Corporation' },
+            { name: 'keywords', content: 'cassandra, links' },
           ]}
         >
           <html lang="en" />
@@ -32,14 +36,13 @@ const Layout = ({ children }) => (
         <div
           style={{
             margin: '0 auto',
-            maxWidth: 960,
             padding: '0px 1.0875rem 1.45rem',
             paddingTop: 0,
           }}
         >
           {children}
         </div>
-      </>
+      </div>
     )}
   />
 )
