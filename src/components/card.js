@@ -2,6 +2,98 @@ import React, {Component} from 'react'
 import { Link } from "gatsby";
 import _ from "lodash";
 import './card.css'
+import img from '../images/black-gt.png'
+
+export class FirstColumn extends Component {
+	render() {
+		const data = this.props.obj
+		return (
+			<div className="news-grid">
+				{_.map(data, (value, key)=>{
+					return (
+						<div key={key} className={'news-list news'+(key+1)}>
+							<div className="image">
+								<img src={value.node.preview_picture} alt={value.node.title} />
+							</div>
+							<div className="news-list-meta">
+								<div className="title">{value.node.title}</div>
+								<div className="domain">{value.node.domain_name}</div>
+							</div>
+						</div>
+					)
+				})}
+			</div>
+		)
+	}
+}
+
+export class SecondColumn extends Component {
+	render() {
+		const data = this.props.obj
+		return (
+			<div className="second-grid">
+				{_.map(data, (value, key)=>{
+					return (
+						<div key={key} className={'second-list second'+(key+1)}>
+							<div className="image" style={{backgroundImage: `url(${value.node.preview_picture})`}}>
+							</div>
+							<div className="second-list-meta">
+								<div className="title">{value.node.title}</div>
+								<div className="domain">{value.node.domain_name}</div>
+							</div>
+						</div>
+					)
+				})}
+			</div>
+		)
+	}
+}
+
+export class ThirdColumn extends Component {
+	render() {
+		const data = this.props.obj
+		return (
+			<div className="second-grid">
+				{_.map(data, (value, key)=>{
+					return (
+						<div key={key} className={'second-list second'+(key+1)}>
+							<div className="image" style={{backgroundImage: `url(${value.node.preview_picture})`}}>
+							</div>
+							<div className="second-list-meta">
+								<div className="title">{value.node.title}</div>
+								<div className="domain">{value.node.domain_name}</div>
+							</div>
+						</div>
+					)
+				})}
+			</div>
+		)
+	}
+}
+
+export class FaturedGrid extends Component {
+	render() {
+		const data = this.props.obj
+		console.log(data)
+		return (
+			<div className="featured-grid">
+				{_.map(data, (value, key)=>{
+					return (
+						<div key={key} className={'card card'+(key+1)}>
+							<div className="card-box">
+								<div className="card-inner" style={{backgroundImage: `url(${value.node.preview_picture})`}}>
+									<div className="card-title">
+										{key+1} {value.node.title}
+									</div>
+								</div>
+							</div>
+						</div>
+					)
+				})}
+			</div>
+		)
+	}
+}
 
 export class Card extends Component {
 
