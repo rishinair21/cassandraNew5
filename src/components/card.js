@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import { Link } from "gatsby";
 import _ from "lodash";
 import './card.css'
-import img from '../images/black-gt.png'
 
 export class FirstColumn extends Component {
 	render() {

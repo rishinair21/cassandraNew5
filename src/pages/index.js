@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 
 import Layout from "../components/layout";
-import { Card, FirstColumn, SecondColumn, ThirdColumn } from "../components/card";
+import { FirstColumn, SecondColumn, ThirdColumn } from "../components/card";
 
 class IndexPage extends React.Component {
     render() {
