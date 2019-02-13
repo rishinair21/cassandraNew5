@@ -14,9 +14,10 @@ class IndexPage extends React.Component {
             <Layout>
                 <div>
                     <div className="home-structure">
-                        <div className="header-heading">It's all about<br/>Cassandra History</div>
+                        <div className="typewriter-p">
+                            <div class="line-1 anim-typewriter">It's all about <u>Cassandra</u></div>
+                        </div>
                         {/* <FaturedGrid obj={featured}/> */}
-
                         <div className="three-cl">
                             <div className="card card1">
                                 <FirstColumn obj={videos}/>  
@@ -39,7 +40,10 @@ export default IndexPage;
 
 export const IndexQuery = graphql`
     query {
-        featured: allAnantCassandralinks(limit: 3) {
+        featured: allAnantCassandralinks(
+            filter: { domain_name: { eq: "www.youtube.com"} }
+            limit: 3
+            ) {
             edges {
                 node {
                     title
@@ -49,19 +53,24 @@ export const IndexQuery = graphql`
                 }
             }
         }
-        all: allAnantCassandralinks(limit: 20) {
+        all: allAnantCassandralinks(limit: 15) {
             edges {
                 node {
                     title
                     alternative_id
                     preview_picture
                     domain_name
+                    tags{
+                        alternative_id
+                        label
+                        slug
+                      }	
                 }
             }
         }
         videos: allAnantCassandralinks(
             filter: { domain_name: { eq: "www.youtube.com"} }
-            limit: 20
+            limit: 15
         ) {
             edges {
                 node {
@@ -69,12 +78,17 @@ export const IndexQuery = graphql`
                     alternative_id
                     preview_picture
                     domain_name
+                    tags{
+                        alternative_id
+                        label
+                        slug
+                      }	
                 }
             }
         }
         github: allAnantCassandralinks(
             filter: { domain_name: { eq: "github.com"} }
-            limit: 20
+            limit: 15
         ) {
             edges {
                 node {
@@ -82,6 +96,11 @@ export const IndexQuery = graphql`
                     alternative_id
                     preview_picture
                     domain_name
+                    tags{
+                        alternative_id
+                        label
+                        slug
+                      }	
                 }
             }
         }

@@ -1,12 +1,13 @@
- @import url('https://fonts.googleapis.com/css?family=Barlow|Catamaran');
+ @import url('https://fonts.googleapis.com/css?family=Barlow|Catamaran|Poppins');
 html {
-  font-family: 'Catamaran', sans-serif;
+  font-family: 'Poppins', sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 body {
   margin: 0;
   overflow-x: hidden;
+  background-color: #fff;
 }
 
 .pagination {
@@ -14,21 +15,22 @@ body {
   padding: 20px
 }
 
-.header-heading {
-  padding: 20px 0px;
-}
-
 .three-cl{
   display: grid;
-  grid-auto-columns: 25% 25% auto;
-  grid-gap: 10px;
+  grid-auto-columns: 25% 30% auto;
+  grid-gap: 20px;
 }
-
+.news-grid {
+  background: #f4f4f4;
+  box-shadow: 1px 0 3px rgba(57, 57, 57, 0.16);
+  padding: 10px 0px
+}
 .news-grid .news-list {
 	display: grid;
 	grid-template-columns: 40% 60%;
 	grid-gap: 10px;
-	height: 120px;
+  height: 120px;
+  padding: 0px 10px;
 }
 
 .news-grid .news-list .image img {
@@ -38,6 +40,18 @@ body {
 .news-grid .news-list .news-list-meta {
   color: #020202;
   line-height: 1.1rem;
+  padding: 10px 0px;
+}
+
+.news-grid .news-list .news-list-meta .title {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  color: #1913BC;
+}
+
+.second-grid .second-list {
+  padding-bottom: 20px;
 }
 
 .second-grid .second-list .image{
@@ -50,7 +64,48 @@ body {
 }
 
 .second-grid .second-list .second-list-meta {
-  color: #020202
+  color: #020202;
+  background: #f8f8f8;
+  padding: 10px;
+}
+
+.second-grid .second-list .second-list-meta .title {
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 600;
+  color: #1913BC;
+}
+
+.second-grid .second-list .second-list-meta .domain {
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 500;
+}
+
+.card-tag {
+  position: absolute;
+  background-color: #215FE6;
+  margin-top: -10px;
+  margin-left: 10px;
+  padding: 0px 5px;
+  font-size: 11px;
+}
+
+.card-tag-right {
+  position: absolute;
+  background-color: #215FE6;
+  margin-top: -20px;
+  margin-left: 20px;
+  padding: 0px 5px;
+  font-size: 11px;
+}
+
+.third-meta-box {
+  box-shadow: 4px 4px 4px rgba(0,0,0,0.1);
+  margin: -10px 10px;
+  padding: 10px;
+  border: 1px solid #eee;
+  background-color: #fff;
 }
 
 .third-grid .third-list .image{
@@ -68,13 +123,18 @@ body {
 
 .featured-grid {
   display: grid;
-  grid-gap: 10px;
-      grid-template-columns: auto;
-      color: #444;
-      height: 400px;
-      position: relative;
+  grid-gap: 20px;
+  grid-template-areas: "hero hero sub-hero1" "hero hero sub-hero2";
   }
-
+  .featured-grid .hero {
+    grid-area: hero
+  }
+  .sub-hero1 {
+    grid-area: sub-hero1;
+  }
+  .sub-hero2 {
+    grid-area: sub-hero2;
+  }
   .card {
       color: #fff;
       overflow: hidden;
@@ -96,7 +156,6 @@ body {
   }
 
   .featured-grid .card-inner {
-    height: 100%;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -108,7 +167,6 @@ body {
     padding: 20px;
     font-size: 2rem;
     line-height: 2rem;
-    width: 100%;  
   }
 .home-structure .filter-posts {
   background-color: #fff;
@@ -117,8 +175,47 @@ body {
 
 .header-heading {
   font-size: 3rem;
-  color: #020202;
+  color: #747474;
   font-weight: 700;
   text-align: center;
   line-height: 3rem;
+  padding: 40px 0px;
+}
+
+.typewriter-p {
+  margin-top: 50px;
+  color: #747474;
+  font-weight: 800;
+}
+
+.typewriter-p u {
+  text-decoration-color: #215FE6;
+
+}
+
+.line-1{
+  position: relative;
+  top: 50%;  
+  margin: 0 auto;
+  border-right: 2px solid rgba(255,255,255,.75);
+  font-size: 180%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateY(-50%);  
+  font-size: 40px; 
+}
+
+/* Animation */
+.anim-typewriter{
+animation: typewriter 4s steps(44) 1s 1 normal both,
+           blinkTextCursor 500ms steps(44) infinite normal;
+}
+@keyframes typewriter{
+from{width: 0;}
+to{width: 24em;}
+}
+@keyframes blinkTextCursor{
+from{border-right-color: rgba(255,255,255,.75);}
+to{border-right-color: transparent;}
 }

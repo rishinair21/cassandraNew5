@@ -16,7 +16,7 @@ export class FirstColumn extends Component {
 							</div>
 							<div className="news-list-meta">
 								<div className="title">{value.node.title}</div>
-								<div className="domain">{value.node.domain_name}</div>
+								{/* <div className="domain">{value.node.domain_name}</div> */}
 							</div>
 						</div>
 					)
@@ -36,6 +36,7 @@ export class SecondColumn extends Component {
 						<div key={key} className={'second-list second'+(key+1)}>
 							<div className="image" style={{backgroundImage: `url(${value.node.preview_picture})`}}>
 							</div>
+							<div className="card-tag">{value.node.tags[0].label}</div>
 							<div className="second-list-meta">
 								<div className="title">{value.node.title}</div>
 								<div className="domain">{value.node.domain_name}</div>
@@ -58,7 +59,8 @@ export class ThirdColumn extends Component {
 						<div key={key} className={'second-list second'+(key+1)}>
 							<div className="image" style={{backgroundImage: `url(${value.node.preview_picture})`}}>
 							</div>
-							<div className="second-list-meta">
+							<div className="card-tag-right">{value.node.tags[0].label}</div>
+							<div className="second-list-meta third-meta-box">
 								<div className="title">{value.node.title}</div>
 								<div className="domain">{value.node.domain_name}</div>
 							</div>
@@ -78,7 +80,7 @@ export class FaturedGrid extends Component {
 			<div className="featured-grid">
 				{_.map(data, (value, key)=>{
 					return (
-						<div key={key} className={'card card'+(key+1)}>
+						<div key={key} className={key === 0 ? 'hero' : 'sub-hero'+(key)}>
 							<div className="card-box">
 								<div className="card-inner" style={{backgroundImage: `url(${value.node.preview_picture})`}}>
 									<div className="card-title">
