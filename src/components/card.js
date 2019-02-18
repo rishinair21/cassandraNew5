@@ -15,7 +15,9 @@ export class FirstColumn extends Component {
 								<img src={value.node.preview_picture} alt={value.node.title} />
 							</div>
 							<div className="news-list-meta">
-								<div className="title">{value.node.title}</div>
+								<Link to={`/post/${value.node.alternative_id}`}>
+									<div className="title">{value.node.title}</div>
+								</Link>
 								{/* <div className="domain">{value.node.domain_name}</div> */}
 							</div>
 						</div>
@@ -38,7 +40,9 @@ export class SecondColumn extends Component {
 							</div>
 							<div className="card-tag">{value.node.tags[0].label}</div>
 							<div className="second-list-meta">
-								<div className="title">{value.node.title}</div>
+								<Link to={`/post/${value.node.alternative_id}`}>
+									<div className="title">{value.node.title}</div>
+								</Link>
 								<div className="domain">{value.node.domain_name}</div>
 							</div>
 						</div>
@@ -61,7 +65,9 @@ export class ThirdColumn extends Component {
 							</div>
 							<div className="card-tag-right">{value.node.tags[0].label}</div>
 							<div className="second-list-meta third-meta-box">
-								<div className="title">{value.node.title}</div>
+								<Link to={`/post/${value.node.alternative_id}`}>
+									<div className="title">{value.node.title}</div>
+								</Link>
 								<div className="domain">{value.node.domain_name}</div>
 							</div>
 						</div>
@@ -101,17 +107,21 @@ export class Card extends Component {
 	render(){
 		const data = this.props.obj
 		return(			
-			<div className="card">
-				{_.map(data, (value, key) => {
+			<div className="card second-grid all-posts">
+				{_.map(data, (value, key)=>{
 					return (
-						<div className="card-inner" key={key}>
-							<div className="card-image" style={{backgroundImage: `url(${value.node.preview_picture})`}}></div>
-							<small className="domain">{value.node.domain_name}</small>
-							<Link to={`/post/${value.node.alternative_id}`}>
-								<div className="title">{value.node.title}</div>
-							</Link>
+						<div key={key} className={'second-list second'+(key+1)}>
+							<div className="image" style={{backgroundImage: `url(${value.node.preview_picture})`}}>
+							</div>
+							<div className="card-tag">{value.node.tags[0].label}</div>
+							<div className="second-list-meta">
+								<Link to={`/post/${value.node.alternative_id}`}>
+									<div className="title">{value.node.title}</div>
+								</Link>
+								<div className="domain">{value.node.domain_name}</div>
+							</div>
 						</div>
-					);
+					)
 				})}
             </div>
 		)

@@ -6,7 +6,7 @@ import {Card} from "../components/card";
 
 const LinksListPage = ({ data, pageContext }) => (
     <Layout>
-        <Card obj={data.posts.edges}/>  
+        <Card obj={data.posts.edges}/>
         <br/>
         <div  className="pagination">
         {pageContext && pageContext.hasPreviousPage && (
@@ -39,6 +39,11 @@ export const pageQuery = graphql`
                     alternative_id
                     preview_picture
                     domain_name
+                    tags{
+                        alternative_id
+                        label
+                        slug
+                      }	
                 }
             }
         }

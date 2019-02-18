@@ -2,7 +2,7 @@
   "page": 2,
   "limit": 200,
   "pages": 3,
-  "total": 465,
+  "total": 467,
   "_links": {
     "self": {
       "href": "http://leaves.anant.us:82/api/entries?sort=created&order=desc&tags=cassandra&since=0&page=2&perPage=200"
@@ -22,6 +22,101 @@
   },
   "_embedded": {
     "items": [
+      {
+        "is_archived": 1,
+        "is_starred": 0,
+        "user_name": "admin",
+        "user_email": "rahul.singh@anant.us",
+        "user_id": 1,
+        "tags": [
+          {
+            "id": 23,
+            "label": "elasticsearch",
+            "slug": "elasticsearch"
+          },
+          {
+            "id": 35,
+            "label": "docker",
+            "slug": "docker"
+          },
+          {
+            "id": 89,
+            "label": "cassandra",
+            "slug": "cassandra"
+          }
+        ],
+        "is_public": false,
+        "id": 11800,
+        "uid": null,
+        "title": "zegelin/cassandra-docker",
+        "url": "https://github.com/zegelin/cassandra-docker",
+        "content": "<article class=\"markdown-body entry-content\" itemprop=\"text\">\n<p>Apache Cassandra and Elassandra docker images.</p>\n<h3><a id=\"user-content-building-docker-images\" class=\"anchor\" aria-hidden=\"true\" href=\"#building-docker-images\"></a>Building Docker Images</h3>\n<p>Run <code>build.sh</code> in the repository root. This first builds the <code>base-openjre</code> image,\nwhich is a Debian Strech image with OpenJRE 8 (headless) installed, and then\nbuilds the given distribution and version of cassandra.</p>\n<p>For Elassandra, invoke <code>build.sh</code>:</p>\n<p><code>./build.sh elassandra 5.5.0.13</code></p>\n<h3><a id=\"user-content-openshift\" class=\"anchor\" aria-hidden=\"true\" href=\"#openshift\"></a>Openshift</h3>\n<p>The following steps assume that an OpenShift project named <code>myproject</code> has already been created\nand that the OpenShift client (<code>oc</code>) has been configured to connect to the OpenShift cluster.</p>\n<p><em>Note</em>: The project name (k8s namespace) is used as part of DNS names specified in the Cassandra configuration files.\nIf you use an alternate project name, you'll need to replace all occurances of <code>myproject</code> with\nthe appropriate value.</p>\n<p>It is also assumed that the Docker images have already been built and pushed to the local\nOpenShift Docker registry. See <em>Building Docker Images</em> above.</p>\n<p>Create an <code>elassandra-config</code> ConfigMap containing the Cassandra/Elassandra configuration:</p>\n<p><code>oc create configmap elassandra-config --from-file=examples/elassandra/openshift/conf/</code></p>\n<p>Create an <code>elassandra</code> Service:</p>\n<p><code>oc apply -f examples/elassandra/openshift/elassandra-service.yaml</code></p>\n<p>Create the <code>elassandra</code> StatefulSet, which spawns 3 Elassandra nodes:</p>\n<p><code>oc create -f examples/elassandra/openshift/elassandra-statefulset.yaml</code></p>\n</article>",
+        "created_at": "2018-08-03T00:24:41+0000",
+        "updated_at": "2018-08-03T00:24:52+0000",
+        "published_at": null,
+        "published_by": null,
+        "starred_at": null,
+        "annotations": [],
+        "mimetype": "text/html",
+        "language": "en",
+        "reading_time": 1,
+        "domain_name": "github.com",
+        "preview_picture": "https://avatars3.githubusercontent.com/u/19296634?s=400&v=4",
+        "http_status": "200",
+        "headers": null,
+        "origin_url": null,
+        "_links": {
+          "self": {
+            "href": "/api/entries/11800"
+          }
+        }
+      },
+      {
+        "is_archived": 1,
+        "is_starred": 0,
+        "user_name": "admin",
+        "user_email": "rahul.singh@anant.us",
+        "user_id": 1,
+        "tags": [
+          {
+            "id": 89,
+            "label": "cassandra",
+            "slug": "cassandra"
+          },
+          {
+            "id": 902,
+            "label": "kubernetes",
+            "slug": "kubernetes"
+          }
+        ],
+        "is_public": false,
+        "id": 11799,
+        "uid": null,
+        "title": "instaclustr/cassandra-operator",
+        "url": "https://github.com/instaclustr/cassandra-operator",
+        "content": "<h2>Cassandra operator</h2><p>Build <a href=\"https://circleci.com/gh/instaclustr/cassandra-operator/tree/master\" rel=\"nofollow\"><img src=\"https://camo.githubusercontent.com/e8818f6860bae206f9f5897efb222eb3b3d4e310/68747470733a2f2f636972636c6563692e636f6d2f67682f696e737461636c757374722f63617373616e6472612d6f70657261746f722f747265652f6d61737465722e7376673f7374796c653d737667\" alt=\"CircleCI\" data-canonical-src=\"https://circleci.com/gh/instaclustr/cassandra-operator/tree/master.svg?style=svg\" /></a></p><h3>Project status: pre-alpha</h3><p>Major planned features have yet to be completed and API changes are currently planned, we reserve the right to address bugs and API changes in a backwards incompatible way before the project is declared stable. See <a href=\"https://github.com/instaclustr/cassandra-operator/blob/master/doc/user/upgrade/upgrade_guide.md\">upgrade guide</a> for safe upgrade process.</p><p>Currently user facing Cassandra cluster objects are created as <a href=\"https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/\" rel=\"nofollow\">Kubernetes Custom Resources</a>, however, taking advantage of <a href=\"https://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/aggregated-api-servers.md\">User Aggregated API Servers</a> to improve reliability, validation and versioning may be undertaken. The use of Aggregated API should be minimally disruptive to existing users but may change what Kubernetes objects are created or how users deploy the  operator.</p><p>We expect to consider the Cassandra operator stable soon; backwards incompatible changes will not be made once the project reaches stability.</p><h2>Overview</h2><p>The Cassandra operator manages Cassandra clusters deployed to <a href=\"http://kubernetes.io\" rel=\"nofollow\">Kubernetes</a> and automates tasks related to operating an Cassandra cluster.</p><ul><li><a href=\"#deploy-cassandra-operator\">Install</a></li>\n<li><a href=\"#create-and-destroy-an-Cassandra-cluster\">Create and destroy</a></li>\n<li><a href=\"#resize-an-Cassandra-cluster\">Resize</a></li>\n<li><a href=\"#node-recovery\">Recover a node</a> - <em>TODO</em></li>\n<li><a href=\"#disaster-recovery\">Backup and restore a cluster</a> - <em>TODO</em></li>\n<li><a href=\"#upgrade-an-Cassandra-cluster\">Rolling upgrade</a> - <em>TODO</em></li>\n<li><a href=\"#limitations\">Limitations</a></li>\n</ul><p>There are <a href=\"https://github.com/instaclustr/cassandra-operator/blob/master/doc/spec_examples.md\">more spec examples</a> on setting up clusters with backup, restore, and other configurations.</p><p>Read <a href=\"https://github.com/instaclustr/cassandra-operator/blob/master/doc/best_practices.md\">Best Practices</a> for more information on how to better use Cassandra operator.</p><p>Read <a href=\"https://github.com/instaclustr/cassandra-operator/blob/master/doc/rbac.md\">RBAC docs</a> for how to setup RBAC rules for Cassandra operator if RBAC is in place.</p><p>Read <a href=\"https://github.com/instaclustr/cassandra-operator/blob/master/doc/developers.md\">Developer Guide</a> for setting up development environment if you want to contribute.</p><p>See the <a href=\"https://github.com/instaclustr/cassandra-operator/blob/master/doc/resources.md\">Resources and Labels</a> doc for an overview of the resources created by the Cassandra-operator.</p><h2>Requirements</h2><ul><li>Kubernetes 1.8+</li>\n<li>Cassandra 3.11+</li>\n</ul><h2>Deploy Cassandra operator</h2><p>See <a href=\"https://github.com/instaclustr/cassandra-operator/blob/master/doc/op_guide.md\">instructions on how to install/uninstall Cassandra operator</a> .</p><h2>Create and destroy an Cassandra cluster</h2><div class=\"highlight highlight-source-shell\"><pre>$ kubectl create -f example/common/test.yaml</pre></div><p>A 3 member Cassandra cluster will be created.</p><div class=\"highlight highlight-source-shell\"><pre>$ kubectl get pods\nNAME                                    READY     STATUS    RESTARTS   AGE\ncassandra-operator7-5d58bc7874-t85dt    1/1       Running   0          18h\ntest-dc-0                               1/1       Running   0          1m\ntest-dc-1                               1/1       Running   0          1m\ntest-dc-2                               1/1       Running   0          1m</pre></div><p>See <a href=\"https://github.com/instaclustr/cassandra-operator/blob/master/doc/user/client_service.md\">client service</a> for how to access Cassandra clusters created by operator.</p><p>Destroy Cassandra cluster:</p><div class=\"highlight highlight-source-shell\"><pre>$ kubectl delete -f example/common/test.yaml</pre></div><h2>Resize an Cassandra cluster</h2><p>Create an Cassandra cluster, if you haven't already:</p><div class=\"highlight highlight-source-shell\"><pre>$ kubectl apply -f example/common/test.yaml</pre></div><p>In <code>example/common/test.yaml</code> the initial cluster size is 3.\nModify the file and change <code>replicas</code> from 3 to 5.</p><div class=\"highlight highlight-source-yaml\"><pre>apiVersion: stable.instaclustr.com/v1\nkind: CassandraDataCenter\nmetadata:\n  name: test-dc\nspec:\n  replicas: 5\n  image: \"gcr.io/cassandra-operator/cassandra:latest\"</pre></div><p>Apply the size change to the cluster CR:</p><div class=\"highlight highlight-source-shell\"><pre>$ kubectl apply -f example/common/test.yaml</pre></div><p>The Cassandra cluster will scale to 5 members (5 pods):</p><div class=\"highlight highlight-source-shell\"><pre>$ kubectl get pods\nNAME                            READY     STATUS    RESTARTS   AGE\ntest-dc-0                       1/1       Running   0          1m\ntest-dc-1                       1/1       Running   0          1m\ntest-dc-2                       1/1       Running   0          1m\ntest-dc-3                       1/1       Running   0          1m\ntest-dc-4                       1/1       Running   0          1m</pre></div><p>Similarly we can decrease the size of cluster from 5 back to 3 by changing the size field again and reapplying the change.</p><div class=\"highlight highlight-source-yaml\"><pre>apiVersion: stable.instaclustr.com/v1\nkind: CassandraDataCenter\nmetadata:\n  name: test-dc\nspec:\n  replicas: 3\n  image: \"gcr.io/cassandra-operator/cassandra:latest\"</pre></div><p>Then apply the changes</p><div class=\"highlight highlight-source-shell\"><pre>$ kubectl apply -f example/common/test.yaml</pre></div><h2>Limitations</h2><ul><li>This operator is currently a work in progress and breaking changes are landing in master all the time until we reach our initial release. Here be dragons!</li>\n<li>The operator does not currently manage backups, a command line backup utility is included, tested and built, but not yet managed by the operator.</li>\n<li>Do not use this in production.</li>\n</ul>",
+        "created_at": "2018-08-03T00:14:56+0000",
+        "updated_at": "2018-09-13T15:09:11+0000",
+        "published_at": null,
+        "published_by": [
+          ""
+        ],
+        "starred_at": null,
+        "annotations": [],
+        "mimetype": "text/html",
+        "language": "en",
+        "reading_time": 2,
+        "domain_name": "github.com",
+        "preview_picture": "https://avatars0.githubusercontent.com/u/11550580?s=400&v=4",
+        "http_status": "200",
+        "headers": null,
+        "origin_url": null,
+        "_links": {
+          "self": {
+            "href": "/api/entries/11799"
+          }
+        }
+      },
       {
         "is_archived": 1,
         "is_starred": 0,
@@ -9845,123 +9940,6 @@
         "_links": {
           "self": {
             "href": "/api/entries/4906"
-          }
-        }
-      },
-      {
-        "is_archived": 0,
-        "is_starred": 0,
-        "user_name": "admin",
-        "user_email": "rahul.singh@anant.us",
-        "user_id": 1,
-        "tags": [
-          {
-            "id": 4,
-            "label": "github",
-            "slug": "github"
-          },
-          {
-            "id": 24,
-            "label": "node",
-            "slug": "node-js"
-          },
-          {
-            "id": 89,
-            "label": "cassandra",
-            "slug": "cassandra"
-          },
-          {
-            "id": 1135,
-            "label": "packages",
-            "slug": "packages"
-          },
-          {
-            "id": 1163,
-            "label": "libraries",
-            "slug": "libraries"
-          }
-        ],
-        "is_public": true,
-        "id": 4905,
-        "uid": "5b5783267f2ff8.47737723",
-        "title": "DataStax NodeJS Driver",
-        "url": "https://github.com/datastax/nodejs-driver",
-        "content": "<p>A modern, <a href=\"https://github.com/datastax/nodejs-driver#features\">feature-rich</a> and highly tunable Node.js client library for Apache Cassandra (1.2+) using exclusively Cassandra's binary protocol and Cassandra Query Language v3. <em>Use the <a href=\"https://github.com/datastax/nodejs-dse-driver\">DSE Node.js driver</a> for better compatibility and support for DataStax Enterprise</em>.</p><h2><a href=\"https://github.com/datastax/nodejs-driver#installation\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-installation\"></a>Installation</h2><div class=\"highlight highlight-source-shell\"><pre>$ npm install cassandra-driver</pre></div><p><a href=\"https://travis-ci.org/datastax/nodejs-driver\"><img src=\"https://camo.githubusercontent.com/eb00101df16c48e8c49bad714207b207be5feac1/68747470733a2f2f7472617669732d63692e6f72672f64617461737461782f6e6f64656a732d6472697665722e7376673f6272616e63683d6d6173746572\" alt=\"Build Status\" data-canonical-src=\"https://travis-ci.org/datastax/nodejs-driver.svg?branch=master\" /></a> <a href=\"https://ci.appveyor.com/project/datastax/nodejs-driver/branch/master\"><img src=\"https://camo.githubusercontent.com/964cf2b4f7f404c95ca883916f62576cd8915f30/68747470733a2f2f63692e6170707665796f722e636f6d2f6170692f70726f6a656374732f7374617475732f6d32317432746664706d6b6a6578316c2f6272616e63682f6d61737465723f7376673d74727565\" alt=\"Build status\" data-canonical-src=\"https://ci.appveyor.com/api/projects/status/m21t2tfdpmkjex1l/branch/master?svg=true\" /></a></p><h2><a href=\"https://github.com/datastax/nodejs-driver#features\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-features\"></a>Features</h2><ul><li>Simple, Prepared, and <a href=\"http://docs.datastax.com/en/developer/nodejs-driver/latest/features/batch/\">Batch</a> statements</li>\n<li>Asynchronous IO, parallel execution, request pipelining</li>\n<li><a href=\"http://docs.datastax.com/en/developer/nodejs-driver/latest/features/connection-pooling/\">Connection pooling</a></li>\n<li>Auto node discovery</li>\n<li>Automatic reconnection</li>\n<li>Configurable <a href=\"http://docs.datastax.com/en/developer/nodejs-driver/latest/features/tuning-policies/#load-balancing-policy\">load balancing</a> and <a href=\"http://docs.datastax.com/en/developer/nodejs-driver/latest/features/tuning-policies/#retry-policy\">retry policies</a></li>\n<li>Works with any cluster size</li>\n<li>Both <a href=\"http://docs.datastax.com/en/developer/nodejs-driver/latest/features/promise-callback/\">promise and callback-based API</a></li>\n<li><a href=\"https://github.com/datastax/nodejs-driver#row-streaming-and-pipes\">Row streaming and pipes</a></li>\n</ul><h2><a href=\"https://github.com/datastax/nodejs-driver#documentation\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-documentation\"></a>Documentation</h2><ul><li><a href=\"http://docs.datastax.com/en/developer/nodejs-driver/latest/\">Documentation index</a></li>\n<li><a href=\"http://docs.datastax.com/en/developer/nodejs-driver/latest/features/datatypes/\">CQL types to JavaScript types</a></li>\n<li><a href=\"http://docs.datastax.com/en/developer/nodejs-driver/latest/api/\">API docs</a></li>\n<li><a href=\"http://docs.datastax.com/en/developer/nodejs-driver/latest/faq/\">FAQ</a></li>\n</ul><h2><a href=\"https://github.com/datastax/nodejs-driver#getting-help\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-getting-help\"></a>Getting Help</h2><p>You can use the <a href=\"https://groups.google.com/a/lists.datastax.com/forum/#!forum/nodejs-driver-user\">project mailing list</a> or create a ticket on the <a href=\"https://datastax-oss.atlassian.net/projects/NODEJS/issues\">Jira issue tracker</a>. Additionally, you can use the <code>#datastax-drivers</code> channel in the <a href=\"https://academy.datastax.com/slack\">DataStax Academy Slack</a>.</p><h2><a href=\"https://github.com/datastax/nodejs-driver#basic-usage\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-basic-usage\"></a>Basic usage</h2><div class=\"highlight highlight-source-js\"><pre>const cassandra = require('cassandra-driver');\nconst client = new cassandra.Client({ contactPoints: ['h1', 'h2'], keyspace: 'ks1' });\nconst query = 'SELECT name, email FROM users WHERE key = ?';\nclient.execute(query, [ 'someone' ])\n  .then(result =&gt; console.log('User with email %s', result.rows[0].email));</pre></div><p>Alternatively, you can use the callback-based execution for all asynchronous methods of the API.</p><div class=\"highlight highlight-source-js\"><pre>client.execute(query, [ 'someone' ], function(err, result) {\n  assert.ifError(err);\n  console.log('User with email %s', result.rows[0].email);\n});</pre></div><h3><a href=\"https://github.com/datastax/nodejs-driver#prepare-your-queries\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-prepare-your-queries\"></a>Prepare your queries</h3><p>Using prepared statements provides multiple benefits.\nPrepared statements are parsed and prepared on the Cassandra nodes and are ready for future execution.\nAlso, when preparing, the driver retrieves information about the parameter types which\n<strong>allows an accurate mapping between a JavaScript type and a Cassandra type</strong>.</p><p>The driver will prepare the query once on each host and execute the statement with the bound parameters.</p><div class=\"highlight highlight-source-js\"><pre>// Use query markers (?) and parameters\nconst query = 'UPDATE users SET birth = ? WHERE key=?'; \nconst params = [ new Date(1942, 10, 1), 'jimi-hendrix' ];\n// Set the prepare flag in the query options\nclient.execute(query, params, { prepare: true })\n  .then(result =&gt; console.log('Row updated on the cluster'));</pre></div><h3><a href=\"https://github.com/datastax/nodejs-driver#row-streaming-and-pipes\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-row-streaming-and-pipes\"></a>Row streaming and pipes</h3><p>When using <code>#eachRow()</code> and <code>#stream()</code> methods, the driver parses each row as soon as it is received,\nyielding rows without buffering them.</p><div class=\"highlight highlight-source-js\"><pre>// Reducing a large result\nclient.eachRow('SELECT time, val FROM temperature WHERE station_id=', ['abc'],\n  function(n, row) {\n    // The callback will be invoked per each row as soon as they are received\n    minTemperature = Math.min(row.val, minTemperature);\n  },\n  function (err) {\n    assert.ifError(err);\n  }\n);</pre></div><p>The <code>#stream()</code> method works in the same way but instead of callback it returns a <a href=\"http://nodejs.org/api/stream.html#stream_class_stream_readable\">Readable Streams2</a> object\nin <code>objectMode</code> that emits instances of <code>Row</code>.\nIt can be <strong>piped</strong> downstream and provides automatic pause/resume logic (it buffers when not read).</p><div class=\"highlight highlight-source-js\"><pre>client.stream('SELECT time, val FROM temperature WHERE station_id=', [ 'abc' ])\n  .on('readable', function () {\n    // 'readable' is emitted as soon a row is received and parsed\n    var row;\n    while (row = this.read()) {\n      console.log('time %s and value %s', row.time, row.val);\n    }\n  })\n  .on('end', function () {\n    // Stream ended, there aren't any more rows\n  })\n  .on('error', function (err) {\n    // Something went wrong: err is a response error from Cassandra\n  });</pre></div><h3><a href=\"https://github.com/datastax/nodejs-driver#user-defined-types\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-user-defined-types\"></a>User defined types</h3><p><a href=\"http://cassandra.apache.org/doc/latest/cql/types.html#udts\">User defined types (UDT)</a> are represented as JavaScript objects.</p><p>For example:\nConsider the following UDT and table</p><div class=\"highlight highlight-source-sql\"><pre>CREATE TYPE address (\n  street text,\n  city text,\n  state text,\n  zip int,\n  phones set&lt;text&gt;\n);\nCREATE TABLE users (\n  name text PRIMARY KEY,\n  email text,\n  address frozen&lt;address&gt;\n);</pre></div><p>You can retrieve the user address details as a regular JavaScript object.</p><div class=\"highlight highlight-source-js\"><pre>const query = 'SELECT name, address FROM users WHERE key = ?';\nclient.execute(query, [ key ], { prepare: true })\n  .then(result =&gt; {\n    const row = result.first();\n    const address = row.address;\n    console.log('User lives in %s, %s - %s', address.street, address.city, address.state); \n  });</pre></div><p>Read more information  about using <a href=\"http://docs.datastax.com/en/developer/nodejs-driver/latest/features/datatypes/udts/\">UDTs with the Node.js Driver</a>.</p><h3><a href=\"https://github.com/datastax/nodejs-driver#paging\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-paging\"></a>Paging</h3><p>All driver methods use a default <code>fetchSize</code> of 5000 rows, retrieving only first page of results up to a\nmaximum of 5000 rows to shield an application against accidentally large result sets. To retrieve the following\nrecords you can use the <code>autoPage</code> flag in the query options of <code>#eachRow()</code> and <code>#stream()</code> methods.</p><div class=\"highlight highlight-source-js\"><pre>//Imagine a column family with millions of rows\nconst query = 'SELECT * FROM largetable';\nclient.eachRow(query, [], { autoPage: true }, function (n, row) {\n  // This function will be invoked per each of the rows in all the table\n}, endCallback);</pre></div><h3><a href=\"https://github.com/datastax/nodejs-driver#batch-multiple-statements\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-batch-multiple-statements\"></a>Batch multiple statements</h3><p>You can execute multiple statements in a batch to update/insert several rows atomically even in different column families.</p><div class=\"highlight highlight-source-js\"><pre>const queries = [\n  {\n    query: 'UPDATE user_profiles SET email=? WHERE key=?',\n    params: [ emailAddress, 'hendrix' ]\n  },\n  {\n    query: 'INSERT INTO user_track (key, text, date) VALUES (?, ?, ?)',\n    params: [ 'hendrix', 'Changed email', new Date() ]\n  }\n];\nclient.batch(queries, { prepare: true })\n  .then(result =&gt; console.log('Data updated on cluster'));</pre></div><hr /><h2><a href=\"https://github.com/datastax/nodejs-driver#data-types\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-data-types\"></a>Data types</h2><p>There are few data types defined in the ECMAScript specification, this usually represents a problem when you are trying\nto deal with data types that come from other systems in JavaScript.</p><p>The driver supports all the CQL data types in Apache Cassandra (3.0 and below) even for types with no built-in\nJavaScript representation, like decimal, varint and bigint. Check the documentation on working with\n<a href=\"http://docs.datastax.com/en/developer/nodejs-driver/latest/features/datatypes/numerical/\">numerical values</a>, <a href=\"http://docs.datastax.com/en/developer/nodejs-driver/latest/features/datatypes/uuids/\">uuids</a> and <a href=\"http://docs.datastax.com/en/developer/nodejs-driver/latest/features/datatypes/collections/\">collections</a>.</p><h2><a href=\"https://github.com/datastax/nodejs-driver#logging\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-logging\"></a>Logging</h2><p>Instances of <code>Client()</code> are <code>EventEmitter</code> and emit <code>log</code> events:</p><div class=\"highlight highlight-source-js\"><pre>client.on('log', function(level, className, message, furtherInfo) {\n  console.log('log event: %s -- %s', level, message);\n});</pre></div><p>The <code>level</code> being passed to the listener can be <code>verbose</code>, <code>info</code>, <code>warning</code> or <code>error</code>.</p><h2><a href=\"https://github.com/datastax/nodejs-driver#compatibility\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-compatibility\"></a>Compatibility</h2><ul><li>Apache Cassandra versions 2.0 and above.</li>\n<li>DataStax Enterprise versions 4.5 and above.</li>\n<li>Node.js versions 0.10 and above.</li>\n</ul><p>Note: DataStax products do not support big-endian systems.</p><h2><a href=\"https://github.com/datastax/nodejs-driver#feedback-requested\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-feedback-requested\"></a>Feedback Requested</h2><p><strong>Help us focus our efforts!</strong> Provide your input on the <a href=\"http://goo.gl/forms/f216tY3Ebr\">Platform and Runtime Survey</a> (we kept it short).</p><h2><a href=\"https://github.com/datastax/nodejs-driver#credits\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-credits\"></a>Credits</h2><p>This driver is based on the original work of <a href=\"https://github.com/jorgebay\">Jorge Bay</a> on <a href=\"https://github.com/jorgebay/node-cassandra-cql\">node-cassandra-cql</a> and adds a series of advanced features that are common across all other <a href=\"https://github.com/datastax\">DataStax drivers</a> for Apache Cassandra.</p><p>The development effort to provide an up to date, high performance, fully featured Node.js Driver for Apache Cassandra will continue on this project, while <a href=\"https://github.com/jorgebay/node-cassandra-cql\">node-cassandra-cql</a> will be discontinued.</p><h2><a href=\"https://github.com/datastax/nodejs-driver#license\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-license\"></a>License</h2><p>Copyright 2014-2017 DataStax</p><p>Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p><p><a href=\"http://www.apache.org/licenses/LICENSE-2.0\">http://www.apache.org/licenses/LICENSE-2.0</a></p><p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>",
-        "created_at": "2017-10-31T20:25:39+0000",
-        "updated_at": "2018-07-24T19:51:02+0000",
-        "published_at": null,
-        "published_by": [
-          ""
-        ],
-        "starred_at": null,
-        "annotations": [],
-        "mimetype": "text/html",
-        "language": "en",
-        "reading_time": 5,
-        "domain_name": "github.com",
-        "preview_picture": "https://camo.githubusercontent.com/eb00101df16c48e8c49bad714207b207be5feac1/68747470733a2f2f7472617669732d63692e6f72672f64617461737461782f6e6f64656a732d6472697665722e7376673f6272616e63683d6d6173746572",
-        "http_status": "200",
-        "headers": null,
-        "origin_url": null,
-        "_links": {
-          "self": {
-            "href": "/api/entries/4905"
-          }
-        }
-      },
-      {
-        "is_archived": 0,
-        "is_starred": 0,
-        "user_name": "admin",
-        "user_email": "rahul.singh@anant.us",
-        "user_id": 1,
-        "tags": [
-          {
-            "id": 4,
-            "label": "github",
-            "slug": "github"
-          },
-          {
-            "id": 89,
-            "label": "cassandra",
-            "slug": "cassandra"
-          },
-          {
-            "id": 1135,
-            "label": "packages",
-            "slug": "packages"
-          },
-          {
-            "id": 1163,
-            "label": "libraries",
-            "slug": "libraries"
-          }
-        ],
-        "is_public": true,
-        "id": 4904,
-        "uid": "5b57832a1dd002.21843717",
-        "title": "DataStax C# Driver",
-        "url": "https://github.com/datastax/csharp-driver",
-        "content": "<p>A modern, <a href=\"http://docs.datastax.com/en/developer/csharp-driver/latest/features/\">feature-rich</a> and highly tunable C# client library for Apache Cassandra (1.2+) using exclusively Cassandra's binary protocol and Cassandra Query Language v3. <em>Use the <a href=\"https://github.com/datastax/csharp-dse-driver\">DSE C# driver</a> for better compatibility and support for DataStax Enterprise</em>.</p><p>The driver supports .NET Framework 4.5+ and .NET Core 1+.</p><h2><a href=\"https://github.com/datastax/csharp-driver#installation\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-installation\"></a>Installation</h2><p><a href=\"https://nuget.org/packages/CassandraCSharpDriver/\">Get it on Nuget</a></p><div class=\"highlight highlight-source-shell\"><pre>PM&gt; Install-Package CassandraCSharpDriver</pre></div><p><a href=\"https://travis-ci.org/datastax/csharp-driver\"><img src=\"https://camo.githubusercontent.com/65a02e83e7515dc3b1ef568bd7317d0dac6a1874/68747470733a2f2f7472617669732d63692e6f72672f64617461737461782f6373686172702d6472697665722e7376673f6272616e63683d6d6173746572\" alt=\"Build status\" data-canonical-src=\"https://travis-ci.org/datastax/csharp-driver.svg?branch=master\" /></a>\n<a href=\"https://ci.appveyor.com/project/DataStax/csharp-driver/branch/master\"><img src=\"https://camo.githubusercontent.com/5735947c513653cfe29b994bb8826e9cd99d797f/68747470733a2f2f63692e6170707665796f722e636f6d2f6170692f70726f6a656374732f7374617475732f7269316f6c7638626c376237796b37792f6272616e63682f6d61737465723f7376673d74727565\" alt=\"Windows Build status\" data-canonical-src=\"https://ci.appveyor.com/api/projects/status/ri1olv8bl7b7yk7y/branch/master?svg=true\" /></a>\n<a href=\"https://www.nuget.org/packages/CassandraCSharpDriver\"><img src=\"https://camo.githubusercontent.com/5d098659e24e8ec35c2a495433a10248901d2036/68747470733a2f2f696d672e736869656c64732e696f2f6e756765742f762f43617373616e6472614353686172704472697665722e737667\" alt=\"Latest stable\" data-canonical-src=\"https://img.shields.io/nuget/v/CassandraCSharpDriver.svg\" /></a></p><h2><a href=\"https://github.com/datastax/csharp-driver#features\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-features\"></a>Features</h2><ul><li>Sync and <a href=\"https://github.com/datastax/csharp-driver#asynchronous-api\">Async</a> API</li>\n<li>Simple, <a href=\"https://github.com/datastax/csharp-driver#prepared-statements\">Prepared</a>, and <a href=\"https://github.com/datastax/csharp-driver#batching-statements\">Batch</a> statements</li>\n<li>Asynchronous IO, parallel execution, request pipelining</li>\n<li>Connection pooling</li>\n<li>Auto node discovery</li>\n<li>Automatic reconnection</li>\n<li>Configurable <a href=\"http://docs.datastax.com/en/developer/csharp-driver/latest/features/tuning-policies/\">load balancing</a> and <a href=\"http://docs.datastax.com/en/developer/csharp-driver/latest/features/tuning-policies/\">retry policies</a></li>\n<li>Works with any cluster size</li>\n<li><a href=\"http://docs.datastax.com/en/developer/csharp-driver/latest/features/components/linq/\">Linq2Cql</a> and Ado.Net support</li>\n</ul><h2><a href=\"https://github.com/datastax/csharp-driver#documentation\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-documentation\"></a>Documentation</h2><ul><li><a href=\"http://docs.datastax.com/en/developer/csharp-driver/latest/\">Documentation index</a></li>\n<li><a href=\"https://academy.datastax.com/resources/getting-started-apache-cassandra-and-c-net\">Getting started guide</a></li>\n<li><a href=\"http://docs.datastax.com/en/drivers/csharp/3.3/\">API docs</a></li>\n</ul><h2><a href=\"https://github.com/datastax/csharp-driver#getting-help\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-getting-help\"></a>Getting Help</h2><p>You can use the project <a href=\"https://groups.google.com/a/lists.datastax.com/forum/#!forum/csharp-driver-user\">Mailing list</a> or create a ticket on the <a href=\"https://datastax-oss.atlassian.net/projects/CSHARP/issues\">Jira issue tracker</a>. Additionally, you can use the <code>#datastax-drivers</code> channel in the <a href=\"https://academy.datastax.com/slack\">DataStax Academy Slack</a>.</p><h2><a href=\"https://github.com/datastax/csharp-driver#upgrading-from-previous-versions\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-upgrading-from-previous-versions\"></a>Upgrading from previous versions</h2><p>If you are upgrading to <a href=\"https://www.datastax.com/products/datastax-enterprise\">DataStax Enterprise</a>, use the <a href=\"https://github.com/datastax/csharp-dse-driver\">DSE C# driver</a> for more features and better compatibility.</p><p>If you are upgrading from the 2.1 branch of the driver, be sure to have a look at the <a href=\"https://github.com/datastax/csharp-driver/blob/master/doc/upgrade-guide-2.5.md\">upgrade guide</a>.</p><p>If you are upgrading from the 1.x branch of the driver, follow the <a href=\"https://github.com/datastax/csharp-driver/blob/master/doc/upgrade-guide-2.0.md\">upgrade guide to 2.0</a>, and then the above document.</p><h2><a href=\"https://github.com/datastax/csharp-driver#basic-usage\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-basic-usage\"></a>Basic Usage</h2><div class=\"highlight highlight-source-cs\"><pre>var cluster = Cluster.Builder()\n                     .AddContactPoints(\"host1\")\n                     .Build();\n// Connect to the nodes using a keyspace\nvar session = cluster.Connect(\"sample_keyspace\");\n// Execute a query on a connection synchronously\nvar rs = session.Execute(\"SELECT * FROM sample_table\");\n// Iterate through the RowSet\nforeach (var row in rs)\n{\n  var value = row.GetValue&lt;int&gt;(\"sample_int_column\");\n  // Do something with the value\n}</pre></div><h3><a href=\"https://github.com/datastax/csharp-driver#prepared-statements\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-prepared-statements\"></a>Prepared statements</h3><p>Prepare your query <strong>once</strong> and bind different parameters to obtain best performance.</p><div class=\"highlight highlight-source-cs\"><pre>// Prepare a statement once\nvar ps = session.Prepare(\"UPDATE user_profiles SET birth=? WHERE key=?\");\n// ...bind different parameters every time you need to execute\nvar statement = ps.Bind(new DateTime(1942, 11, 27), \"hendrix\");\n// Execute the bound statement with the provided parameters\nsession.Execute(statement);</pre></div><h3><a href=\"https://github.com/datastax/csharp-driver#batching-statements\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-batching-statements\"></a>Batching statements</h3><p>You can execute multiple statements (prepared or unprepared) in a batch to update/insert several rows atomically even in different column families.</p><div class=\"highlight highlight-source-cs\"><pre>// Prepare the statements involved in a profile update once\nvar profileStmt = session.Prepare(\"UPDATE user_profiles SET email=? WHERE key=?\");\nvar userTrackStmt = session.Prepare(\"INSERT INTO user_track (key, text, date) VALUES (?, ?, ?)\");\n// ...you should reuse the prepared statement\n// Bind the parameters and add the statement to the batch batch\nvar batch = new BatchStatement()\n  .Add(profileStmt.Bind(emailAddress, \"hendrix\"))\n  .Add(userTrackStmt.Bind(\"hendrix\", \"You changed your email\", DateTime.Now));\n// Execute the batch\nsession.Execute(batch);</pre></div><h3><a href=\"https://github.com/datastax/csharp-driver#asynchronous-api\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-asynchronous-api\"></a>Asynchronous API</h3><p>Session allows asynchronous execution of statements (for any type of statement: simple, bound or batch) by exposing the <code>ExecuteAsync</code> method.</p><div class=\"highlight highlight-source-cs\"><pre>// Execute a statement asynchronously using await\nvar rs = await session.ExecuteAsync(statement);</pre></div><h3><a href=\"https://github.com/datastax/csharp-driver#avoid-boilerplate-mapping-code\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-avoid-boilerplate-mapping-code\"></a>Avoid boilerplate mapping code</h3><p>The driver features a built-in <a href=\"http://docs.datastax.com/en/developer/csharp-driver/latest/features/components/mapper/\">Mapper</a> and <a href=\"http://docs.datastax.com/en/developer/csharp-driver/latest/features/components/linq/\">Linq</a> components that can use to avoid boilerplate mapping code between cql rows and your application entities.</p><div class=\"highlight highlight-source-cs\"><pre>User user = mapper.Single&lt;User&gt;(\"SELECT name, email FROM users WHERE id = ?\", userId);</pre></div><p>See the <a href=\"http://docs.datastax.com/en/developer/csharp-driver/latest/features/components/\">driver components documentation</a> for more information.</p><h3><a href=\"https://github.com/datastax/csharp-driver#automatic-pagination-of-results\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-automatic-pagination-of-results\"></a>Automatic pagination of results</h3><p>You can iterate indefinitely over the <code>RowSet</code>, having the rows fetched block by block until the rows available on the client side are exhausted.</p><div class=\"highlight highlight-source-cs\"><pre>var statement = new SimpleStatement(\"SELECT * from large_table\");\n// Set the page size, in this case the RowSet will not contain more than 1000 at any time\nstatement.SetPageSize(1000);\nvar rs = session.Execute(statement);\nforeach (var row in rs)\n{\n  // The enumerator will yield all the rows from Cassandra\n  // Retrieving them in the back in blocks of 1000.\n}</pre></div><h3><a href=\"https://github.com/datastax/csharp-driver#user-defined-types-mapping\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-user-defined-types-mapping\"></a>User defined types mapping</h3><p>You can map your <a href=\"http://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlRefUDType.html\">Cassandra User Defined Types</a> to your application entities.</p><p>For a given udt</p><div class=\"highlight highlight-source-sql\"><pre>CREATE TYPE address (\n  street text,\n  city text,\n  zip_code int,\n  phones set&lt;text&gt;\n);</pre></div><p>For a given class</p><div class=\"highlight highlight-source-cs\"><pre>public class Address\n{\n  public string Street { get; set; }\n  public string City { get; set; }\n  public int ZipCode { get; set; }\n  public IEnumerable&lt;string&gt; Phones { get; set;}\n}</pre></div><p>You can either map the properties by name</p><div class=\"highlight highlight-source-cs\"><pre>//Map the properties by name automatically\nsession.UserDefinedTypes.Define(\n  UdtMap.For&lt;Address&gt;()\n);</pre></div><p>Or you can define the properties manually</p><div class=\"highlight highlight-source-cs\"><pre>session.UserDefinedTypes.Define(\n  UdtMap.For&lt;Address&gt;()\n    .Map(a =&gt; a.Street, \"street\")\n    .Map(a =&gt; a.City, \"city\")\n    .Map(a =&gt; a.ZipCode, \"zip_code\")\n    .Map(a =&gt; a.Phones, \"phones\")\n);</pre></div><p>You should <strong>map your <a href=\"http://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlRefUDType.html\">UDT</a> to your entity once</strong> and you will be able to use that mapping during all your application lifetime.</p><div class=\"highlight highlight-source-cs\"><pre>var rs = session.Execute(\"SELECT id, name, address FROM users where id = x\");\nvar row = rs.First();\n// You can retrieve the field as a value of type Address\nvar userAddress = row.GetValue&lt;Address&gt;(\"address\");\nConsole.WriteLine(\"user lives on {0} Street\", userAddress.Street);</pre></div><h3><a href=\"https://github.com/datastax/csharp-driver#setting-cluster-and-statement-execution-options\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-setting-cluster-and-statement-execution-options\"></a>Setting cluster and statement execution options</h3><p>You can set the options on how the driver connects to the nodes and the execution options.</p><div class=\"highlight highlight-source-cs\"><pre>// Example at cluster level\nvar cluster = Cluster\n  .Builder()\n  .AddContactPoints(hosts)\n  .WithCompression(CompressionType.LZ4)\n  .WithLoadBalancingPolicy(new DCAwareRoundRobinPolicy(\"west\"));\n// Example at statement (simple, bound, batch) level\nvar statement = new SimpleStatement(query)\n  .SetConsistencyLevel(ConsistencyLevel.Quorum)\n  .SetRetryPolicy(DowngradingConsistencyRetryPolicy.Instance)\n  .SetPageSize(1000);</pre></div><h2><a href=\"https://github.com/datastax/csharp-driver#compatibility\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-compatibility\"></a>Compatibility</h2><ul><li>Apache Cassandra versions 2.0 and above.</li>\n<li>DataStax Enterprise versions 4.5 and above.</li>\n<li>.NET Framework versions 4.5 and above and .NET Core versions 1.0 and above.</li>\n</ul><p>Note: DataStax products do not support big-endian systems.</p><h2><a href=\"https://github.com/datastax/csharp-driver#feedback-requested\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-feedback-requested\"></a>Feedback Requested</h2><p><strong>Help us focus our efforts!</strong> Provide your input on the <a href=\"http://goo.gl/forms/3BxcP8nKs6\">Platform and Runtime Survey</a> (we kept it short).</p><h2><a href=\"https://github.com/datastax/csharp-driver#building-and-running-the-tests\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-building-and-running-the-tests\"></a>Building and running the tests</h2><p>You can use Visual Studio or msbuild to build the solution.</p><p><a href=\"https://github.com/datastax/csharp-driver/wiki/Building-and-running-tests\">Check the documentation for building the driver from source and running the tests</a>.</p><h2><a href=\"https://github.com/datastax/csharp-driver#license\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-license\"></a>License</h2><p>Copyright 2012-2017, DataStax.</p><p>Licensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at</p><p><a href=\"http://www.apache.org/licenses/LICENSE-2.0\">http://www.apache.org/licenses/LICENSE-2.0</a></p><p>Unless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.</p>",
-        "created_at": "2017-10-31T20:25:43+0000",
-        "updated_at": "2018-07-24T19:51:06+0000",
-        "published_at": null,
-        "published_by": [
-          ""
-        ],
-        "starred_at": null,
-        "annotations": [],
-        "mimetype": "text/html",
-        "language": "en",
-        "reading_time": 5,
-        "domain_name": "github.com",
-        "preview_picture": "https://camo.githubusercontent.com/65a02e83e7515dc3b1ef568bd7317d0dac6a1874/68747470733a2f2f7472617669732d63692e6f72672f64617461737461782f6373686172702d6472697665722e7376673f6272616e63683d6d6173746572",
-        "http_status": "200",
-        "headers": null,
-        "origin_url": null,
-        "_links": {
-          "self": {
-            "href": "/api/entries/4904"
           }
         }
       }

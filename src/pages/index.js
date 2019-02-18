@@ -30,6 +30,9 @@ class IndexPage extends React.Component {
                             </div>
                         </div>
                     </div>
+                    <div className="view-more">
+                        <Link to="/page/1">View More</Link>
+                    </div>
                 </div>
             </Layout>
         );
