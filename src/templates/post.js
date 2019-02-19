@@ -33,6 +33,11 @@ export const pageQuery = graphql`
                     content
                     domain_name
                     url
+                    tags{
+                        alternative_id
+                        label
+                        slug
+                      }	
                 }
             }
         }
