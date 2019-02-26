@@ -2,14 +2,15 @@ module.exports = {
   siteMetadata: {
     title: 'Gatsby Default Starter',
   },
-  plugins: [{
+  plugins: [
+    {
     resolve: 'gatsby-source-apiserver',
     options: {
       // Type prefix of entities from server
       typePrefix: 'anant__',
 
       // The url, this should be the endpoint you are attempting to pull data from
-      url: `http://leaves.anant.us:82/api/entries?access_token=N2Y1YmFlNzY4OTM3ZjE2OGMwODExODQ1ZDhiYmQ5OWYzMjhkZjhiMDgzZWU2Y2YyYzNkYzA5MDQ2NWRhNDIxYw&limit=100&order=desc&page=2&sort=created&tags=cassandra&perPage=200`,
+      url: `http://leaves.anant.us:82/api/entries?access_token=N2Y1YmFlNzY4OTM3ZjE2OGMwODExODQ1ZDhiYmQ5OWYzMjhkZjhiMDgzZWU2Y2YyYzNkYzA5MDQ2NWRhNDIxYw&limit=100&order=desc&page=2&sort=created&tags=cassandra&perPage=40`,
 
       method: 'get',
 
@@ -93,5 +94,19 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
+    {
+      resolve: `gatsby-source-rss-feed`,
+      options: {
+        url: `http://192.241.141.6:81/public.php?op=rss&id=-3&key=q4c4bb5bd7718ce9cb5`,
+        name: `GatsbyBlog`,
+        // Optional
+        // Read parser document: https://github.com/bobby-brennan/rss-parser#readme
+        parserOption: {
+          customFields: {
+            item: ['itunes:duration']
+          }
+        }
+      }
+    }
   ],
 }
