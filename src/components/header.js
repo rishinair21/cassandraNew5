@@ -27,12 +27,12 @@ const Header = ({ siteTitle }) => (
                 </div>
                 <input type="checkbox" id="nav-check"/>
                 <div className="nav-links">
-                    <a href="#" target="_blank">Cassandra</a>
-                    <a href="#" target="_blank">Docker</a>
-                    <a href="#" target="_blank">Elasticsearch</a>
-                    <a href="#" target="_blank">Architecture</a>
-                    <a href="#" target="_blank">api</a>
-                    <a href="#" target="_blank">videos</a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">Cassandra</a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">Docker</a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">Elasticsearch</a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">Architecture</a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">api</a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">videos</a>
                 </div>
             </div>
 )

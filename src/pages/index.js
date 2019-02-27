@@ -9,7 +9,7 @@ class IndexPage extends React.Component {
         const data = this.props.data.all.edges;
         const videos = this.props.data.videos.edges;
         const github = this.props.data.github.edges;
-        const featured = this.props.data.featured.edges
+        const ttrs = this.props.data.ttrs.edges
         return (
             <Layout>
                 <div>
@@ -26,7 +26,7 @@ class IndexPage extends React.Component {
                                 <SecondColumn obj={github}/>
                             </div>
                             <div className="card card3">
-                                <ThirdColumn obj={data}/> 
+                                <ThirdColumn obj={ttrs}/> 
                             </div>
                         </div>
                     </div>
@@ -56,6 +56,18 @@ export const IndexQuery = graphql`
                 }
             }
         }
+        ttrs: allFeedTtrs {
+            edges {
+                node {
+                    title
+                    link
+                    id
+                    pubDate
+                    author
+                    content
+                }
+            }
+        }
         all: allAnantCassandralinks(limit: 15) {
             edges {
                 node {
@@ -73,7 +85,7 @@ export const IndexQuery = graphql`
         }
         videos: allAnantCassandralinks(
             filter: { domain_name: { eq: "www.youtube.com"} }
-            limit: 15
+            limit: 36
         ) {
             edges {
                 node {
@@ -91,7 +103,7 @@ export const IndexQuery = graphql`
         }
         github: allAnantCassandralinks(
             filter: { domain_name: { eq: "github.com"} }
-            limit: 15
+            limit: 36
         ) {
             edges {
                 node {

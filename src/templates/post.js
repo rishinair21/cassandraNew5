@@ -11,7 +11,7 @@ const LinkPostPage = ({ data }) => (
             <div className="post-mata">
                 <ul>
                     <li>{data.allAnantCassandralinks.edges[0].node['domain_name']}</li>
-                    <li><a href={data.allAnantCassandralinks.edges[0].node['url']} target="_blank">Link</a></li>
+                    <li><a href={data.allAnantCassandralinks.edges[0].node['url']} target="_blank" rel="noopener noreferrer">Link</a></li>
                 </ul>
             </div> 
             <div className="content" dangerouslySetInnerHTML={{ __html: data.allAnantCassandralinks.edges[0].node['content'] }} />

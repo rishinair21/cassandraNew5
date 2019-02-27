@@ -35,15 +35,22 @@ export class SecondColumn extends Component {
 			<div className="second-grid">
 				{_.map(data, (value, key)=>{
 					return (
-						<div key={key} className={'second-list second'+(key+1)}>
-							<div className="image" style={{backgroundImage: `url(${value.node.preview_picture})`}}>
-							</div>
-							<div className="card-tag">{value.node.tags[0].label}</div>
+						<div key={key} className={'second-list second-list-grid second'+(key+1)}>
+							{/* <div className="card-tag">{value.node.tags[0].label}</div> */}
 							<div className="second-list-meta">
 								<Link to={`/post/${value.node.alternative_id}`}>
 									<div className="title">{value.node.title}</div>
 								</Link>
 								<div className="domain">{value.node.domain_name}</div>
+								<ul className="card-tags">
+								{value.node.tags.map((value, key) => {
+									return(
+										<li>#{value.label}</li>
+									)
+								})}
+								</ul>
+							</div>
+							<div className="image" style={{backgroundImage: `url(${value.node.preview_picture})`}}>
 							</div>
 						</div>
 					)
@@ -60,15 +67,16 @@ export class ThirdColumn extends Component {
 			<div className="second-grid">
 				{_.map(data, (value, key)=>{
 					return (
-						<div key={key} className={'second-list second'+(key+1)}>
-							<div className="image" style={{backgroundImage: `url(${value.node.preview_picture})`}}>
-							</div>
-							<div className="card-tag-right">{value.node.tags[0].label}</div>
-							<div className="second-list-meta third-meta-box">
-								<Link to={`/post/${value.node.alternative_id}`}>
+						<div key={key} className={'ttrs-list second'+(key+1)}>
+							{/* <div className="image" style={{backgroundImage: `url(${value.node.preview_picture})`}}>
+							</div> */}
+							{/* <div className="card-tag-right">{value.node.tags[0].label}</div> */}
+							<div className="ttrs-list-meta ttrs-col third-meta-box">
+								<a href={`${value.node.link}`} target="_blank" rel="noopener noreferrer">
 									<div className="title">{value.node.title}</div>
-								</Link>
-								<div className="domain">{value.node.domain_name}</div>
+									<small>{value.node.author}</small>
+								</a>
+								{/* <div className="domain">{value.node.domain_name}</div> */}
 							</div>
 						</div>
 					)
