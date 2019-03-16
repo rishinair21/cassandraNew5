@@ -29,7 +29,7 @@ const Layout = ({ children }) => (
         >
           <html lang="en" />
         </Helmet>
-        <Header siteTitle="CASSANDRA.Link" />
+        <Header siteTitle="Cassandra.Link" />
         <div
           style={{
             margin: '0 auto',

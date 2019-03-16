@@ -109,18 +109,18 @@ body {
 }
 
 
-.ttrs-list .ttrs-list-meta {
+.ttrss-list .ttrss-list-meta {
   color: #020202;
   background: #f8f8f8;
   padding: 10px;
 }
 
-.ttrs-list .ttrs-list-meta a{
+.ttrss-list .ttrss-list-meta a{
   text-decoration: none;
   font-size: 13px;
 }
 
-.ttrs-list .ttrs-list-meta .title {
+.ttrss-list .ttrss-list-meta .title {
   font-size: 14px;
   line-height: 18px;
   font-weight: 600;
@@ -128,7 +128,7 @@ body {
 }
 
 
-.ttrs-list .ttrs-list-meta .domain {
+.ttrss-list .ttrss-list-meta .domain {
   font-size: 12px;
   line-height: 12px;
   font-weight: 500;
@@ -190,7 +190,7 @@ body {
   .card {
       color: #fff;
       overflow: hidden;
-      
+
   }
 
   .featured-grid .card-inner {
@@ -294,15 +294,15 @@ body {
 
 .line-1{
   position: relative;
-  top: 50%;  
+  top: 50%;
   margin: 0 auto;
   border-right: 2px solid rgba(255,255,255,.75);
   font-size: 180%;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
-  transform: translateY(-50%);  
-  font-size: 40px; 
+  transform: translateY(-50%);
+  font-size: 40px;
 }
 
 .pagination {

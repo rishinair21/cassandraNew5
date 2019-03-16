@@ -9,24 +9,26 @@ class IndexPage extends React.Component {
         const data = this.props.data.all.edges;
         const videos = this.props.data.videos.edges;
         const github = this.props.data.github.edges;
-        const ttrs = this.props.data.ttrs.edges
+        const ttrss = this.props.data.ttrss.edges;
         return (
             <Layout>
                 <div>
                     <div className="home-structure">
+                        <div>
+                        </div>
                         <div className="typewriter-p">
-                            <div class="line-1 anim-typewriter">It's all about <u>Cassandra</u></div>
+                            <div class="line-1 anim-typewriter">Cassandra.Link Knowledge Base</div>
                         </div>
                         {/* <FaturedGrid obj={featured}/> */}
                         <div className="three-cl">
                             <div className="card card1">
-                                <FirstColumn obj={videos}/>  
+                                <FirstColumn obj={videos}/>
                             </div>
                             <div className="card card2">
-                                <SecondColumn obj={github}/>
+                                <ThirdColumn obj={ttrss}/>
                             </div>
                             <div className="card card3">
-                                <ThirdColumn obj={ttrs}/> 
+                                <SecondColumn obj={github}/>
                             </div>
                         </div>
                     </div>
@@ -56,7 +58,7 @@ export const IndexQuery = graphql`
                 }
             }
         }
-        ttrs: allFeedTtrs {
+        ttrss: allFeedTtrs {
             edges {
                 node {
                     title
@@ -79,7 +81,7 @@ export const IndexQuery = graphql`
                         alternative_id
                         label
                         slug
-                      }	
+                      }
                 }
             }
         }
@@ -97,7 +99,7 @@ export const IndexQuery = graphql`
                         alternative_id
                         label
                         slug
-                      }	
+                      }
                 }
             }
         }
@@ -115,7 +117,7 @@ export const IndexQuery = graphql`
                         alternative_id
                         label
                         slug
-                      }	
+                      }
                 }
             }
         }

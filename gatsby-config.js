@@ -97,15 +97,15 @@ module.exports = {
     {
       resolve: `gatsby-source-rss-feed`,
       options: {
-        url: `http://192.241.141.6:81/public.php?op=rss&id=-4&key=k7ojwf5bd4b2e7638ff`,
+        url: `http://192.241.141.6:81/public.php?op=rss&id=-4&limit=500&key=k7ojwf5bd4b2e7638ff`,
         name: `TTRS`,
         // Optional
         // Read parser document: https://github.com/bobby-brennan/rss-parser#readme
-        /*parserOption: {
+        parserOption: {
           customFields: {
-            item: ['itunes:duration']
+            item: ['entry:summary']
           }
-        }*/
+        }
       }
     },
     {

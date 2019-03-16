@@ -67,15 +67,22 @@ export class ThirdColumn extends Component {
 			<div className="second-grid">
 				{_.map(data, (value, key)=>{
 					return (
-						<div key={key} className={'ttrs-list second'+(key+1)}>
+						<div key={key} className={'ttrss-list second'+(key+1)}>
 							{/* <div className="image" style={{backgroundImage: `url(${value.node.preview_picture})`}}>
 							</div> */}
 							{/* <div className="card-tag-right">{value.node.tags[0].label}</div> */}
-							<div className="ttrs-list-meta ttrs-col third-meta-box">
+							<div className="ttrss-list-meta ttrss-col third-meta-box">
 								<a href={`${value.node.link}`} target="_blank" rel="noopener noreferrer">
 									<div className="title">{value.node.title}</div>
+
 									<small>{value.node.author}</small>
 								</a>
+                                <div
+                                    key={`body`}
+                                    id="___gatsby"
+                                    dangerouslySetInnerHTML={{ __html: value.node.content }}
+                                    />
+
 								{/* <div className="domain">{value.node.domain_name}</div> */}
 							</div>
 						</div>
@@ -114,7 +121,7 @@ export class Card extends Component {
 
 	render(){
 		const data = this.props.obj
-		return(			
+		return(
 			<div className="card second-grid all-posts">
 				{_.map(data, (value, key)=>{
 					return (
@@ -140,7 +147,7 @@ export class YTCard extends Component {
 
 	render(){
 		const data = this.props.obj
-		return(			
+		return(
 			<div className="yt-card">
 				{_.map(data, (value, key) => {
 					return (
@@ -169,7 +176,7 @@ export class GHCard extends Component {
 
 	render(){
 		const data = this.props.obj
-		return(			
+		return(
 			<div className="yt-card">
 				{_.map(data, (value, key) => {
 					return (
