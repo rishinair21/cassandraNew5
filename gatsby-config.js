@@ -10,7 +10,7 @@ module.exports = {
       typePrefix: 'anant__',
 
       // The url, this should be the endpoint you are attempting to pull data from
-      url: `http://leaves.anant.us:82/api/entries?access_token=N2Y1YmFlNzY4OTM3ZjE2OGMwODExODQ1ZDhiYmQ5OWYzMjhkZjhiMDgzZWU2Y2YyYzNkYzA5MDQ2NWRhNDIxYw&limit=100&order=desc&page=2&sort=created&tags=cassandra&perPage=200`,
+      url: `http://admin.stage.leaves.anant.us/api/entries?access_token=N2Y1YmFlNzY4OTM3ZjE2OGMwODExODQ1ZDhiYmQ5OWYzMjhkZjhiMDgzZWU2Y2YyYzNkYzA5MDQ2NWRhNDIxYw&limit=100&order=desc&page=2&sort=created&tags=cassandra&perPage=200`,
 
       method: 'get',
 
