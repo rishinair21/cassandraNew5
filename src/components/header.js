@@ -1,37 +1,48 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import './header.css'
+import './main.css'
 
 const Header = ({ siteTitle }) => (
-  <div className="nav">
-                <div className="nav-header">
-                <div className="nav-title">
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://anant.us">
+          <img src="https://www.anant.us/Design/Themes/Theme.Tau/images/anant-logo-white-112.png" width="112" height="28" alt="logo" />
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item is-size-3">
                 <Link
                     to="/"
                     style={{
                         color: '#070707',
                         textDecoration: 'none',
-                        fontWeight: 800
+                        fontWeight: 400
                     }}
                     >
                     {siteTitle}
-                    </Link>
-                </div>
-                </div>
-                <div className="nav-btn">
-                    <label for="nav-check">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </label>
-                </div>
-                <input type="checkbox" id="nav-check"/>
-                <div className="nav-links">
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">.Link</a>
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">.Network</a>
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">.Services</a>
-                </div>
+                </Link>
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-light">
+                .Link
+              </a>
+              <a class="button is-light">
+                .Network
+              </a>
+              <a class="button is-light">
+                .Services
+              </a>
             </div>
+          </div>
+        </div>
+      </div>
+</nav>
 )
 
 export default Header

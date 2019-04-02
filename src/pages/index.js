@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby";
 
 import Layout from "../components/layout";
 import { FirstColumn, SecondColumn, ThirdColumn } from "../components/card";
+import './main.css';
 
 class IndexPage extends React.Component {
     render() {
@@ -17,7 +18,7 @@ class IndexPage extends React.Component {
                         <div>
                         </div>
                         <div className="typewriter-p">
-                            <div class="line-1 anim-typewriter">Cassandra.Link Knowledge Base</div>
+                            <div class="line-1 anim-typewriter">Cassandra.Link Bulma</div>
                         </div>
                         {/* <FaturedGrid obj={featured}/> */}
                         <div className="three-cl">
