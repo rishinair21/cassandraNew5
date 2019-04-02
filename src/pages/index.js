@@ -23,13 +23,52 @@ class IndexPage extends React.Component {
                         {/* <FaturedGrid obj={featured}/> */}
                         <div className="three-cl">
                             <div className="card card1">
-                                <FirstColumn obj={videos}/>
+                                <nav class="panel">
+                                    <p class="panel-heading has-text-centered">
+                                        Videos
+                                    </p>
+                                    <div class="panel-block">
+                                        <p class="control has-icons-left">
+                                          <input class="input is-small" type="text" placeholder="search"></input>
+                                          <span class="icon is-small is-left">
+                                            <i class="fas fa-search" aria-hidden="true"></i>
+                                          </span>
+                                        </p>
+                                      </div>
+                                    <FirstColumn obj={videos}/>
+                                </nav>
                             </div>
                             <div className="card card2">
-                                <ThirdColumn obj={ttrss}/>
+                                <nav class="panel">
+                                    <p class="panel-heading has-text-centered">
+                                        TTRS
+                                    </p>
+                                    <div class="panel-block">
+                                        <p class="control has-icons-left">
+                                          <input class="input is-small" type="text" placeholder="search"></input>
+                                          <span class="icon is-small is-left">
+                                            <i class="fas fa-search" aria-hidden="true"></i>
+                                          </span>
+                                        </p>
+                                      </div>
+                                    <ThirdColumn obj={ttrss}/>
+                                </nav>
                             </div>
                             <div className="card card3">
-                                <SecondColumn obj={github}/>
+                                <nav class="panel">
+                                    <p class="panel-heading has-text-centered">
+                                        Github
+                                    </p>
+                                    <div class="panel-block">
+                                        <p class="control has-icons-left">
+                                          <input class="input is-small" type="text" placeholder="search"></input>
+                                          <span class="icon is-small is-left">
+                                            <i class="fas fa-search" aria-hidden="true"></i>
+                                          </span>
+                                        </p>
+                                      </div>
+                                    <SecondColumn obj={github}/>
+                                </nav>
                             </div>
                         </div>
                     </div>
