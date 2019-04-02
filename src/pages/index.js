@@ -18,7 +18,7 @@ class IndexPage extends React.Component {
                         <div>
                         </div>
                         <div className="typewriter-p">
-                            <div class="line-1 anim-typewriter">Cassandra.Link Bulma</div>
+                            <div class="line-1 anim-typewriter">Knowledge Base</div>
                         </div>
                         {/* <FaturedGrid obj={featured}/> */}
                         <div className="three-cl">
@@ -39,7 +39,7 @@ class IndexPage extends React.Component {
                                 </nav>
                             </div>
                             <div className="card card2">
-                                <nav class="panel">
+                                <nav class="panel is-dark">
                                     <p class="panel-heading has-text-centered">
                                         TTRS
                                     </p>

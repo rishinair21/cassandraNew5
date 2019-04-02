@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import './main.css'
 
 const Header = ({ siteTitle }) => (
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="https://anant.us">
           <img src="https://www.anant.us/Design/Themes/Theme.Tau/images/anant-logo-white-112.png" width="112" height="28" alt="logo" />
@@ -16,7 +16,7 @@ const Header = ({ siteTitle }) => (
                 <Link
                     to="/"
                     style={{
-                        color: '#070707',
+                        color: 'white',
                         textDecoration: 'none',
                         fontWeight: 400
                     }}
