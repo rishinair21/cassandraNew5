@@ -2,7 +2,7 @@
   "page": 2,
   "limit": 200,
   "pages": 3,
-  "total": 518,
+  "total": 520,
   "_links": {
     "self": {
       "href": "http://admin.stage.leaves.anant.us/api/entries?sort=created&order=desc&tags=cassandra&since=0&page=2&perPage=200"
@@ -22,6 +22,93 @@
   },
   "_embedded": {
     "items": [
+      {
+        "is_archived": 1,
+        "is_starred": 0,
+        "user_name": "admin",
+        "user_email": "rahul.singh@anant.us",
+        "user_id": 1,
+        "tags": [
+          {
+            "id": 89,
+            "label": "cassandra",
+            "slug": "cassandra"
+          }
+        ],
+        "is_public": false,
+        "id": 12090,
+        "uid": null,
+        "title": "Apache Cassandra, Part 7: Secondary Index, Replication, and Tips",
+        "url": "https://blog.emumba.com/apache-cassandra-part-7-secondary-index-replication-and-tips-da273ea59993?gi=204022f39002",
+        "content": "<section class=\"section section--body section--first\"><div class=\"section-content\"><div class=\"section-inner sectionLayout--insetColumn\"><p id=\"3cbe\" class=\"graf graf--p graf-after--h3\">This <a href=\"https://blog.emumba.com/apache-cassandra-part-1-introduction-and-key-features-18d02ba0b8cc\" data-href=\"https://blog.emumba.com/apache-cassandra-part-1-introduction-and-key-features-18d02ba0b8cc\" class=\"markup--anchor markup--p-anchor\" target=\"_blank\">series of posts</a> present an introduction to Apache Cassandra. It discusses key Cassandra features, its core concepts, how it works under the hood, how it is different from other data stores, data modelling best practices with examples, and some tips &amp; tricks.</p><figure id=\"9d30\" class=\"graf graf--figure graf-after--p graf--trailing\"><div class=\"aspectRatioPlaceholder is-locked\"><img class=\"graf-image\" data-image-id=\"1*_hy_RYrCzE0r4ryFWbk_gA.png\" data-width=\"400\" data-height=\"268\" src=\"https://cdn-images-1.medium.com/max/1600/1*_hy_RYrCzE0r4ryFWbk_gA.png\" alt=\"image\" /></div></figure></div></div></section><section class=\"section section--body section--last\"><div class=\"section-content\"><div class=\"section-inner sectionLayout--insetColumn\"><h3 id=\"6f7f\" class=\"graf graf--h3 graf--leading\">Secondary Index in Cassandra</h3><p id=\"7c52\" class=\"graf graf--p graf-after--h3\">The purpose of secondary indexes in Cassandra is not to provide fast access to data using attributes other than partition key, rather it just provides a convenience in writing queries and fetching data. The two disk pass approach of secondary indexes, one for reading the secondary index file and second for accessing the actual data makes it inefficient in terms of performance. You can read more on this <a href=\"https://www.datastax.com/dev/blog/cassandra-native-secondary-index-deep-dive\" data-href=\"https://www.datastax.com/dev/blog/cassandra-native-secondary-index-deep-dive\" class=\"markup--anchor markup--p-anchor\" rel=\"noopener\" target=\"_blank\">here</a>.</p><h3 id=\"cb39\" class=\"graf graf--h3 graf-after--p\">Replication in Cassandra</h3><p id=\"3c49\" class=\"graf graf--p graf-after--h3\">Cassandra supports async replication based on a specified replication factor. Consider a scenario where you have 99 partitions with a replication factor of 3. Cassandra will replicate data of each partition on two other partitions. As a result, if a query requests to read all data, Cassandra can find the required data by reading only 33 partitions, hence reducing the number of partitions to read. Replication not only plays an important role in read optimization, but more importantly, it enables fault tolerance by ensuring access to data in case some node goes down in a Cassandra cluster.</p><h3 id=\"a025\" class=\"graf graf--h3 graf-after--p\">Cassandra Tips</h3><p id=\"0312\" class=\"graf graf--p graf-after--h3\">Here are some tips that may come handy during your journey through Cassandra.</p><ul class=\"postList\"><li id=\"893c\" class=\"graf graf--li graf-after--p\">Test your data model as early as possible. Build prototype, insert data, write queries, make sure your workflow works end to end.</li><li id=\"2997\" class=\"graf graf--li graf-after--li\">Use <a href=\"https://docs.datastax.com/en/cassandra/2.1/cassandra/tools/toolsCStress_t.html\" data-href=\"https://docs.datastax.com/en/cassandra/2.1/cassandra/tools/toolsCStress_t.html\" class=\"markup--anchor markup--li-anchor\" rel=\"noopener\" target=\"_blank\">Cassandra stress</a> to generate reads, writes, and to measure performance.</li><li id=\"a677\" class=\"graf graf--li graf-after--li\">Do not try to minimize writes, extra writes to improve reads is worth it.</li><li id=\"0a08\" class=\"graf graf--li graf-after--li\">Data duplication is fact of life in Cassandra, don’t be afraid of it. Disk space is the cheapest available resource.</li><li id=\"0df3\" class=\"graf graf--li graf-after--li\">Always use async writes to keep your code non blocking.</li><li id=\"809f\" class=\"graf graf--li graf-after--li\">Batch inserts are anti pattern unless batch data belongs to same partition.</li><li id=\"2e63\" class=\"graf graf--li graf-after--li\">Regularly view Cassandra logs to look for warnings and suggestions.</li><li id=\"60e0\" class=\"graf graf--li graf-after--li\">Benchmark to measure performance against your needs e.g. data ingestion rate (events/sec) and query execution time.</li></ul><h3 id=\"2eb8\" class=\"graf graf--h3 graf-after--li\">References and Further Reading</h3><p id=\"8b15\" class=\"graf graf--p graf-after--h3\">Here are some resources that helped me in writing this series.</p><p><a href=\"https://academy.datastax.com/developer-blog\" data-href=\"https://academy.datastax.com/developer-blog\" class=\"markup--anchor markup--mixtapeEmbed-anchor\" title=\"https://academy.datastax.com/developer-blog\"><strong class=\"markup--strong markup--mixtapeEmbed-strong\">Developer Blog | DataStax Academy: Free Cassandra Tutorials and Training</strong><br /><em class=\"markup--em markup--mixtapeEmbed-em\">DataStax Enterprise is powered by the best distribution of Apache Cassandra™. ©2017 DataStax, All rights reserved…</em>academy.datastax.com</a></p><p><a href=\"https://www.ebayinc.com/stories/blogs/tech/cassandra-data-modeling-best-practices-part-1/\" data-href=\"https://www.ebayinc.com/stories/blogs/tech/cassandra-data-modeling-best-practices-part-1/\" class=\"markup--anchor markup--mixtapeEmbed-anchor\" title=\"https://www.ebayinc.com/stories/blogs/tech/cassandra-data-modeling-best-practices-part-1/\"><strong class=\"markup--strong markup--mixtapeEmbed-strong\">Cassandra Data Modeling Best Practices, Part 1</strong><br /><em class=\"markup--em markup--mixtapeEmbed-em\">This is the first in a series of posts on Cassandra data modeling, implementation, operations, and related practices…</em>www.ebayinc.com</a></p><p><a href=\"https://intellidzine.blogspot.com/2014/01/cassandra-data-modelling-primary-keys.html\" data-href=\"https://intellidzine.blogspot.com/2014/01/cassandra-data-modelling-primary-keys.html\" class=\"markup--anchor markup--mixtapeEmbed-anchor\" title=\"https://intellidzine.blogspot.com/2014/01/cassandra-data-modelling-primary-keys.html\"><strong class=\"markup--strong markup--mixtapeEmbed-strong\">Cassandra Data Modelling — Primary Keys</strong><br /><em class=\"markup--em markup--mixtapeEmbed-em\">In the previous blog we discussed how data is stored in Cassandra by creating a keyspace and a table. We also inserted…</em>intellidzine.blogspot.com</a></p></div></div></section>",
+        "created_at": "2018-09-07T15:30:40+0000",
+        "updated_at": "2018-09-07T15:30:42+0000",
+        "published_at": "2018-02-10T10:32:18+0000",
+        "published_by": [
+          "Haris Hasan"
+        ],
+        "starred_at": null,
+        "annotations": [],
+        "mimetype": "text/html",
+        "language": null,
+        "reading_time": 2,
+        "domain_name": "blog.emumba.com",
+        "preview_picture": "https://cdn-images-1.medium.com/max/1200/1*_hy_RYrCzE0r4ryFWbk_gA.png",
+        "http_status": "200",
+        "headers": null,
+        "origin_url": null,
+        "_links": {
+          "self": {
+            "href": "/api/entries/12090"
+          }
+        }
+      },
+      {
+        "is_archived": 1,
+        "is_starred": 0,
+        "user_name": "admin",
+        "user_email": "rahul.singh@anant.us",
+        "user_id": 1,
+        "tags": [
+          {
+            "id": 89,
+            "label": "cassandra",
+            "slug": "cassandra"
+          },
+          {
+            "id": 1262,
+            "label": "time.series",
+            "slug": "time-series"
+          }
+        ],
+        "is_public": false,
+        "id": 12089,
+        "uid": null,
+        "title": "Apache Cassandra, Part 6: Time Series Modelling",
+        "url": "https://blog.emumba.com/apache-cassandra-part-6-time-series-modelling-b9b0ad2e96d9?gi=a84a27f36228",
+        "content": "<section class=\"section section--body section--first\"><div class=\"section-content\"><div class=\"section-inner sectionLayout--insetColumn\"><p id=\"8c30\" class=\"graf graf--p graf-after--h3 graf--trailing\">This <a href=\"https://blog.emumba.com/apache-cassandra-part-1-introduction-and-key-features-18d02ba0b8cc\" data-href=\"https://blog.emumba.com/apache-cassandra-part-1-introduction-and-key-features-18d02ba0b8cc\" class=\"markup--anchor markup--p-anchor\" target=\"_blank\">series of posts</a> present an introduction to Apache Cassandra. It discusses key Cassandra features, its core concepts, how it works under the hood, how it is different from other data stores, data modelling best practices with examples, and some tips &amp; tricks.</p></div></div></section><section class=\"section section--body section--last\"><div class=\"section-content\"><div class=\"section-inner sectionLayout--insetColumn\"><figure id=\"aa5d\" class=\"graf graf--figure graf--leading\"><div class=\"aspectRatioPlaceholder is-locked\"><img class=\"graf-image\" data-image-id=\"1*cS211TKA5VDdyTai6iIhzQ.png\" data-width=\"400\" data-height=\"260\" src=\"https://cdn-images-1.medium.com/max/1600/1*cS211TKA5VDdyTai6iIhzQ.png\" alt=\"image\" /></div></figure><p id=\"00b6\" class=\"graf graf--p graf-after--figure\">Consider a scenario where we have weather data coming in from various weather stations and we have to store key value pairs of time and temperature against each station.</p><p id=\"e0f9\" class=\"graf graf--p graf-after--p\">Cassandra supports up to 2 Billion key value pairs in a row which means we can design our data model like this.</p><figure id=\"f3e5\" class=\"graf graf--figure graf-after--p\"><div class=\"aspectRatioPlaceholder is-locked\"><img class=\"graf-image\" data-image-id=\"1*HblEiC167FNClfQ9iEzgTA.png\" data-width=\"800\" data-height=\"95\" data-action=\"zoom\" data-action-value=\"1*HblEiC167FNClfQ9iEzgTA.png\" src=\"https://cdn-images-1.medium.com/max/1600/1*HblEiC167FNClfQ9iEzgTA.png\" alt=\"image\" /></div><figcaption class=\"imageCaption\"><a href=\"https://academy.datastax.com/resources/getting-started-time-series-data-modeling\" data-href=\"https://academy.datastax.com/resources/getting-started-time-series-data-modeling\" class=\"markup--anchor markup--figure-anchor\" rel=\"nofollow noopener noopener noopener noopener noopener noopener\" target=\"_blank\">https://academy.datastax.com/resources/getting-started-time-series-data-modeling</a></figcaption></figure><p id=\"0449\" class=\"graf graf--p graf-after--figure\">In this design station Id is partition key, therefore, we will be able to easily find partition containing data from a particular station. Each station would be transmitting data points at same rate, so each partition will have same amount of data. Hence the proposed data model satisfies both of the Cassandra’s data modelling goals.</p><p id=\"010a\" class=\"graf graf--p graf-after--p\">But there is a problem, if a weather station transmits a new entry every second, we are will end up with huge partitions pretty soon. An improvement could be to create a composite partition key using station Id and date like this.</p><figure id=\"d516\" class=\"graf graf--figure graf-after--p\"><div class=\"aspectRatioPlaceholder is-locked\"><img class=\"graf-image\" data-image-id=\"1*3P0oxHxASLCry3qAP_Cjdg.png\" data-width=\"800\" data-height=\"144\" data-action=\"zoom\" data-action-value=\"1*3P0oxHxASLCry3qAP_Cjdg.png\" src=\"https://cdn-images-1.medium.com/max/1600/1*3P0oxHxASLCry3qAP_Cjdg.png\" alt=\"image\" /></div><figcaption class=\"imageCaption\"><a href=\"https://academy.datastax.com/resources/getting-started-time-series-data-modeling\" data-href=\"https://academy.datastax.com/resources/getting-started-time-series-data-modeling\" class=\"markup--anchor markup--figure-anchor\" rel=\"nofollow noopener noopener noopener noopener noopener noopener\" target=\"_blank\">https://academy.datastax.com/resources/getting-started-time-series-data-modeling</a></figcaption></figure><p id=\"bc62\" class=\"graf graf--p graf-after--figure\">This way we achieve manageable sized partitions and efficient date wise access to weather data.</p><p id=\"5d89\" class=\"graf graf--p graf-after--p\">In weather domain most of the queries will involve latest data. Our current model appends each new entry at the end, therefore, to find the latest N records Cassandra will go until the end of partition and read last N records. A better approach could be to store data in reverse timestamp order like this.</p><figure id=\"c620\" class=\"graf graf--figure graf-after--p\"><div class=\"aspectRatioPlaceholder is-locked\"><img class=\"graf-image\" data-image-id=\"1*BwA91ED4qAGd4UyCPG7ydA.png\" data-width=\"800\" data-height=\"122\" data-action=\"zoom\" data-action-value=\"1*BwA91ED4qAGd4UyCPG7ydA.png\" src=\"https://cdn-images-1.medium.com/max/1600/1*BwA91ED4qAGd4UyCPG7ydA.png\" alt=\"image\" /></div><figcaption class=\"imageCaption\"><a href=\"https://academy.datastax.com/resources/getting-started-time-series-data-modeling\" data-href=\"https://academy.datastax.com/resources/getting-started-time-series-data-modeling\" class=\"markup--anchor markup--figure-anchor\" rel=\"nofollow noopener noopener noopener noopener noopener noopener\" target=\"_blank\">https://academy.datastax.com/resources/getting-started-time-series-data-modeling</a></figcaption></figure><p id=\"d0ff\" class=\"graf graf--p graf-after--figure\">This approach will reduce our read cost by keeping fresh data at start of partition. Older data can be deleted from the end to keep the partition size manageable.</p><p id=\"a354\" class=\"graf graf--p graf-after--p\">Cassandra also provides a data type <strong class=\"markup--strong markup--p-strong\"><em class=\"markup--em markup--p-em\">time-uuid</em></strong> that comes handy when multiple events might come in with same timestamp. To avoid timestamp collision time-uuid appends timestamp with a random Id which guarantees record uniqueness.</p><p id=\"3724\" class=\"graf graf--p graf-after--p graf--trailing\"><a href=\"https://blog.emumba.com/apache-cassandra-part-7-secondary-index-replication-and-tips-da273ea59993\" data-href=\"https://blog.emumba.com/apache-cassandra-part-7-secondary-index-replication-and-tips-da273ea59993\" class=\"markup--anchor markup--p-anchor\" target=\"_blank\">Next: Apache Cassandra, Part 7: Secondary Index, Replication, Tips</a></p></div></div></section>",
+        "created_at": "2018-09-07T15:30:36+0000",
+        "updated_at": "2018-09-07T15:30:37+0000",
+        "published_at": "2018-02-10T10:31:54+0000",
+        "published_by": [
+          "Haris Hasan"
+        ],
+        "starred_at": null,
+        "annotations": [],
+        "mimetype": "text/html",
+        "language": null,
+        "reading_time": 1,
+        "domain_name": "blog.emumba.com",
+        "preview_picture": "https://cdn-images-1.medium.com/max/1200/1*cS211TKA5VDdyTai6iIhzQ.png",
+        "http_status": "200",
+        "headers": null,
+        "origin_url": null,
+        "_links": {
+          "self": {
+            "href": "/api/entries/12089"
+          }
+        }
+      },
       {
         "is_archived": 1,
         "is_starred": 0,
@@ -9681,109 +9768,6 @@
         "_links": {
           "self": {
             "href": "/api/entries/9071"
-          }
-        }
-      },
-      {
-        "is_archived": 1,
-        "is_starred": 0,
-        "user_name": "admin",
-        "user_email": "rahul.singh@anant.us",
-        "user_id": 1,
-        "tags": [
-          {
-            "id": 89,
-            "label": "cassandra",
-            "slug": "cassandra"
-          },
-          {
-            "id": 90,
-            "label": "spark",
-            "slug": "spark"
-          },
-          {
-            "id": 1040,
-            "label": "csv",
-            "slug": "csv"
-          }
-        ],
-        "is_public": false,
-        "id": 9070,
-        "uid": null,
-        "title": "Read CSV File in Spark and Write it to Cassandra",
-        "url": "https://stackoverflow.com/questions/29966951/read-csv-file-in-spark-and-write-it-to-cassandra",
-        "content": "<div class=\"vote\"><h3>Vote count:&#13;\n        &#13;\n        1&#13;\n        &#13;\n&#13;\n        &#13;\n        &#13;\n&#13;\n&#13;\n</h3></div><div class=\"post-text\" itemprop=\"text\">&#13;\n&#13;\n<p>I am trying to read a CVS File with Spark and then save it to Cassandra. Saving to Cassandra is working, when I'm using trivial values.</p>\n<p>I have a file with the following values:</p>\n<p><code>id,name,tag1|tag2|tag3</code></p>\n<p>I want to store it in a cassandra table: </p>\n<p><code>id bigint, name varchar, tags set</code></p>\n<p>I defined a case class for this:</p>\n<p><code>case class Item(id:Integer,name:String,tag:Set[String])</code></p>\n<p>Then I use this expression for getting the RDD out of the CVS file</p>\n<p><code>val items = sc.textFile(\"items.csv\").map(l =&gt; l.split(\",\") match {case Array (a,b,c) =&gt; Item(Integer.parseInt(a),b,c.split(\"\\\\|\").toSet)})</code></p>\n<p>When I now call <code>collect</code> or <code>saveToCassandra</code> on items (which starts the processing) I get the following error:</p>\n<p><code>org.apache.spark.SparkException: Job aborted due to stage failure: Task 1 in stage 29.0 failed 1 times, most recent failure: Lost task 1.0 in stage 29.0 (TID 38, localhost): scala.MatchError: [Ljava.lang.String;@6030bbe6 (of class [Ljava.lang.String;)\n    at $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$anonfun$2.apply(&lt;console&gt;:33)\n    at $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$anonfun$2.apply(&lt;console&gt;:33)\n    at scala.collection.Iterator$$anon$11.next(Iterator.scala:328)\n    at org.apache.spark.storage.MemoryStore.unrollSafely(MemoryStore.scala:249)\n    at org.apache.spark.CacheManager.putInBlockManager(CacheManager.scala:172)\n    at org.apache.spark.CacheManager.getOrCompute(CacheManager.scala:79)\n    at org.apache.spark.rdd.RDD.iterator(RDD.scala:242)\n    at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:61)\n    at org.apache.spark.scheduler.Task.run(Task.scala:64)\n    at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:203)\n    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\n    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)\n    at java.lang.Thread.run(Thread.java:745)\n</code></p></div><div class=\"user-action-time\">&#13;\n        <a href=\"https://stackoverflow.com/posts/29966951/revisions\" title=\"show all edits to this post\">edited Apr 30 '15 at 12:15</a>&#13;</div><div class=\"user-details\">&#13;\n        &#13;\n        &#13;</div><div class=\"user-action-time\">&#13;\n        asked Apr 30 '15 at 11:48&#13;</div><div class=\"user-details\">&#13;\n        <a href=\"https://stackoverflow.com/users/4203061/mniehoff\">mniehoff</a>&#13;\n        <div class=\"-flair\">&#13;\n            2191213&#13;\n        </div>&#13;</div><h2 data-answercount=\"2\">&#13;\n                                2 Answers&#13;\n                                2&#13;</h2><div class=\"vote\"><h3>Vote count:&#13;\n        &#13;\n        2&#13;\n        &#13;\n&#13;\n&#13;\n&#13;\n        accepted&#13;\n&#13;\n</h3></div><div class=\"post-text\" itemprop=\"text\">&#13;\n<p>As mentioned, the issue is that splitting on some inputs is generating an array that has less or more than the 3 elements used in the match.  </p>\n<p>But the <code>partialFuntion</code> used to do the match can be used to filter on the elements that <em>do</em> fit the match criteria. <code>rdd.collect{partialFunction}</code> is exactly meant for that:</p>\n<pre>val data = sc.textFile(\"items.csv\")\nval arrayData = data.map(l =&gt; l.split(\",\"))\nval items = arrayData.collect{case Array (a,b,c) =&gt; Item(Integer.parseInt(a),b,c.split(\"\\\\|\").toSet)})\n items.saveToCassandra(...)\n</pre>\n<ul><li>Note1: you should also protect against dirty values. e.g. parseInt on a value that's not an int number,...) </li>\n<li>Note2: <code>rdd.collect{partialFunc}</code> (filters/map data using a partial function) should not be confused with <code>rdd.collect</code> (get back data to the driver))</li>\n</ul></div><div class=\"user-action-time\">&#13;\n        answered Apr 30 '15 at 14:57&#13;</div><div class=\"user-details\">&#13;\n        <a href=\"https://stackoverflow.com/users/764040/maasg\">maasg</a>&#13;\n        <div class=\"-flair\">&#13;\n            27.4k76093&#13;\n        </div>&#13;</div><div class=\"vote\"><h3>Vote count:&#13;\n        &#13;\n        1&#13;\n        &#13;\n&#13;\n&#13;\n&#13;\n&#13;\n</h3></div><div class=\"post-text\" itemprop=\"text\">&#13;\n<p>You'll get that match error if your input <em>isn't</em> an array of 3 entries e.g.</p>\n<pre>String(\"a,b\").split(\",\") match {\n   case Array(a,b,c) =&gt; ....\n}\n</pre>\n<p>so I suspect this is some input data issue, and you need to cater for it in your <code>match</code>.</p></div><div class=\"user-action-time\">&#13;\n        answered Apr 30 '15 at 11:55&#13;</div><div class=\"user-details\">&#13;\n        <a href=\"https://stackoverflow.com/users/12960/brian-agnew\">Brian Agnew</a>&#13;\n        <div class=\"-flair\">&#13;\n            211k25262371&#13;\n        </div>&#13;</div>",
-        "created_at": "2018-01-15T19:27:42+0000",
-        "updated_at": "2018-03-15T14:18:52+0000",
-        "published_at": null,
-        "published_by": null,
-        "starred_at": null,
-        "annotations": [],
-        "mimetype": "text/html",
-        "language": null,
-        "reading_time": 3,
-        "domain_name": "stackoverflow.com",
-        "preview_picture": "https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded",
-        "http_status": "200",
-        "headers": null,
-        "origin_url": null,
-        "_links": {
-          "self": {
-            "href": "/api/entries/9070"
-          }
-        }
-      },
-      {
-        "is_archived": 1,
-        "is_starred": 0,
-        "user_name": "admin",
-        "user_email": "rahul.singh@anant.us",
-        "user_id": 1,
-        "tags": [
-          {
-            "id": 4,
-            "label": "github",
-            "slug": "github"
-          },
-          {
-            "id": 89,
-            "label": "cassandra",
-            "slug": "cassandra"
-          },
-          {
-            "id": 90,
-            "label": "spark",
-            "slug": "spark"
-          },
-          {
-            "id": 1040,
-            "label": "csv",
-            "slug": "csv"
-          }
-        ],
-        "is_public": false,
-        "id": 9069,
-        "uid": null,
-        "title": "markthebault/importCSVSparkCassandra",
-        "url": "https://github.com/markthebault/importCSVSparkCassandra",
-        "content": "<h3>\n      \n      README.md\n    </h3><article class=\"markdown-body entry-content\" itemprop=\"text\">\n<p>This short example will show you how easily is to import CSV files from your AWS S3 buckets\nusing spark into cassandra.</p>\n<h2><a href=\"#setting-up-your-applicaiton\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-setting-up-your-applicaiton\"></a>Setting up your applicaiton</h2>\n<p>Clone this repository <code>git clone http://gitlab.ippon.fr/mthebault/simplecsvexportspark.git</code>\nOpen the file 'src/main/ressources/project.conf' and change your settings.</p>\n<p><strong>You need to change the following values:</strong></p>\n<ul><li>Cassandra\n<ul><li>host</li>\n<li>port</li>\n<li>keyspace</li>\n<li>table</li>\n</ul></li>\n<li>AWS\n<ul><li>accessKey</li>\n<li>secretKey</li>\n<li>bucket</li>\n<li>fileName</li>\n</ul></li>\n</ul><h2><a href=\"#build-a-jar\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-build-a-jar\"></a>Build a jar</h2>\n<p>To build the Jar of your application you just need to run the command <code>sbt clean assembly</code></p>\n<h2><a href=\"#deploy-the-jar-on-a-spark-cluster\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-deploy-the-jar-on-a-spark-cluster\"></a>Deploy the Jar on a spark cluster</h2>\n<p>To deploy a jar on a spark cluster you have to make sure you have the port 7077 accessible from the outside.\nYou have to push this Jar to a S3 public bucket <code>aws s3 cp ./target/scala-2.10/ImportCSV.jar s3://YOUR_BUCKET/ImportCVS.jar</code></p>\n<p><em><strong>Once you have done that, you just need to run the spark-submit command as following:</strong></em></p>\n<pre>$SPARK_HOME/bin/spark-submit \\\n\t--verbose \\\n\t--master spark://IP_SPARK_MASTER:PORT \\\n\t--deploy-mode cluster \\\n\t--driver-class-path /spark/spark-1.6.1-bin-hadoop2.6/lib/spark-assembly-1.6.1-hadoop2.6.0.jar \\\n\t--class Application \\\n\thttps://s3-eu-west-1.amazonaws.com/YOUR_BUCKET/ImportCSV.jar\n</pre>\n<p><em><strong>Note:</strong></em>\nHere I am using a public s3 bucket for the jars. If you want to use your private buckets you can use the following link:\n<code>http://AWS_S3_ACCESS_KEY:AWS_S3_SECRET_KEY@YOUR_BUCKET/ImportCSV.jar</code>\nplease consider of the http link have to be encoded <a href=\"http://www.freeformatter.com/url-encoder.html\" rel=\"nofollow\">you can use this website to encode the link</a></p>\n<h2><a href=\"#next\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-next\"></a>Next</h2>\n<p>If you want to contribute to this project feel free to do it, if you see some mistake please leave me an issue.</p>\n</article>",
-        "created_at": "2018-01-15T19:26:02+0000",
-        "updated_at": "2018-03-15T14:19:04+0000",
-        "published_at": null,
-        "published_by": null,
-        "starred_at": null,
-        "annotations": [],
-        "mimetype": "text/html",
-        "language": "en",
-        "reading_time": 1,
-        "domain_name": "github.com",
-        "preview_picture": "https://avatars0.githubusercontent.com/u/3846664?s=400&v=4",
-        "http_status": "200",
-        "headers": null,
-        "origin_url": null,
-        "_links": {
-          "self": {
-            "href": "/api/entries/9069"
           }
         }
       }
