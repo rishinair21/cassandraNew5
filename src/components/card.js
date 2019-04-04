@@ -64,7 +64,7 @@ export class ThirdColumn extends Component {
 	render() {
 		const data = this.props.obj
 		return (
-			<div className="second-grid">
+			<div className="news-grid">
 				{_.map(data, (value, key)=>{
 					return (
 						<div key={key} className={'ttrss-list second'+(key+1)}>

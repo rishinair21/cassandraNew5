@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby";
 
 import Layout from "../components/layout";
 import { FirstColumn, SecondColumn, ThirdColumn } from "../components/card";
+import './main.css';
 
 class IndexPage extends React.Component {
     render() {
@@ -17,18 +18,33 @@ class IndexPage extends React.Component {
                         <div>
                         </div>
                         <div className="typewriter-p">
-                            <div class="line-1 anim-typewriter">Cassandra.Link Knowledge Base</div>
+                            <div class="line-1 anim-typewriter">Knowledge Base</div>
                         </div>
                         {/* <FaturedGrid obj={featured}/> */}
                         <div className="three-cl">
                             <div className="card card1">
-                                <FirstColumn obj={videos}/>
+                                <nav class="panel">
+                                    <p class="panel-heading has-text-centered">
+                                        Videos
+                                    </p>
+                                    <FirstColumn obj={videos}/>
+                                </nav>
                             </div>
                             <div className="card card2">
-                                <ThirdColumn obj={ttrss}/>
+                                <nav class="panel is-dark">
+                                    <p class="panel-heading has-text-centered">
+                                        TTRS
+                                    </p>
+                                    <ThirdColumn obj={ttrss}/>
+                                </nav>
                             </div>
                             <div className="card card3">
-                                <SecondColumn obj={github}/>
+                                <nav class="panel">
+                                    <p class="panel-heading has-text-centered">
+                                        Github
+                                    </p>
+                                    <SecondColumn obj={github}/>
+                                </nav>
                             </div>
                         </div>
                     </div>

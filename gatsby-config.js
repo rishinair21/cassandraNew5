@@ -69,6 +69,7 @@ module.exports = {
       // skipCreateNode: true, // skip import to graphQL, only use if localSave is all you want
     }
   },
+    'gatsby-plugin-sass',
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-source-filesystem`,
