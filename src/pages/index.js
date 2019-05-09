@@ -63,7 +63,7 @@ export const IndexQuery = graphql`
     query {
         featured: allAnantCassandralinks(
             filter: { domain_name: { eq: "www.youtube.com"} }
-            limit: 3
+            limit: 10
             ) {
             edges {
                 node {
@@ -74,7 +74,7 @@ export const IndexQuery = graphql`
                 }
             }
         }
-        ttrss: allFeedTtrs {
+        ttrss: allFeedTtrs(limit: 10) {
             edges {
                 node {
                     title
@@ -86,7 +86,7 @@ export const IndexQuery = graphql`
                 }
             }
         }
-        all: allAnantCassandralinks(limit: 15) {
+        all: allAnantCassandralinks(limit: 10) {
             edges {
                 node {
                     title
@@ -103,7 +103,7 @@ export const IndexQuery = graphql`
         }
         videos: allAnantCassandralinks(
             filter: { domain_name: { eq: "www.youtube.com"} }
-            limit: 36
+            limit: 10
         ) {
             edges {
                 node {
@@ -121,7 +121,7 @@ export const IndexQuery = graphql`
         }
         github: allAnantCassandralinks(
             filter: { domain_name: { eq: "github.com"} }
-            limit: 36
+            limit: 10
         ) {
             edges {
                 node {

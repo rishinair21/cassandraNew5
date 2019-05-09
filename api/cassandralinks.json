@@ -2,7 +2,7 @@
   "page": 2,
   "limit": 200,
   "pages": 3,
-  "total": 520,
+  "total": 522,
   "_links": {
     "self": {
       "href": "http://admin.stage.leaves.anant.us/api/entries?sort=created&order=desc&tags=cassandra&since=0&page=2&perPage=200"
@@ -22,6 +22,96 @@
   },
   "_embedded": {
     "items": [
+      {
+        "is_archived": 1,
+        "is_starred": 0,
+        "user_name": "admin",
+        "user_email": "rahul.singh@anant.us",
+        "user_id": 1,
+        "tags": [
+          {
+            "id": 89,
+            "label": "cassandra",
+            "slug": "cassandra"
+          },
+          {
+            "id": 1262,
+            "label": "time.series",
+            "slug": "time-series"
+          }
+        ],
+        "is_public": false,
+        "id": 12092,
+        "uid": null,
+        "title": "Advanced Time Series Data Modelling",
+        "url": "https://www.datastax.com/dev/blog/advanced-time-series-data-modelling",
+        "content": "<h2><a href=\"https://www.datastax.com/wp-content/uploads/2015/12/nest.jpg\"><img class=\"alignnone size-full wp-image-43180\" src=\"https://www.datastax.com/wp-content/uploads/2015/12/nest.jpg\" alt=\"nest\" srcset=\"https://www.datastax.com/wp-content/uploads/2015/12/nest.jpg 640w, https://www.datastax.com/wp-content/uploads/2015/12/nest-250x125.jpg 250w, https://www.datastax.com/wp-content/uploads/2015/12/nest-120x60.jpg 120w\" /></a></h2><h2>Collecting Time Series Vs Storing Time Series</h2><p>Cassandra is well known as the database of choice when collecting time series events. These may be messages, events or similar transactions that have a time element to them. If you are not familiar on how Cassandra holds time series, there is a useful data modelling tutorial on the DataStax academy website.</p><p><a href=\"https://academy.datastax.com/demos/getting-started-time-series-data-modeling\" target=\"_blank\">https://academy.datastax.com/demos/getting-started-time-series-data-modeling</a></p><p>In this document I will try to explain some of the pros and cons of using time series in Cassandra and show some techniques and tips which make make your application better not just for now but also 5 years down the line.</p><p><strong>Choosing you long term storage</strong></p><p>Choosing your long term storage is not really a trivial thing. In most applications there are business requirements about how long data will need to be held for and sometimes these requirements change. More and more, business want and are required to hold data for longer. For example, a lot of financial companies must keep audit data for up to seven years.</p><p><strong>Using some sample applications.</strong></p><p>We will look at some examples and see how time series is used for each.</p><p>1. A credit card account which shows transaction for a particular account number. Data is streamed in real time.</p><p>2. Collecting energy data for a smart meter. Data comes from files sent from devices after one day of activity.</p><p>3. Tick data for a financial instrument. Data is streamed in real time.</p><p>All of the above use cases are time series examples and would benefit from using Cassandra. But when we look at the queries and retention policies for this data we may look at different ways of storing them.</p><p><strong>Clustering columns for time series.</strong></p><p>The credit card application will need to query a users transactions and show them to the user. They will need to be in descending order with the latest transaction first. The data may be paged over multiple pages. This data needs to be kept for 7 years.</p><p>Using a simply clustering column in the table definition, will allow all the transactions for a particular account to be on one row for extremely fast retrieval.</p><p>Our table model would be similar to this</p><pre>create table if not exists latest_transactions(&#13;\n credit_card_no text,&#13;\n transaction_time timestamp,&#13;\n transaction_id text,&#13;\n user_id text,&#13;\n location text,&#13;\n items map&lt;text, double&gt;,&#13;\n merchant text,&#13;\n amount double,&#13;\n status text,&#13;\n notes text,&#13;\n PRIMARY KEY (credit_card_no, transaction_time)&#13;\n) WITH CLUSTERING ORDER BY ( transaction_time desc);</pre><p>The smart meter application is a little different. The data will come in for each meter no with data every 30 mins of increments to the meter value. Eg. 00:00 - 13, 00:30 11, 01:00 3......23:30 10. So the daily amount is an aggregation of all the data points together.</p><p>The business requirement state that the data must be held for 5 years and a days data will always be looked up together. Cassandra's has column type of Map which can be used to hold our daily readings in a format of time offset and value.</p><p>Our table model would look something like this</p><pre>create table if not exists smart_meter_reading (&#13;\n meter_id int,&#13;\n date timestamp,&#13;\n source_id text,&#13;\n readings map&lt;text, double&gt;,&#13;\n PRIMARY KEY(meter_id, date)&#13;\n) WITH CLUSTERING ORDER BY(date desc);</pre><p>This seems sensible until we look at how much data we will be holding and for how long. This application has 10 Million meters and hopes to double that over the next 3 years. If we start at 10M customers holding 365*5 years of data which 48 columns of offset data per day (every half hour), this can quickly add up to over 50o billion points (a map of 48 entries is held as 48 columns) and we haven't talked about the increase over those years. Since we don't have to query the reading individually it might suit better to look at other storage capabilities. A map can be simply transformed to and from a JSON string which would allow us to hold the same data but not have the over head of all the columns.</p><pre>create table if not exists smart_meter_reading (&#13;\n meter_id int,&#13;\n date timestamp,&#13;\n source_id text,&#13;\n readings text,&#13;\n PRIMARY KEY(meter_id, date)&#13;\n) WITH CLUSTERING ORDER BY(date desc);</pre><p>So instead of 500 billion points we now have 5 billion.</p><p>Now we finally look at application no 3. In this case we have data streaming to our application for thousands of different instruments. We can expect on 100,000 ticks a day on some of the instruments. If the requirement is to hold this data long term and be able to create different views of the data for charting capabilities, the storage requirement will be extremely large.</p><p><strong>Collecting data vs Storing data.</strong></p><p>We can collect the data in the traditional way using a clustering column with a table like so</p><pre>CREATE TABLE tick_data ( &#13;\n symbol text,&#13;\n date timestamp,&#13;\n time_of_day timestamp,&#13;\n value double,&#13;\n PRIMARY KEY ((symbol,time_of_day), date)&#13;\n) WITH CLUSTERING ORDER BY (date DESC);</pre><p>When we think of keeping this data long term we have to understand the implications of having billions of columns in our tables. Our normal queries will be charting the last 5 days of instrument data in 15 min intervals or show the open, high, low and close of an instrument for the last 10 days in 30 mins intervals. So 99% of the queries will be looking at the whole days data. In this example we can then change the long term storage for this table to create a second table which handles any requests for data that is not today. At the end of each day we can compress and the store the data more efficiently for the rest of its life in the database.</p><p>For example we can use the following</p><pre>CREATE TABLE tick_data_binary ( &#13;\n symbol text,&#13;\n date timestamp;&#13;\n dates blob,&#13;\n ticks blob,&#13;\n PRIMARY KEY ((symbol,date))&#13;\n);</pre><p>Inserting into the tick_data_binary table can sustain inserts and reads of around 5 million ticks per server,  compared to 25000 for the tick_data table. The tick_data_binary table is also three times less storage that the tick_data table. This is not surprising as instead of holding 100,000 TTLs for all the columns, in the binary example we only hold 1. But there are bigger advantages when it comes to Cassandra's management services like compaction and repair. Compaction needs to be able to search for tombstones(deleted columns) which means that the more columns we have, the longer compaction can take. A similar problem arises in repair as this is in fact a compaction job. Comparing the repair time of a table with clustering columns and a table with binary data shows an increase of 10 times for the clustering table over the binary table.</p><h2>Trade offs</h2><p>There are always trade offs to each of the models above. For example the binary data in particular can't be filtered using CQL, the filtering needs to happen in some code. This post isn't supposed to be a catch all for time series applications but it it is supposed to help with the modelling of your data, both current and future, and the thought process that goes into that. In particular, don't be afraid to change the data model structure once its usefulness has decreased.</p><p>Check out <a href=\"https://academy.datastax.com/tutorials\">https://academy.datastax.com/tutorials</a> for more information of Cassandra and data modelling. Also have a look at the certification options that you can achieve <a href=\"https://academy.datastax.com/certifications\">https://academy.datastax.com/certifications</a>.</p><p>For examples of this data models and see the github projects below.</p><p><a href=\"https://github.com/DataStaxCodeSamples/datastax-creditcard-demo\" target=\"_blank\">https://github.com/DataStaxCodeSamples/datastax-creditcard-demo</a></p><p><a href=\"https://github.com/DataStaxCodeSamples/datastax-iot-demo\" target=\"_blank\">https://github.com/DataStaxCodeSamples/datastax-iot-demo</a></p><p><a href=\"https://github.com/DataStaxCodeSamples/datastax-tickdata-comparison\" target=\"_blank\">https://github.com/DataStaxCodeSamples/datastax-tickdata-comparison</a></p><p><a href=\"https://github.com/DataStaxCodeSamples/datastax-tickdb-full\" target=\"_blank\">https://github.com/DataStaxCodeSamples/datastax-tickdb-full</a></p><hr /><p><a href=\"https://www.datastax.com/\">DataStax</a> has many ways for you to advance in your career and knowledge. \n</p><p>You can take <a href=\"https://academy.datastax.com/user/register?destination=home&amp;utm_campaign=DevBlog&amp;utm_medium=blog&amp;utm_source=devblog&amp;utm_term=DevBlogPosts_CTA1_DSA_register\" target=\"_self\" title=\"academy.datastax.com\">free classes</a>, <a href=\"https://academy.datastax.com/certifications?utm_campaign=DevBlog&amp;utm_medium=blog&amp;utm_source=devblog&amp;utm_term=DevBlogPosts_CTA1_DSA_certifications\" target=\"_self\" title=\"academy.datastax.com/certifications\">get certified</a>, or read <a href=\"https://www.datastax.com/dbas-guide-to-nosql\" target=\"_self\" title=\"dbas-guide-to-nosql\">one of our many white papers</a>.\n</p><p><a href=\"https://academy.datastax.com/user/register?destination=home&amp;utm_campaign=DevBlog&amp;utm_medium=blog&amp;utm_source=devblog&amp;utm_term=DevBlogPosts_CTA1_DSA_register\" target=\"_self\" class=\"dxAllButtons_v3Rad2_whiteNGrayOL\" title=\"academy.datastax.com\">register for classes</a>\n</p><p><a href=\"https://academy.datastax.com/certifications?utm_campaign=DevBlog&amp;utm_medium=blog&amp;utm_source=devblog&amp;utm_term=DevBlogPosts_CTA1_DSA_certifications\" target=\"_self\" class=\"dxAllButtons_v3Rad2_whiteNGrayOL\" title=\"academy.datastax.com/certifications\">get certified</a>\n</p><p><a href=\"http://www.datastax.com/dbas-guide-to-nosql?utm_campaign=DevBlog&amp;utm_medium=blog&amp;utm_source=devblog&amp;utm_term=DevBlogPosts_CTA1_dbasguidetonosql\" target=\"_self\" class=\"dxAllButtons_v3Rad2_whiteNGrayOL\" title=\"dbas-guide-to-nosql\">DBA's Guide to NoSQL</a>\n</p><br class=\"clear\" /><div id=\"mto_newsletter_121316_Css\"><p>Subscribe for newsletter:</p><br /></div>",
+        "created_at": "2018-09-07T15:31:24+0000",
+        "updated_at": "2018-09-07T15:31:44+0000",
+        "published_at": "2015-12-15T17:09:39+0000",
+        "published_by": null,
+        "starred_at": null,
+        "annotations": [],
+        "mimetype": "text/html",
+        "language": "en_US",
+        "reading_time": 6,
+        "domain_name": "www.datastax.com",
+        "preview_picture": "https://www.datastax.com/wp-content/uploads/2015/12/nest1.jpg",
+        "http_status": "200",
+        "headers": null,
+        "origin_url": null,
+        "_links": {
+          "self": {
+            "href": "/api/entries/12092"
+          }
+        }
+      },
+      {
+        "is_archived": 1,
+        "is_starred": 0,
+        "user_name": "admin",
+        "user_email": "rahul.singh@anant.us",
+        "user_id": 1,
+        "tags": [
+          {
+            "id": 89,
+            "label": "cassandra",
+            "slug": "cassandra"
+          },
+          {
+            "id": 1262,
+            "label": "time.series",
+            "slug": "time-series"
+          }
+        ],
+        "is_public": false,
+        "id": 12091,
+        "uid": null,
+        "title": "cassandra-time-series-database",
+        "url": "https://blog.pythian.com/cassandra-time-series-database/",
+        "content": null,
+        "created_at": "2018-09-07T15:31:12+0000",
+        "updated_at": "2018-09-07T15:31:18+0000",
+        "published_at": null,
+        "published_by": [
+          ""
+        ],
+        "starred_at": null,
+        "annotations": [],
+        "mimetype": null,
+        "language": null,
+        "reading_time": 0,
+        "domain_name": "blog.pythian.com",
+        "preview_picture": null,
+        "http_status": null,
+        "headers": null,
+        "origin_url": null,
+        "_links": {
+          "self": {
+            "href": "/api/entries/12091"
+          }
+        }
+      },
       {
         "is_archived": 1,
         "is_starred": 0,
@@ -9668,106 +9758,6 @@
         "_links": {
           "self": {
             "href": "/api/entries/9075"
-          }
-        }
-      },
-      {
-        "is_archived": 1,
-        "is_starred": 0,
-        "user_name": "admin",
-        "user_email": "rahul.singh@anant.us",
-        "user_id": 1,
-        "tags": [
-          {
-            "id": 4,
-            "label": "github",
-            "slug": "github"
-          },
-          {
-            "id": 89,
-            "label": "cassandra",
-            "slug": "cassandra"
-          },
-          {
-            "id": 182,
-            "label": "mongo",
-            "slug": "mongo"
-          },
-          {
-            "id": 1039,
-            "label": "redis",
-            "slug": "redis"
-          }
-        ],
-        "is_public": false,
-        "id": 9072,
-        "uid": null,
-        "title": "citrusbyte/redis-comparison",
-        "url": "https://github.com/citrusbyte/redis-comparison",
-        "content": "<h3>\n      \n      README.md\n    </h3><article class=\"markdown-body entry-content\" itemprop=\"text\">\n<p>I've been tasked with doing a presentation on Redis, and I wanted to include some benchmarks against other NoSQL databases such as MongoDB, Cassandra, CouchDB and Riak.</p>\n<p>The goal of this benchmarks was to make it as simple as possible in all aspects, with the following rationale:</p>\n<ul><li>download database source;</li>\n<li>compile;</li>\n<li>run with defaults.</li>\n</ul><p>I tried to install everything with the minimum dependencies and simplicity, without spending too much time trying to fix any possible issue I had. The idea is to having a server running in the least amount of time possible.</p>\n<p><strong>NOTE</strong>: this is a far from perfect benchmark, I know.</p>\n<h2><a href=\"#db-server\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-db-server\"></a>DB server</h2>\n<ul><li>EC2 Medium\n<ul><li>3.75 GiB memory</li>\n<li>2 EC2 Compute Unit (1 virtual core with 2 EC2 Compute Unit)</li>\n<li>410 GB instance storage</li>\n<li>32-bit or 64-bit platform</li>\n<li>I/O Performance: Moderate</li>\n<li>EBS-Optimized Available: No</li>\n<li>API name: m1.medium</li>\n</ul></li>\n<li>Ubuntu Server 12.04.1 LTS</li>\n</ul><h3><a href=\"#setup\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-setup\"></a>Setup</h3>\n<pre>sudo apt-get update\nsudo apt-get -y install build-essential tmux\nmkdir src\n</pre>\n<h4><a href=\"#redis\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-redis\"></a>Redis</h4>\n<pre>cd ~/src\nwget http://redis.googlecode.com/files/redis-2.6.10.tar.gz\ntar zxf redis-2.6.10.tar.gz\ncd redis-2.6.10\nmake\n</pre>\n<p>Note: less than a minute. No dependencies.</p>\n<h4><a href=\"#mongodb\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-mongodb\"></a>MongoDB</h4>\n<pre>cd ~/src\nwget http://downloads.mongodb.org/src/mongodb-src-r2.2.3.tar.gz\ntar zxf mongodb-src-r2.2.3.tar.gz\ncd mongodb-src-r2.2.3\nsudo apt-get -y install scons\n</pre>\n<p>Note: there's no indication in the README that I needed to install scons in order to compile MongoDB. More than 5 minutes compiling.</p>\n<h4><a href=\"#cassandra\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-cassandra\"></a>Cassandra</h4>\n<pre>cd ~/src\nwget http://apache.dattatec.com/cassandra/1.2.2/apache-cassandra-1.2.2-src.tar.gz\ntar zxf apache-cassandra-1.2.2-src.tar.gz\nsudo apt-get -Y install openjdk-6-jre ant\nant\n</pre>\n<p>Note: build failed. Binary core dumped.</p>\n<h4><a href=\"#couchdb\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-couchdb\"></a>CouchDB</h4>\n<pre>cd ~/src\nwget http://mirrors.dcarsat.com.ar/apache/couchdb/1.2.1/apache-couchdb-1.2.1.tar.gz\ntar zxf apache-couchdb-1.2.1.tar.gz\ncd  apache-couchdb-1.2.1\nsudo apt-get -y install erlang libicu-dev libmozjs-dev libcurl4-openssl-dev\n./configure\nmake\n</pre>\n<p>Note: binary core dumped.</p>\n<h2><a href=\"#client\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-client\"></a>Client</h2>\n<ul><li>EC2 Micro\n<ul><li>613 MiB memory</li>\n<li>Up to 2 EC2 Compute Units (for short periodic bursts)</li>\n<li>EBS storage only</li>\n<li>32-bit or 64-bit platform</li>\n<li>I/O Performance: Low</li>\n<li>EBS-Optimized Available: No</li>\n<li>API name: t1.micro</li>\n</ul></li>\n<li>Ubuntu Server 12.04.1 LTS</li>\n</ul><h3><a href=\"#setup-1\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-setup-1\"></a>Setup</h3>\n<pre>sudo apt-get -y install ruby-1.9.3\nsudo gem install redis cassandra couchdb mongodb riak\n</pre>\n<h3><a href=\"#script\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-script\"></a>Script</h3>\n<p>The benchmark ran it was very easy: iterate <code>1</code>, <code>10</code>, <code>100</code>, <code>1,000</code>, <code>10,000</code>, <code>100,000</code> and <code>1,000,000</code> over a simple model that has the following attributes:</p>\n<ul><li>id: variable in the format <code>player:$i</code>;</li>\n<li>name: variable in the format <code>Player $i</code>;</li>\n<li>type: constant string <code>Developer</code>;</li>\n<li>age: constant number <code>34</code>;</li>\n<li>level: initially a constant <code>0</code>.</li>\n</ul><p>The benchmarks performs three operations in each instance of the model:</p>\n<ul><li>storing;</li>\n<li>reading;</li>\n<li>updating <code>level</code> to the current iteration.</li>\n</ul><p>This script accepts the following two flags:</p>\n<ul><li><code>-h</code> indicate host to connect (default <code>127.0.0.1</code>)</li>\n<li><code>-n</code> indicate number of iterations (default <code>1,000</code>)</li>\n</ul><p>You can find the latest version of the script in the following repository: <a href=\"https://github.com/citrusbyte/redis-benchmarks\">https://github.com/citrusbyte/redis-benchmarks</a></p>\n<h3><a href=\"#benchmark\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-benchmark\"></a>Benchmark</h3>\n<p>I've ran the following command in my command line for benchmarking these database servers:</p>\n<pre>for i in 1 10 1000 10000 100000 1000000\ndo\n  ./benchs.rb -h 10.0.0.1 -n $i | tee $i.log\ndone\n</pre>\n<p>You can find the results logs in the following repository: <a href=\"https://github.com/citrusbyte/redis-benchmarks\">https://github.com/citrusbyte/redis-benchmarks</a></p>\n<p>Remember that, as I couldn't get Cassandra nor CouchDB working easily, those weren't benchmarked.</p>\n<h4><a href=\"#10-iterations\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-10-iterations\"></a><code>10</code> iterations</h4>\n<pre>Redis\n--------------------------------------------------------\n                 user     system      total        real\nwrite        0.000000   0.000000   0.000000 (  0.005587)\nread         0.000000   0.000000   0.000000 (  0.005741)\nupdate       0.010000   0.000000   0.010000 (  0.005117)\nTotal benchmark time for Redis: 0.01978361s\nMongoDB\n--------------------------------------------------------\n                 user     system      total        real\nwrite        0.000000   0.000000   0.000000 (  0.007547)\nread         0.000000   0.000000   0.000000 (  0.007479)\nupdate       0.000000   0.000000   0.000000 (  0.014906)\nTotal benchmark time for MongoDB: 0.034245423s\nRiak\n--------------------------------------------------------\n                 user     system      total        real\nwrite        0.010000   0.000000   0.010000 (  0.058750)\nread         0.000000   0.000000   0.000000 (  0.033434)\nupdate       0.020000   0.000000   0.020000 (  0.087879)\nTotal benchmark time for Riak: 0.190552601s\n</pre>\n<h4><a href=\"#100-iterations\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-100-iterations\"></a><code>100</code> iterations</h4>\n<pre>Redis\n--------------------------------------------------------\n                 user     system      total        real\nwrite        0.010000   0.000000   0.010000 (  0.055583)\nread         0.020000   0.010000   0.030000 (  0.057843)\nupdate       0.010000   0.000000   0.010000 (  0.049560)\nTotal benchmark time for Redis: 0.166689463s\nMongoDB\n--------------------------------------------------------\n                 user     system      total        real\nwrite        0.030000   0.010000   0.040000 (  0.087663)\nread         0.020000   0.000000   0.020000 (  0.073081)\nupdate       0.040000   0.000000   0.040000 (  0.164124)\nTotal benchmark time for MongoDB: 0.329832415s\nRiak\n--------------------------------------------------------\n                 user     system      total        real\nwrite        0.140000   0.010000   0.150000 (  0.597286)\nread         0.120000   0.010000   0.130000 (  0.382307)\nupdate       0.290000   0.020000   0.310000 (  1.024487)\nTotal benchmark time for Riak: 2.019069396s\n</pre>\n<h4><a href=\"#1000-iterations\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-1000-iterations\"></a><code>1000</code> iterations</h4>\n<pre>Redis\n--------------------------------------------------------\n                 user     system      total        real\nwrite        0.230000   0.010000   0.240000 (  0.822115)\nread         0.210000   0.030000   0.240000 (  0.674979)\nupdate       0.140000   0.010000   0.150000 (  0.498526)\nTotal benchmark time for Redis: 2.000050905s\nMongoDB\n--------------------------------------------------------\n                 user     system      total        real\nwrite        0.240000   0.020000   0.260000 (  0.741164)\nread         0.210000   0.020000   0.230000 (  1.053450)\nupdate       0.430000   0.050000   0.480000 (  2.194942)\nTotal benchmark time for MongoDB: 3.994837796s\nRiak\n--------------------------------------------------------\n                 user     system      total        real\nwrite        1.390000   0.170000   1.560000 (  6.635914)\nread         1.350000   0.160000   1.510000 (  4.061969)\nupdate       3.030000   0.280000   3.310000 ( 11.235330)\nTotal benchmark time for Riak: 21.959080865s\n</pre>\n<h4><a href=\"#other-iterations\" aria-hidden=\"true\" class=\"anchor\" id=\"user-content-other-iterations\"></a>Other iterations</h4>\n<p>You can really appreciate that Redis performs faster, so there's no need to paste the other iterations numbers.</p>\n<p>All I can say is that when I ran 1,000,000 iterations, MongoDB filled the hard disk.</p>\n</article>",
-        "created_at": "2018-01-15T19:51:17+0000",
-        "updated_at": "2018-03-14T22:55:39+0000",
-        "published_at": null,
-        "published_by": null,
-        "starred_at": null,
-        "annotations": [],
-        "mimetype": "text/html",
-        "language": "en",
-        "reading_time": 5,
-        "domain_name": "github.com",
-        "preview_picture": "https://avatars0.githubusercontent.com/u/6864?s=400&v=4",
-        "http_status": "200",
-        "headers": null,
-        "origin_url": null,
-        "_links": {
-          "self": {
-            "href": "/api/entries/9072"
-          }
-        }
-      },
-      {
-        "is_archived": 1,
-        "is_starred": 0,
-        "user_name": "admin",
-        "user_email": "rahul.singh@anant.us",
-        "user_id": 1,
-        "tags": [
-          {
-            "id": 89,
-            "label": "cassandra",
-            "slug": "cassandra"
-          },
-          {
-            "id": 1039,
-            "label": "redis",
-            "slug": "redis"
-          }
-        ],
-        "is_public": false,
-        "id": 9071,
-        "uid": null,
-        "title": "Cassandra vs. Redis",
-        "url": "https://www.slideshare.net/tim.lossen.de/cassandra-vs-redis",
-        "content": "<div id=\"main-nav\" class=\"contain-to-grid fixed\"><p><label id=\"home\">SlideShare</label>\n          \n          <a class=\"item\" href=\"https://www.slideshare.net/explore\" aria-labelledby=\"#explore\">\n            <i class=\"fa fa-compass\">\n            </i></a><label id=\"explore\">Explore</label>\n          \n          \n            <a class=\"item\" href=\"https://www.slideshare.net/login\" aria-labelledby=\"#you\">\n              <i class=\"fa fa-user\">\n              </i></a><label id=\"you\">You</label>\n            </p></div><div class=\"modal_popup_container\"><div id=\"top-clipboards-modal\" class=\"reveal-modal xlarge top-clipboards-modal\" data-reveal=\"\" aria-labelledby=\"modal-title\" aria-hidden=\"true\" role=\"dialog\"><h4 class=\"modal-title\">Public clipboards featuring this slide</h4><hr /><p>No public clipboards found for this slide</p></div><div id=\"select-clipboard-modal\" class=\"reveal-modal medium\" data-reveal=\"\" aria-labelledby=\"modal-title\" aria-hidden=\"true\" role=\"dialog\" translate=\"no\"><h4 class=\"modal-title\">Select another clipboard</h4><hr /><a class=\"close-reveal-modal button-lrg\" href=\"#\" aria-label=\"Close\">×</a><div class=\"modal-content\"><div class=\"default-clipboard-panel radius\"><p>Looks like you’ve clipped this slide to <strong class=\"default-clipboard-title\"> already.</strong></p></div><div class=\"clipboard-list-container\"><div class=\"clipboard-create-new\"><p>Create a clipboard</p></div></div></div></div><div id=\"clipboard-create-modal\" class=\"reveal-modal medium\" data-reveal=\"\" aria-labelledby=\"modal-title\" aria-hidden=\"true\" role=\"dialog\" translate=\"no\"><h3>You just clipped your first slide!</h3>Clipping is a handy way to collect important slides you want to go back to later. Now customize the name of a clipboard to store your clips.<h4 class=\"modal-title\" id=\"modal-title\">\n    \n    <label>Description\n          \n        </label></h4></div><p><label>Visibility\n        <small id=\"privacy-switch-description\">Others can see my Clipboard</small>\n          </label><label for=\"privacy-switch\">\n      </label></p></div>",
-        "created_at": "2018-01-15T19:51:14+0000",
-        "updated_at": "2018-03-14T22:55:58+0000",
-        "published_at": null,
-        "published_by": [
-          ""
-        ],
-        "starred_at": null,
-        "annotations": [],
-        "mimetype": "text/html",
-        "language": "en",
-        "reading_time": 0,
-        "domain_name": "www.slideshare.net",
-        "preview_picture": "https://cdn.slidesharecdn.com/ss_thumbnails/cassandravsredis-100928060358-phpapp02-thumbnail-4.jpg?cb=1285721044",
-        "http_status": "200",
-        "headers": null,
-        "origin_url": null,
-        "_links": {
-          "self": {
-            "href": "/api/entries/9071"
           }
         }
       }
