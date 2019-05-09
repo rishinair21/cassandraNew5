@@ -50,7 +50,8 @@ exports.createPages = ({ graphql, actions }) => {
 				path: `/`,
 				component: pageTemplate,
 				context: {
-					skip: PAGE_SIZE * index,
+					first: PAGE_SIZE / 2,
+          skip: PAGE_SIZE * index,
 					limit: PAGE_SIZE,
 					pageNumber: index + 1,
 					hasNextPage: index != chunks.length - 1,
@@ -64,7 +65,8 @@ exports.createPages = ({ graphql, actions }) => {
             path: `page/${index + 1}`,
             component: pageTemplate,
             context: {
-				skip: PAGE_SIZE * index,
+				first: PAGE_SIZE / 2,
+        skip: PAGE_SIZE * index,
 				limit: PAGE_SIZE,
 				pageNumber: index + 1,
 				hasNextPage: index != chunks.length - 1,
@@ -116,6 +118,7 @@ exports.createPages = ({ graphql, actions }) => {
         path: `/videos`,
         component: videoPageTemplate,
         context: {
+          first: PAGE_SIZE / 2,
           skip: PAGE_SIZE * index,
           limit: PAGE_SIZE,
           pageNumber: index + 1,
@@ -130,6 +133,7 @@ exports.createPages = ({ graphql, actions }) => {
             path: `videos/page/${index + 1}`,
             component: videoPageTemplate,
             context: {
+        first: PAGE_SIZE / 2,
         skip: PAGE_SIZE * index,
         limit: PAGE_SIZE,
         pageNumber: index + 1,
@@ -173,6 +177,7 @@ exports.createPages = ({ graphql, actions }) => {
         path: `/github`,
         component: ghPageTemplate,
         context: {
+          first: PAGE_SIZE / 2,
           skip: PAGE_SIZE * index,
           limit: PAGE_SIZE,
           pageNumber: index + 1,
@@ -187,6 +192,7 @@ exports.createPages = ({ graphql, actions }) => {
             path: `github/page/${index + 1}`,
             component: ghPageTemplate,
             context: {
+        first: PAGE_SIZE / 2,
         skip: PAGE_SIZE * index,
         limit: PAGE_SIZE,
         pageNumber: index + 1,
