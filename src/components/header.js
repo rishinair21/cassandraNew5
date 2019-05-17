@@ -30,13 +30,9 @@ const Header = ({ siteTitle }) => (
           <div class="navbar-item">
             <div class="buttons">
               <a class="button is-light">
-                .Link
-              </a>
-              <a class="button is-light">
-                .Network
-              </a>
-              <a class="button is-light">
-                .Services
+                <Link to="/Architect">
+                    .Markdown
+                </Link>
               </a>
             </div>
           </div>
