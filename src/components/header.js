@@ -30,7 +30,7 @@ const Header = ({ siteTitle }) => (
           <div class="navbar-item">
             <div class="buttons">
               <a class="button is-light">
-                <Link to="/Architect">
+                <Link to="/awesome">
                     .Markdown
                 </Link>
               </a>
