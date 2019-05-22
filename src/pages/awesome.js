@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import Layout from "../components/layout";
+import { Link } from 'gatsby';
 import './main.css';
 
-class Architect extends React.Component {
+class awesome extends React.Component {
   render() {
     return (
       <Layout>
         <section class="section">
+          <a class="button has-text-black"><Link to="/">Home</Link>
+          </a>
           <div class="container">
             <div className="content">
               <h1 id="awesomecassandraawesomehttpscdnrawgitcomsindresorhusawesomed7305f38d29fed78fa85652e3a63e154dd8e8829mediabadgesvghttpsgithubcomsindresorhusawesome">Awesome Cassandra <a href="https://github.com/sindresorhus/awesome"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome" /></a></h1>
@@ -592,8 +595,8 @@ class Architect extends React.Component {
           </div>
         </section>
       </Layout>
-    )
+    );
   }
 }
 
-export default Architect
+export default awesome

@@ -4,6 +4,7 @@ import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import { FirstColumn, SecondColumn, ThirdColumn } from "../components/card";
 import './main.css';
+/* global graphql */
 
 class IndexPage extends React.Component {
     render() {
@@ -13,13 +14,13 @@ class IndexPage extends React.Component {
         const ttrss = this.props.data.ttrss.edges;
         return (
             <Layout>
+                <div className="typewriter-p">
+                    <div class="line-1 anim-typewriter">Knowledge Base</div>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to="/awesome">Resources</Link>
+                <section class="section">
                 <div>
                     <div className="home-structure">
-                        <div>
-                        </div>
-                        <div className="typewriter-p">
-                            <div class="line-1 anim-typewriter">Knowledge Base</div>
-                        </div>
                         {/* <FaturedGrid obj={featured}/> */}
                         <div className="three-cl">
                             <div className="card card1">
@@ -33,7 +34,7 @@ class IndexPage extends React.Component {
                             <div className="card card2">
                                 <nav class="panel is-dark">
                                     <p class="panel-heading has-text-centered">
-                                        TTRS
+                                        Blogs
                                     </p>
                                     <ThirdColumn obj={ttrss}/>
                                 </nav>
@@ -52,6 +53,7 @@ class IndexPage extends React.Component {
                         <Link to="/page/1">View More</Link>
                     </div>
                 </div>
+                </section>
             </Layout>
         );
     }
