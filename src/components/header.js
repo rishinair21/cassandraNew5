@@ -17,10 +17,14 @@ const Header = ({ siteTitle }) => (
 
         <div class="navbar-end">
           <div class="navbar-item">
-          <div class="buttons">
+              <div className="navbar-item" class = "button is-dark has-text-white is-size-5">
+                  <Link to="/awesome">Resources</Link>
+              </div>
+              <div class="buttons">
                   <a class="button is-dark has-text-white is-size-5" href="https://mailchi.mp/03a1311e4965/cassandranetwork" target="_blank">Subscribe</a>
-                </div>
+              </div>
           </div>
+
         </div>
       </div>
 </nav>

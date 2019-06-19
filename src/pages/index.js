@@ -17,7 +17,7 @@ class IndexPage extends React.Component {
                 <div className="typewriter-p">
                     <div class="line-1 anim-typewriter">Knowledge Base</div>
                 </div>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to="/awesome">Resources</Link>
+
                 <section class="section">
                 <div>
                     <div className="home-structure">
