@@ -18,10 +18,10 @@ class IndexPage extends React.Component {
                     <div class="line-1 anim-typewriter">Knowledge Base</div>
                 </div>
                 <div className="typewriter-p">
-                    <p class = "has-text-centered"> If you're looking for our old Awesome Cassandra page, please follow this link</p>
-                    <a className="is-centered" href="https://anant.github.io/awesome-cassandra/" target="_blank">
-                        <p className="has-text-centered"> https://anant.github.io/awesome-cassandra/ </p>
+                    <p class = "has-text-centered"> If you're looking for our old Awesome Cassandra page, please follow this
+                    <a className="is-centered" href="https://anant.github.io/awesome-cassandra/" target="_blank"> link
                     </a>
+                    </p>
 
                 </div>
                 <section class="section">
