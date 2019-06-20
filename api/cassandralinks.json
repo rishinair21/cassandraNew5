@@ -2,7 +2,7 @@
   "page": 2,
   "limit": 200,
   "pages": 3,
-  "total": 535,
+  "total": 538,
   "_links": {
     "self": {
       "href": "http://admin.stage.leaves.anant.us/api/entries?sort=created&order=desc&tags=cassandra&since=0&page=2&perPage=200"
@@ -22,6 +22,150 @@
   },
   "_embedded": {
     "items": [
+      {
+        "is_archived": 1,
+        "is_starred": 0,
+        "user_name": "admin",
+        "user_email": "rahul.singh@anant.us",
+        "user_id": 1,
+        "tags": [
+          {
+            "id": 89,
+            "label": "cassandra",
+            "slug": "cassandra"
+          },
+          {
+            "id": 254,
+            "label": "nosql",
+            "slug": "nosql"
+          }
+        ],
+        "is_public": false,
+        "id": 12156,
+        "uid": null,
+        "title": "Cassandra’s Place in the NoSQL World - Instaclustr",
+        "url": "https://www.instaclustr.com/cassandras-place-nosql-world/",
+        "content": "<header id=\"page-masthead\"><div id=\"page-content\"><div class=\"container\"><div class=\"row\"><div class=\"col-md-6 col-md-offset-0 col-sm-8 col-sm-offset-2\"><div class=\"primary first-p-bold\"><p>A question that we commonly get asked is “how does <a href=\"https://www.instaclustr.com/apache-cassandra/\">Apache Cassandra</a> compare to NoSQL technology X?”. While the easy answer is to say “It’s just better”, the truth of course isn’t that simple. NoSQL encompasses a much more diverse range of technologies than the relational database world with specific NoSQL products suited to particular use cases.</p><p>The definition I often use (OK, made up) for NoSQL is any database technology designed for a more specialised use case to in order to overcome the limitations of RDBMS technology in terms of:</p><ul><li>data size;</li> <li>transaction throughout;</li> <li>reliability and manageability;</li> <li>flexibility of data schema; and/or</li> <li>cost of hardware.</li> </ul><p>One implication of this definition is that it doesn’t make sense to say that NoSQL generally is “better” than relational databases. If you want to compare  NoSQL technology X with technology Y then you need to understand what you want to use it for.</p><p>Perhaps the better question to ask is which use cases are <a href=\"https://www.instaclustr.com/solutions/managed-apache-cassandra/\">Cassandra </a>and other popular NoSQL technologies such as <a href=\"https://www.mongodb.com/\">MongoDB</a> and <a href=\"https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html\">Hadoop/HDFS</a> best suited to? The table below provides a summary of the characteristics</p><p>In summary, Cassandra is a great choice where:</p><ul><li>you need an operational database that can extend to supporting analytics;</li> <li>you don’t want to be limited in ability to scale; and</li> <li>you want the highest possible levels of availability.</li> </ul><table><tbody><tr><td> </td><td><b>Cassandra</b></td> <td><b>Hadoop/HDFS</b></td> <td><b>Mongo</b></td> </tr><tr><td><strong>Primary use cases</strong></td> <td>Large-scale operational database; <p>Structured data store for analytics engines</p></td> <td>Big data analytics database</td> <td>Flexible JSON database for rapid development</td> </tr><tr><td><strong>Development Model</strong></td> <td>Apache Foundation community maintained</td> <td>Apache Foundation <p>community maintained</p></td> <td>Proprietary development released under AGPL open source</td> </tr><tr><td><strong>Reliability</strong></td> <td>Extreme reliability, masterless and replicated. No failover required. <p>Full bi-directional multi-datacenter support</p></td> <td>High availability with automated master fail-over.</td> <td>High availability with multiple replicas and automated failover.</td> </tr><tr><td><strong>Read/write latency</strong></td> <td>Typically 5-15 milliseconds for standard operations. Consistent as dataset grows.</td> <td>Engineered for batch throughput rather than latency.</td> <td>Similar to Cassandra for simple operations. More complex querying capability can lead to greater variability.</td> </tr><tr><td><strong>Scalability</strong></td> <td>No practical limits. Operational clusters in the multi-PB range<br />(eg Apple).</td> <td>No practical  limits. Multi-PB scale not uncommon.</td> <td>Can scale to TB and beyond but requires sharding and is therefore less manageable at very large scale.</td> </tr><tr><td><strong>Query Language</strong></td> <td>CQL, an SQL-like language</td> <td>Map-reduce API plus many add-ons available (inc SQL)</td> <td>API and JSON based queries. </td> </tr><tr><td><strong>Data Model</strong></td> <td>Structured tables but allows for sparse value and multi-value fields</td> <td>Schema-less</td> <td>Schema-less JSON</td> </tr></tbody></table></div></div></div></div></div></header>",
+        "created_at": "2018-09-13T14:57:24+0000",
+        "updated_at": "2018-09-13T14:57:27+0000",
+        "published_at": "2017-05-03T23:40:42+0000",
+        "published_by": null,
+        "starred_at": null,
+        "annotations": [],
+        "mimetype": "text/html",
+        "language": "en",
+        "reading_time": 2,
+        "domain_name": "www.instaclustr.com",
+        "preview_picture": null,
+        "http_status": "200",
+        "headers": null,
+        "origin_url": null,
+        "_links": {
+          "self": {
+            "href": "/api/entries/12156"
+          }
+        }
+      },
+      {
+        "is_archived": 1,
+        "is_starred": 0,
+        "user_name": "admin",
+        "user_email": "rahul.singh@anant.us",
+        "user_id": 1,
+        "tags": [
+          {
+            "id": 89,
+            "label": "cassandra",
+            "slug": "cassandra"
+          },
+          {
+            "id": 995,
+            "label": "testing",
+            "slug": "testing"
+          },
+          {
+            "id": 1232,
+            "label": "stress",
+            "slug": "stress"
+          }
+        ],
+        "is_public": false,
+        "id": 12155,
+        "uid": null,
+        "title": "Deep Diving cassandra-stress - Part 3 (Using YAML Profiles) - Instaclustr",
+        "url": "https://www.instaclustr.com/deep-diving-cassandra-stress-part-3-using-yaml-profiles/",
+        "content": "<p>In the previous two posts of this series (<a href=\"https://www.instaclustr.com/deep-diving-into-cassandra-stress-part-1/\">Part 1</a> and <a href=\"https://www.instaclustr.com/deep-diving-into-cassandra-stress-part-2/\">Part 2</a>) I covered some of the basic commands of <a href=\"https://www.instaclustr.com/apache-cassandra/\">cassandra</a>-stress. In this post I will start looking at the use of the stress YAML file for more advanced stress scenarios, particularly where you want to run stress against a schema that matches one you are planning to use for your application.</p><p>It’s worth noting in the intro that cassandra-stress with a YAML file use a significantly (80%?) different set of code to the standard read/write/mixed commands. So, some assumptions and learnings from the standard commands won’t hold for YAML-driven stress. To cite one example, when running based on YAML, cassandra-stress does not validate that data returned from a select has the expected values as it does with read or mixed.</p><h5>For this article, I’ll reference the following YAML specification file:</h5><p>Before explaining the contents here, let’s see what happens when we run it with the following simple scenario:<br /><code>cassandra-stress user profile=file:///eg-files/stressprofilemixed.yaml no-warmup ops(insert=1) n=100 -rate threads=1 -node x.x.x.x</code></p><p>After running this on an empty cluster, I ran <code>select count(*) from eventsrawtest;</code>. The result? 345 rows – probably not you would have guessed. Here’s how cassandra-stress gets to that:</p><ul><li>n=100 counts number of insert batches, not number of individual insert operations</li>\n<li>Each batch will contain 1 partition’s data (due to partitions=fixed(1) setting) and all 15 of the rows in the partition. There are 15 rows in every partition as the single cluster key (time) has a cluster setting of fixed(15). All the rows in the partition will be included in the batch due to the select: fixed(10)/10 setting (ie changing this to say fixed(5)/10 would result in half the rows from the partition being include in any given batch).</li>\n<li>100 batches of 15 rows each gets you to 1500 rows so how did we end up with 345? This is due (primarily, in this case) to the relatively small range of potential values for the bucket_time. This results in a high overlap in the partition key values that end up getting generated by the uniform distributions. To demonstrate, changing the population of bucket_time to uniform(1..1288) results in 540 rows. In most cases, you want to initially insert data with no overlap to build up a base data set for testing. To facilitate this, I’ve recently submitted a cassandra-stress enhancement that provides sequential generation of seed values the same as used with the write command (<a href=\"https://issues.apache.org/jira/browse/CASSANDRA-12490\">https://issues.apache.org/jira/browse/CASSANDRA-12490</a>). Changing the uniform() distribution to seq() results in the expected 1500 rows being inserted by this command.</li>\n</ul><h5>Let’s look at some of the other column settings:</h5><ul><li><strong>population</strong> – determines the distribution of seed values used in the random data generation. By controlling the distribution of the seed values you control the distribution of the actual inserted values. So, for example uniform(1..100) will allow for up 100 different values each with the same chance of being selected. guassian(1..100) will also allow for up to 100 different values but as they will follow a guassian (otherwise known as normal or bell-curve) distribution, the values around the middle will have a much higher chance of being selected than the values at the extremes (so there will be a set of values more likely to get repeated and some which will occur very infrequently).</li>\n<li><strong>size</strong> – determines the size (length in bytes) of the of the values created for the field.</li>\n<li><strong>cluster</strong> – only applies to clustering columns, specifies the number of values for the column appearing in a single partition. The maximum number of rows in a partition is therefore the product of the maximum number of row of each clustering column (eg max(row1) * max(row 2) * max(row3)).</li>\n</ul><h5>We covered most of the insert settings in the introductory points but here’s a recap:</h5><ul><li><strong>partitions</strong>: the number of different partitions to include in each generated insert batch. Once a partition is chosen for inclusion in a batch, all rows in the partition will become eligible for inclusion and then be filtered according to the select setting. Using, uniform(1..5) would result in each batches containing between 1 and 5 partitions worth of data (with an equal chance of each number in the range).</li>\n<li><strong>batchtype</strong>: logged or unlogged – determines the cassandra batch type to use</li>\n<li><strong>select</strong>: select determines the portion of rows from a partition to select (at random) for inclusion in particular batch. So, for example, fixed(5)/10 would include 50% of rows from the selected partition in each batch. uniform(1..10)/10 would result in between 10% and 100% of rows in the partition being included in the batch with a different select percentage being randomly picked for each partition in each batch.</li>\n</ul><h5>The final section the yaml file that bears some explanation is the queries section. For each query, you specify:</h5><ul><li>A name for the query (pull-for-rollup, get-a-value) which are used to refers to the queries when specifying the mix of operations through the cassandra-stress command line.</li>\n<li><strong>cql</strong> – The actual query with ? characters where values from the population will be substituted in.</li>\n<li><strong>fields</strong> – either samerow or multirow. For samerow, the key values to use for the select will be picked at random (following the same general population rules as for insert) for the list of row keys that has been generated for inserting. For multirow, each of the column values making up the key will be independently randomly selected so there is a chance of generating keys for the selection parameters that don’t exist in the set of data that will/could be inserted according the the population settings.</li>\n</ul><h5>The ops command specified as part of the command line controls the mix of different operations to run. Take for example the following command:</h5><p><code>cassandra-stress user profile=file:///eg-files/stressprofilemixed.yaml ops(insert=1, pull_for_rollup=1, get-value=10) n=120 -node x.x.x.x</code></p><p>This will execute insert batches, pull_for_rollup queries and get-value queries in the ratio 1:1:10. So for this specific example, we’d get 10 inserts, 10 pull_for_rollup queries and 100 get-value queries.</p><p>Hopefully that’s explained the key information you need to use a YAML profile for running cassandra stress. In future instalments I’ll take a look at some of the remaining command line options and walk through a full end-to-end example of designing and executing a test.</p><p>Click here for <a href=\"https://www.instaclustr.com/blog/2016/08/19/deep-diving-into-cassandra-stress-part-1/\">Part One: </a><a href=\"https://www.instaclustr.com/deep-diving-into-cassandra-stress-part-1/\">Deep Diving into Cassandra Stress</a><br />Click here for <a href=\"https://www.instaclustr.com/deep-diving-into-cassandra-stress-part-2/\">Part Two: Mixed Command</a></p>",
+        "created_at": "2018-09-13T14:57:14+0000",
+        "updated_at": "2018-09-13T15:07:27+0000",
+        "published_at": "2016-08-24T05:03:19+0000",
+        "published_by": [
+          ""
+        ],
+        "starred_at": null,
+        "annotations": [],
+        "mimetype": "text/html",
+        "language": "en",
+        "reading_time": 5,
+        "domain_name": "www.instaclustr.com",
+        "preview_picture": null,
+        "http_status": "200",
+        "headers": null,
+        "origin_url": null,
+        "_links": {
+          "self": {
+            "href": "/api/entries/12155"
+          }
+        }
+      },
+      {
+        "is_archived": 1,
+        "is_starred": 0,
+        "user_name": "admin",
+        "user_email": "rahul.singh@anant.us",
+        "user_id": 1,
+        "tags": [
+          {
+            "id": 89,
+            "label": "cassandra",
+            "slug": "cassandra"
+          },
+          {
+            "id": 995,
+            "label": "testing",
+            "slug": "testing"
+          },
+          {
+            "id": 1232,
+            "label": "stress",
+            "slug": "stress"
+          }
+        ],
+        "is_public": false,
+        "id": 12154,
+        "uid": null,
+        "title": "Deep Diving into cassandra-stress - Part 2 (Mixed Command) - Instaclustr",
+        "url": "https://www.instaclustr.com/deep-diving-into-cassandra-stress-part-2/",
+        "content": "<header id=\"page-masthead\"><div id=\"page-content\"><div class=\"container\"><div class=\"row\"><div class=\"col-md-6 col-md-offset-0 col-sm-8 col-sm-offset-2\"><div class=\"primary first-p-bold\"><p>This is the second of a series of articles explain the operations of cassandra-stress. See here for <a href=\"https://www.instaclustr.com/deep-diving-into-cassandra-stress-part-1/\" target=\"_blank\" rel=\"noopener\">Part 1</a>.</p><p>This series of blogs has been created as part of my prep for my Cassandra summit talk ‘Load Testing Cassandra Applications’.</p><p>In this post we’ll examine the operation of the mixed command in <a href=\"https://www.instaclustr.com/apache-cassandra/\">Cassandra</a> stress and along with that some option for changing the schema used by stress (without using the yaml configuration for a complete custom run).</p><p>Firstly, let’s look at the most simple invocation of the mixed command:</p><p><code>cassandra-stress mixed n=100 -node x.x.x.x</code></p><p>First thing to note about this command is that for it to work you need to have run a write command to create the schema and populate data before the run. The write command should be run with at least the same number of operations as the mixed command to ensure that read commands will all retrieve data. For example, to prepare for the above command you should run:</p><p><code>cassandra-stress write n=100 -node x.x.x.x</code></p><p>If you haven’t written the right data before you run the mixed test then you will receive errors like the following:</p><p><code>java.io.IOException: Operation x0 on key(s) [38374d394b504d353430]: Data returned was not validated</code></p><p>This is because cassandra-stress validates the data returned from the select operations against the generated data set expected for the row (and in this case no data was returned).</p><p>So, once you’re set up correctly, what will the command actually do? The key default settings that come into play are:</p><ul><li>Consistency level: LOCAL_ONE – particularly significant for reads as it means only a single node will need to perform each read (vs multiple nodes for the more common QUORUM consistency levels)</li> <li>Command Ratios: {READ=1.0, WRITE=1.0} – the operations will be split evenly between reads and writes</li> <li>Command Clustering Distribution: clustering=GAUSSIAN(1..10) – determines the number of consecutive read or write operations to conduct consecutively. So, in this case will perform between 1 to 10 reads before performing between 1 to 10 writes and then switching back to reads. Due to this clustering, the actual ratio of reads to writes may differ from the target specified in command ratios for small runs such as this. However, it should even out over the course of a longer run.</li> <li>Population Distribution: Gaussian: min=1,max=100,mean=50.500000,stdev=16.500000 – unlike the write command, which uses a sequence from 1 to number of ops, mixed uses randomly generated numbers from 1 to the number of ops as part of the seed for the actual values. As the range is the same as write operations, the values are guaranteed to overlap between write and mixed but the the mixed run will potentially not visit all possible values and will visit them in a random order (of seed values).</li> <li>Rate: Auto, min threads = 4, max threads = 1000 – cassandra-stress will perform multiple runs, start at 4 threads and increasing threads with each run until the total operation rate fails to increase for three consecutive runs. The number of threads used will double with each run up to 16 threads and then increase by 1.5 times with each run after that.</li> </ul><p>The rate setting illustrates an interesting point in using cassandra-stress: generally, increasing the number of client threads will increase the load (throughput) you are placing on the cluster. This is because all operations are executed synchronously (in order to time them) and so more threads allow more operations to be simultaneously thrown at the cluster. Of course, like any multi-threaded system, there is an overhead incurred managing threads on the stress client and a limit to how much work the client can do before it becomes a bottleneck to the test. So, increase threads to increase the load on your cluster but check when you hit the limit that it’s actually your cluster reaching its limit not your stress client.</p><p>That’s it for the mixed command and associated info. Future installments will look at some of the other key options and the yaml configuration file.</p><p>Click here for <a href=\"https://www.instaclustr.com/deep-diving-into-cassandra-stress-part-1/\">Part One: D</a><a href=\"https://www.instaclustr.com/deep-diving-into-cassandra-stress-part-1/\" target=\"_blank\" rel=\"noopener\">eep Diving into Cassandra Stress</a><br />Click here for <a href=\"https://www.instaclustr.com/deep-diving-cassandra-stress-part-3-using-yaml-profiles/\" target=\"_blank\" rel=\"noopener\">Part Three: Using YAML Profiles</a></p></div></div></div></div></div></header>",
+        "created_at": "2018-09-13T14:57:04+0000",
+        "updated_at": "2018-09-13T14:57:10+0000",
+        "published_at": "2016-08-23T04:16:17+0000",
+        "published_by": null,
+        "starred_at": null,
+        "annotations": [],
+        "mimetype": "text/html",
+        "language": "en",
+        "reading_time": 3,
+        "domain_name": "www.instaclustr.com",
+        "preview_picture": null,
+        "http_status": "200",
+        "headers": null,
+        "origin_url": null,
+        "_links": {
+          "self": {
+            "href": "/api/entries/12154"
+          }
+        }
+      },
       {
         "is_archived": 1,
         "is_starred": 0,
@@ -9590,148 +9734,6 @@
         "_links": {
           "self": {
             "href": "/api/entries/9291"
-          }
-        }
-      },
-      {
-        "is_archived": 1,
-        "is_starred": 0,
-        "user_name": "admin",
-        "user_email": "rahul.singh@anant.us",
-        "user_id": 1,
-        "tags": [
-          {
-            "id": 4,
-            "label": "github",
-            "slug": "github"
-          },
-          {
-            "id": 89,
-            "label": "cassandra",
-            "slug": "cassandra"
-          },
-          {
-            "id": 902,
-            "label": "kubernetes",
-            "slug": "kubernetes"
-          }
-        ],
-        "is_public": false,
-        "id": 9284,
-        "uid": null,
-        "title": "vgkowski/cassandra-operator",
-        "url": "https://github.com/vgkowski/cassandra-operator",
-        "content": "<h3>\n      \n      Readme.md\n    </h3><article class=\"markdown-body entry-content\" itemprop=\"text\">\n<p>Kubernetes version: 1.9</p>\n<p>This operator use the kubernetes code-generator for</p>\n<ul><li>clientset: used to manipulate objects defined in the CRD (cassandraCluster)</li>\n<li>informers: cache for registering to events on objects defined in the CRD</li>\n<li>listers</li>\n<li>deep copy</li>\n</ul><ol><li>Initialize the dependancies with <code>dep init</code> in the project root directory</li>\n<li>Clone the <a href=\"https://github.com/kubernetes/code-generator\">code-generator</a> repo in the <code>vendor/k8s.io</code> directory.\nBe careful of cloning the branch matching the Kubernetes version\n<code>git clone -b &lt;branch&gt; https://github.com/kubernetes/code-generator</code></li>\n<li>Run the script <code>vendor/k8s.io/code-generator/generate-groups.sh all github.com/vgkowski/cassandra-operator/pkg/client github.com/vgkowski/cassandra-operator/pkg/apis cassandra:v1</code></li>\n</ol>\n<ul><li>Currently the relationship between native Kubernetes objects and CassandraClusters is done with the name which is equal.\nFor multiple resources of the same type (services for instance) a postfix is added to the name (\"-internode\" for internode service and \"-access\" for access service)\nA better option would be to use the <code>metadata.ownerReference</code> but it requires to search and get objects by this reference instead of by name.\nFor indexed objects like Pods or PVCs the search and get is done through the label <code>CassandraCluster</code> which contains the name of the cluster</li>\n<li>Implement proper Cassandra admin logic (current code isn't working)</li>\n</ul></article>",
-        "created_at": "2018-02-09T21:14:08+0000",
-        "updated_at": "2018-03-11T17:23:37+0000",
-        "published_at": null,
-        "published_by": null,
-        "starred_at": null,
-        "annotations": [],
-        "mimetype": "text/html",
-        "language": "en",
-        "reading_time": 1,
-        "domain_name": "github.com",
-        "preview_picture": "https://avatars0.githubusercontent.com/u/8300357?s=400&v=4",
-        "http_status": "200",
-        "headers": null,
-        "origin_url": null,
-        "_links": {
-          "self": {
-            "href": "/api/entries/9284"
-          }
-        }
-      },
-      {
-        "is_archived": 1,
-        "is_starred": 0,
-        "user_name": "admin",
-        "user_email": "rahul.singh@anant.us",
-        "user_id": 1,
-        "tags": [
-          {
-            "id": 89,
-            "label": "cassandra",
-            "slug": "cassandra"
-          },
-          {
-            "id": 90,
-            "label": "spark",
-            "slug": "spark"
-          }
-        ],
-        "is_public": false,
-        "id": 9261,
-        "uid": null,
-        "title": "Fourth Contact with a Monolith - Instaclustr",
-        "url": "https://www.instaclustr.com/fourth-contact-monolith/",
-        "content": "<h6><i>“The thing’s hollow — it goes on forever — and — oh my God! — it’s full of stars!”</i></h6><h2>It’s full of Spreadsheets! (DataFrames)</h2><p><a href=\"https://www.instaclustr.com/wp-content/uploads/2017/10/Fourth-Contact-with-a-monolith-Paul-Brebner-Instaclustr.gif\"><img class=\"alignnone size-full wp-image-7409\" src=\"https://www.instaclustr.com/wp-content/uploads/2017/10/Fourth-Contact-with-a-monolith-Paul-Brebner-Instaclustr.gif\" alt=\"Fourth Contact with a monolith Paul Brebner Instaclustr\" width=\"373\" height=\"220\" /></a></p><p>Given that a dog, Laika, was the 1st astronaut to orbit the earth, it’s appropriate for a dog to travel through the wormhole.</p><p>After travelling through the wormhole, the 2001 story (book version, as is the “it’s full of stars” quote which is not in the movie) concludes.</p><p>Dave leaves the pod and explores the hotel room. He finds a telephone and telephone book, but the phone doesn’t work and the telephone book is blank. He explores more and finds a refrigerator, where there is a variety of packaged food, but it all contains the same blue substance (even, to his disappointment, in the beer cans). He eats the blue food, and drinks the tap water – which tasted terrible – because, being distilled water, it had no taste at all. He turns on a television but all the programs were two years old. Dave lies down on the bed, turns off the light and “So, for the last time, David Bowman slept.”</p><p><a href=\"https://www.instaclustr.com/wp-content/uploads/2017/10/Fourth-Contact-with-a-monolith-Space-Odyssey.png\"><img class=\"aligncenter wp-image-7412 size-full\" src=\"https://www.instaclustr.com/wp-content/uploads/2017/10/Fourth-Contact-with-a-monolith-Space-Odyssey.png\" alt=\"Fourth Contact with a monolith space odyssey\" width=\"599\" height=\"269\" srcset=\"https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fourth-Contact-with-a-monolith-Space-Odyssey.png 599w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fourth-Contact-with-a-monolith-Space-Odyssey-300x135.png 300w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fourth-Contact-with-a-monolith-Space-Odyssey-107x48.png 107w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Fourth-Contact-with-a-monolith-Space-Odyssey-240x108.png 240w\" /></a></p><p>What’s new in this blog? DataFrames (giant Spreadsheets), ML Pipelines and Scala!</p><p>As I noted <a href=\"https://www.instaclustr.com/third-contact-monolith-part-c-pod/\">last blog, </a>the trip took a while and the TV shows are old. The ML API for Spark is now based on the DataFrame API:</p><p><a href=\"https://spark.apache.org/docs/latest/ml-guide.html\">https://spark.apache.org/docs/latest/ml-guide.html</a></p><p><b>The MLlib RDD-based API is now in maintenance mode.</b></p><p>As of Spark 2.0, the <a href=\"https://spark.apache.org/docs/latest/programming-guide.html#resilient-distributed-datasets-rdds\">RDD</a>-based APIs in the spark.mllib package has entered maintenance mode. The primary Machine Learning API for Spark is now the <a href=\"https://spark.apache.org/docs/latest/sql-programming-guide.html\">DataFrame</a>-based API in the spark.ml package.</p><p>This architecture diagram shows the current Spark architecture. The components of particular interest are Cassandra (the data source), MLlib, DataFrames, ML Pipelines and Scala:</p><p><img class=\"alignnone\" src=\"https://dhenschen.files.wordpress.com/2015/06/spark-2015-vision.jpg\" alt=\"Apache Spark Architecture Diagram Instaclustr\" width=\"793\" height=\"559\" /></p><p><a href=\"https://www.instaclustr.com/third-contact-monolith-part-c-pod/\">Last blog</a> we explored Decision Tree Machine Learning based on RDDs, using a sample of the Instametrics monitoring data, to try and predict long JVM Garbage Collections. Now we’ll update the code to DataFrames and use all the available real monitoring data (a snapshot from the Instaclustr pre-production clusters).</p><p>What are <a href=\"https://spark.apache.org/docs/latest/sql-programming-guide.html#datasets-and-dataframes\">DataFrames</a>? Big, distributed, scalable spreadsheets! They are immutable and can be transformed with a DSL, <a href=\"https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$\">pre-defined functions, and user-defined functions.</a>  <a href=\"https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-sql-DataFrame.html\">This is a good introduction</a>. </p><h2>Scala code</h2><p>Why did I ditch Java (at least temporarily)? Have I become “transcendent” after watching 2001 too many times?</p><p><a href=\"https://www.instaclustr.com/wp-content/uploads/2017/10/Scala-Code-Fourth-contact-with-a-monolith.png\"><img class=\"aligncenter wp-image-7414 size-full\" src=\"https://www.instaclustr.com/wp-content/uploads/2017/10/Scala-Code-Fourth-contact-with-a-monolith.png\" alt=\"Scala Code Fourth Contact with a monolith instaclustr\" width=\"606\" height=\"351\" srcset=\"https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Scala-Code-Fourth-contact-with-a-monolith.png 606w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Scala-Code-Fourth-contact-with-a-monolith-300x174.png 300w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Scala-Code-Fourth-contact-with-a-monolith-83x48.png 83w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Scala-Code-Fourth-contact-with-a-monolith-186x108.png 186w\" /></a></p><p>Not exactly. Because Instaclustr provides a <a href=\"https://support.instaclustr.com/hc/en-us/articles/213097877-Getting-Started-with-Instaclustr-Spark-Cassandra\">fully managed cluster option which includes Cassandra, Spark and Zeppelin</a> (a Spark Scala web-based notebook) it was easier to quickly deploy, run and debug Scala code than Java. You just type Scala code into Zeppelin in a browser, run it and look at the output (and repeat). There’s no need to set up a separate client instance in AWS. Trying to learn both Scala and Spark at the same time was “fun”. Scala is syntactically similar to Java (just throw away the semi-colons as Scala is line-oriented, and you don’t need variable type declarations as types are inferred, but statically typed), so the example should still make sense even without any Scala experience (like me).</p><p>For example:</p><p>var anyGreeting = “Hello world!” // universal greeting<br />val queenGreeting = “How do you do?” // How to greet the Queen (of England)</p><p>// equivalent to<br />var anyGreeting : String = “Hello world!”<br />val queenGreeting : String = “How do you do?”</p><p>vars are mutable and can be changed, vals are immutable and can’t be changed, so:</p><p>anyGreeting = “Kia ora” // hello in Maori<br />queenGreeting = “Ow ya goin mate” // hello in Australian, won’t work as immutable<br />anyGreeting = 3.14159 // won’t work, as anyGreeting is a String</p><p>Let’s revisit the Decision Tree ML code in Scala + DataFrames.</p><p><a href=\"https://spark.apache.org/docs/latest/ml-classification-regression.html#decision-tree-classifier\">Here’s the latest documentation for the Decision Tree Classifier for DataFrames. </a></p><p>As the Instametrics monitoring data we have is in Cassandra we need to read the data into Spark from Cassandra first. To do this we use the <a href=\"https://github.com/datastax/spark-cassandra-connector/blob/master/doc/14_data_frames.md\">spark cassandra connector.</a></p><p>Instaclustr provides a <a href=\"https://support.instaclustr.com/hc/en-us/articles/213097877-Getting-Started-with-Instaclustr-Spark-Cassandra\">Spark Cassandra assembly Jar</a>.</p><p>In Zeppelin (more on Zeppelin in a future blog) this is loaded as follows:</p><p>Then lots of imports (in Zeppelin you have to run each line separately):</p><p>In Zeppelin, the spark context will already be defined for you, and there are <a href=\"https://github.com/datastax/spark-cassandra-connector/blob/master/doc/14_data_frames.md#example-using-format-helper-functions\">helper functions </a>to simplify reading in a Cassandra table. For some reason, the 1st argument to cassandraFormat is the <i>table</i> name, and the 2nd is the <i>keyspace</i>.  This returns (lazily) a DataFrame object.</p><p>val data = spark<br />.read<br />.cassandraFormat(“mllib_wide”, “instametrics”)<br />.load()</p><p>Loading lots of data from Cassandra works well, it’s fast, and DataFrames infers the schema correctly.  The format of the data DataFrame is lots of examples (Rows) with columns as follows (wide table format has each data variable/feature in a separate column):</p><p>&lt;host, bucket_time, label, metric1, metric2, metric3, …&gt;</p><p>Where did this data come from? From some complex pre-processing (next blog). The label column was also previously computed and saved (the label is the class to be learned, in this case either 1.0 for positive examples, or 0.0 for negative examples).</p><p>The next trick is to replace null values with something else (e.g. 0), as we run into problems with nulls later on (even though in theory the MLLib algorithms cope with sparse vectors).</p><p>val data2 = data.na.fill(0)</p><p>Here are the relevant documents:</p><p><a href=\"https://spark.apache.org/docs/1.3.1/api/scala/index.html#org.apache.spark.sql.DataFrame\">https://spark.apache.org/docs/1.3.1/api/scala/index.html#org.apache.spark.sql.DataFrame</a></p><p><a href=\"https://spark.apache.org/docs/1.4.0/api/java/org/apache/spark/sql/DataFrameNaFunctions.html\">https://spark.apache.org/docs/1.4.0/api/java/org/apache/spark/sql/DataFrameNaFunctions.html</a></p><p>As in the previous RDD example we need two subsets of the data, for training and testing:</p><p>val Array(trainingData, testData) = data2.randomSplit(Array(0.7, 0.3))</p><p>Next we need to produce an Array(String) of column names to be used as features. In theory all of the columns can be used as features, except the label column, but in practice some columns are not the correct type for the classifier and must be filtered out (e.g. for this example we can only have Doubles):</p><p>val featureCols = data2.columns.filter(!_.equals(“host”)).filter(!_.equals(“bucket_time”)).filter(!_.equals(“label”))</p><p>Next we need to create a single column of features. VectorAssembler is a transformer that combines a list of columns into a single vector column, which is what we want.  However, it turns out to have problems with null values (which is why we replaced them above).  </p><p>val features = new VectorAssembler()<br />.setInputCols(featureCols)<br />.setOutputCol(“features”)</p><p>Here’s the VectorAssembler documentation:</p><p><a href=\"https://spark.apache.org/docs/2.1.0/ml-features.html#vectorassembler\">https://spark.apache.org/docs/2.1.0/ml-features.html#vectorassembler</a></p><p><a href=\"https://spark.apache.org/docs/2.1.0/api/scala/index.html#org.apache.spark.ml.feature.VectorAssembler\">https://spark.apache.org/docs/2.1.0/api/scala/index.html#org.apache.spark.ml.feature.VectorAssembler</a></p><p>Next create a DecisionTreeClassifier, with the column to predict as “label”, and the features to use called “features” (from the VectorAssembler above):</p><p>val dt = new DecisionTreeClassifier()<br />.setLabelCol(“label”)<br />.setFeaturesCol(“features”)</p><p>More documentation:</p><p><a href=\"https://spark.apache.org/docs/1.5.2/ml-decision-tree.html\">https://spark.apache.org/docs/1.5.2/ml-decision-tree.html</a></p><p><a href=\"https://spark.apache.org/docs/2.0.0/api/java/org/apache/spark/ml/classification/DecisionTreeClassifier.html\">https://spark.apache.org/docs/2.0.0/api/java/org/apache/spark/ml/classification/DecisionTreeClassifier.html</a></p><h2>Pipelines, Tunnels, Wormholes</h2><p><a href=\"https://www.instaclustr.com/wp-content/uploads/2017/10/Pipelines-tunnels-Wormholes-Instaclustr.png\"><img class=\"aligncenter wp-image-7422 size-full\" src=\"https://www.instaclustr.com/wp-content/uploads/2017/10/Pipelines-tunnels-Wormholes-Instaclustr.png\" alt=\"Pipelines, tunnels, Wormholes Instaclustr\" width=\"1364\" height=\"964\" srcset=\"https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Pipelines-tunnels-Wormholes-Instaclustr.png 1364w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Pipelines-tunnels-Wormholes-Instaclustr-300x212.png 300w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Pipelines-tunnels-Wormholes-Instaclustr-768x543.png 768w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Pipelines-tunnels-Wormholes-Instaclustr-1024x724.png 1024w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Pipelines-tunnels-Wormholes-Instaclustr-872x616.png 872w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Pipelines-tunnels-Wormholes-Instaclustr-640x452.png 640w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Pipelines-tunnels-Wormholes-Instaclustr-68x48.png 68w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/Pipelines-tunnels-Wormholes-Instaclustr-153x108.png 153w\" /></a></p><p>Another new Spark feature is <a href=\"https://spark.apache.org/docs/2.1.1/ml-pipeline.html\">Pipelines</a> (tunnels, wormholes, etc).  A Pipeline chains multiple Transformers and Estimators together for a ML workflow. A Transformer is an algorithm (feature transformers or learned models) that can transform one DataFrame into another DataFrame (e.g. a ML model transforms a DataFrame with labels and features into a DataFrame with predictions). An Estimator is an algorithm which can be fit on a DataFrame to produce a Model (which is a Transformer). This Pipeline consists of only two stages, features (feature transformer) and dt (estimator) (More on <a href=\"https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-mllib/spark-mllib-models.html#PipelineModel\">stages</a>):</p><p>val pipeline = new Pipeline()<br />.setStages(Array(features, dt))</p><p>Now we actually train the model by calling the pipeline fit method on the trainingData:</p><p>val model = pipeline.fit(trainingData)</p><p>And then test it by applying the model to the testData. This produces a DataFrame with a “predictions” column (by default), a “label” column (actual class), and the “features” column:</p><p>val predictions = model.transform(testData)<br />predictions.select(“prediction”, “label”, “features”)</p><p>  The <a href=\"https://spark.apache.org/docs/2.0.1/api/java/org/apache/spark/ml/evaluation/MulticlassClassificationEvaluator.html\">MulticlassClassificationEvaluator</a> can compute a limited number of evaluation metrics, here’s an example for “accuracy”:</p><p>val evaluator = new MulticlassClassificationEvaluator()<br />        .setLabelCol(“label”)<br />.setPredictionCol(“prediction”)<br />.setMetricName(“accuracy”)</p><p>val accuracy = evaluator.evaluate(predictions)<br />println(“Test Error = ” + (1.0 – accuracy))</p><p>However,  as pointed out the previous blog the model accuracy isn’t a particularly useful metric depending on the actual ratio of positive/negative examples.  We can use the <i>MulticlassMetrics</i> to compute the confusion matrix, precision, and recall. And then also compute the actual rate of negative examples for comparison with the model accuracy metric. <a href=\"https://github.com/apache/spark/blob/master/mllib/src/main/scala/org/apache/spark/mllib/evaluation/MulticlassMetrics.scala\"><i>MulticlassMetrics</i></a> has an auxiliary constructor for DataFrames but I still had to convert to an RDD before use. See <a href=\"https://books.google.com.au/books?id=NJwnDwAAQBAJ&amp;pg=PA78&amp;lpg=PA78&amp;dq=MulticlassMetrics+Dataframe&amp;source=bl&amp;ots=fcuHIgop3m&amp;sig=1-VuKMSYhBGyCGFxhvb2rnGeuA0&amp;hl=en&amp;sa=X&amp;ved=0ahUKEwjJgvnWlefWAhXLwLwKHWNVD6EQ6AEISzAG#v=onepage&amp;q=MulticlassMetrics%20Dataframe&amp;f=false\">this book f</a>or more information and ways of creating a confusion matrix from a DataFrame directly.</p><p>And now print the model out.</p><p>val treeModel = model.stages(1).asInstanceOf[DecisionTreeClassificationModel]<br />println(“Learned classification tree model:\\n” + treeModel.toDebugString)</p><p>The decision tree actually doesn’t make much “sense” as the named features have been replaced by feature numbers (e.g. If (feature 23 &lt;= 8720.749999999996) Predict 0.0 Else etc). Ideally there should be some way of automatically converting them back to the original names.</p><h2>Results</h2><p>Did it work? I’m sorry, I can’t tell you. In theory after going through the wormhole, information flow to the outside world is limited (the telephone didn’t work).  Ok, we’re not really in some virtual reality hotel/zoo at the other end of the universe (probably), and Dave did travel back to this universe, so I can tell you…</p><p>For this example we used real data, but obtained from our pre-production clusters. Rather than pre-process all the raw data I took a shortcut and use the rolled up data which had min, avg and max values computed for every metric over 5 minute periods. However, I forgot to check the bucket_time values, and later discovered that the bucket_time was actually hourly, so I ended up using hours as the default time period for learning. I also noticed that the JVM GC durations had not been rolled up for this snapshot of data, so I used these read and write SLA metrics to compute the label:</p><p>/cassandra/sla/latency/read_avg(avg)<br />/cassandra/sla/latency/read_max(max)<br />/cassandra/sla/latency/write_avg(avg)<br />/cassandra/sla/latency/write_max(max)</p><p>These metrics were combined with thresholds to ensure that about 5% of the examples were positive (i.e. had “long” read/write times). And these metrics were removed from the data before use to prevent cheating by the machine learning algorithm.</p><p>The wide data table read from Cassandra had 1518 examples (rows), which was split into training and test data. The training data set had 1067 examples, but only 60 positive examples (not a huge number for a Big Data problem, and in practice the number of examples needs to be &gt;&gt; the number of features, at least 2x). There were 2839 features (columns).</p><p>Learning only took a few minutes. Model accuracy was 0.96, however, as the negative example rate was 0.95 this isn’t much better than guessing. Precision was 0.60 and Recall was 0.66.</p><p>Is this result any good? A precision of 0.6 means that given a <i>prediction</i> of a SLA violation by the model, it is likely to be correct 60% of the time (but gets it wrong 40% of the time). A recall of 0.66 means that given an <i>actual</i> SLA violation, the model will correctly predict it 66% of the time (i.e. but misses it 34% of the time).  By comparison, using a sample of the data in the previous blog the recall was only 45%, so 66% is an improvement! Assuming that the cost of checking a SLA violation warning (from the model prediction) is minimal, then it’s more important to correctly predict as many actual SLA violations (assuming we can do something to prevent/mitigate them in advance, and that SLA violations are expensive if they occur), and increase the recall accuracy.   How could this be done? More and better quality data (e.g. from production clusters, as pre-production clusters and metrics are somewhat atypical, for example, many nodes may be spun up and down for short time periods, and they don’t have typical user workloads running on them), reducing the number of features (e.g. <a href=\"https://spark.apache.org/docs/2.1.0/ml-features.html#feature-selectors\">feature selection</a>, by removing redundant or highly correlated features), and different ML algorithms… </p><p>What features did the model pick to use to predict the long SLAs times from the 2839 features available? Only these 11 (which appear to be plausible):</p><ol><li>/cassandra/jvm/memory/heapMemoryUsage/max</li>\n<li>/cassandra/jvm/memory/heapMemoryUsage/used_avg</li>\n<li>/cassandra/metrics/type=ClientRequest/scope=Read/name=Latency/95thPercentile_avg</li>\n<li>/cassandra/metrics/type=ClientRequest/scope=Read/name=Latency/count_max</li>\n<li>/cassandra/metrics/type=ClientRequest/scope=Read/name=Latency/latency_per_operation_avg</li>\n<li>/cassandra/metrics/type=ClientRequest/scope=Write/name=Latency/95thPercentile_avg</li>\n<li>/cassandra/metrics/type=ClientRequest/scope=Write/name=Latency/latency_per_operation_avg</li>\n<li>/cassandra/metrics/type=ColumnFamily/keyspace=test/scope=testuncompressed/name=TotalDiskSpaceUsed_max</li>\n<li>/proc/diskstats/xvda1/sectorsWritten_max</li>\n<li>/proc/diskstats/xvdx/sectorsRead_avg</li>\n<li>/proc/stat/cpu-agg/user_max</li>\n</ol><p>Thanks to Instaclustr people for help (with Instametrics data, support for Cassandra, Spark and Zeppelin, and machine learning discussions) including Christophe, Jordan, Alwyn, Alex_I, Juan, Joe &amp; Jen.</p><h2>Next Blog</h2><p>How did we get here? Next blog we’ll look behind the scenes at the code that was used to preprocess the raw metrics from Cassandra, clean the data, convert it into the wide table format, and correctly label the examples. And, how to run Spark Scala code in Zeppelin!</p><p><a href=\"https://www.instaclustr.com/wp-content/uploads/2017/10/How-to-run-Spark-Scala-Code-in-Zeppelin-Instaclustr.png\"><img class=\"size-full wp-image-7425 aligncenter\" src=\"https://www.instaclustr.com/wp-content/uploads/2017/10/How-to-run-Spark-Scala-Code-in-Zeppelin-Instaclustr.png\" alt=\"How to run Spark Scala Code in Zeppelin Instaclustr\" width=\"1248\" height=\"778\" srcset=\"https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/How-to-run-Spark-Scala-Code-in-Zeppelin-Instaclustr.png 1248w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/How-to-run-Spark-Scala-Code-in-Zeppelin-Instaclustr-300x187.png 300w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/How-to-run-Spark-Scala-Code-in-Zeppelin-Instaclustr-768x479.png 768w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/How-to-run-Spark-Scala-Code-in-Zeppelin-Instaclustr-1024x638.png 1024w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/How-to-run-Spark-Scala-Code-in-Zeppelin-Instaclustr-966x602.png 966w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/How-to-run-Spark-Scala-Code-in-Zeppelin-Instaclustr-640x399.png 640w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/How-to-run-Spark-Scala-Code-in-Zeppelin-Instaclustr-77x48.png 77w, https://24b4dt1v60e526bo2p349l4c-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/How-to-run-Spark-Scala-Code-in-Zeppelin-Instaclustr-173x108.png 173w\" /></a></p><h2>Instaclustr SPARK trial offer</h2><h5>You can try out a special offer of an Instaclustr trial cluster provisioned with <b>Cassandra, Spark and Zepplin </b>using the coupon code ST2M14:</h5><p><a href=\"https://console.instaclustr.com/user/signup?coupon-code=ST2M14\">https://console.instaclustr.com/user/signup?coupon-code=ST2M14</a></p><h2>CODE</h2>",
-        "created_at": "2018-02-03T17:19:16+0000",
-        "updated_at": "2018-03-11T17:42:41+0000",
-        "published_at": "2017-10-20T11:45:45+0000",
-        "published_by": null,
-        "starred_at": null,
-        "annotations": [],
-        "mimetype": "text/html",
-        "language": "en",
-        "reading_time": 11,
-        "domain_name": "www.instaclustr.com",
-        "preview_picture": "https://www.instaclustr.com/wp-content/uploads/2017/10/Fourth-Contact-with-a-monolith-Paul-Brebner-Instaclustr.gif",
-        "http_status": "200",
-        "headers": null,
-        "origin_url": null,
-        "_links": {
-          "self": {
-            "href": "/api/entries/9261"
-          }
-        }
-      },
-      {
-        "is_archived": 1,
-        "is_starred": 0,
-        "user_name": "admin",
-        "user_email": "rahul.singh@anant.us",
-        "user_id": 1,
-        "tags": [
-          {
-            "id": 12,
-            "label": "video",
-            "slug": "video"
-          },
-          {
-            "id": 89,
-            "label": "cassandra",
-            "slug": "cassandra"
-          },
-          {
-            "id": 996,
-            "label": "monitoring",
-            "slug": "monitoring"
-          }
-        ],
-        "is_public": false,
-        "id": 9259,
-        "uid": null,
-        "title": "Monitoring Cassandra: Don't Miss a Thing (Alain Rodriguez, The Last Pickle) | C* Summit 2016",
-        "url": "http://www.youtube.com/oembed?format=xml&url=https://www.youtube.com/watch?v=Q9AAR4UQzMk",
-        "content": "<iframe id=\"video\" width=\"480\" height=\"270\" src=\"https://www.youtube.com/embed/Q9AAR4UQzMk?feature=oembed\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\">[embedded content]</iframe>",
-        "created_at": "2018-02-03T17:12:35+0000",
-        "updated_at": "2018-03-12T15:37:21+0000",
-        "published_at": null,
-        "published_by": null,
-        "starred_at": null,
-        "annotations": [],
-        "mimetype": "text/xml",
-        "language": null,
-        "reading_time": 0,
-        "domain_name": "www.youtube.com",
-        "preview_picture": "https://i.ytimg.com/vi/Q9AAR4UQzMk/maxresdefault.jpg",
-        "http_status": "200",
-        "headers": null,
-        "origin_url": null,
-        "_links": {
-          "self": {
-            "href": "/api/entries/9259"
           }
         }
       }
