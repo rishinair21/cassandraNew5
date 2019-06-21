@@ -17,7 +17,13 @@ class IndexPage extends React.Component {
                 <div className="typewriter-p">
                     <div class="line-1 anim-typewriter">Knowledge Base</div>
                 </div>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to="/awesome">Resources</Link>
+                <div className="typewriter-p">
+                    <p class = "has-text-centered"> If you're looking for our old Awesome Cassandra page, please follow this
+                    <a className="is-centered" href="https://anant.github.io/awesome-cassandra/" target="_blank"> link
+                    </a>
+                    </p>
+
+                </div>
                 <section class="section">
                 <div>
                     <div className="home-structure">

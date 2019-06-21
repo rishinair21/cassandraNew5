@@ -11,16 +11,29 @@ const Header = ({ siteTitle }) => (
       </div>
 
       <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-          <div class="navbar-item is-size-3">{siteTitle}</div>
+        <div class="navbar-start has-text-white">
+          <Link to="/">
+            <div class="navbar-item is-size-3 has-text-white">{siteTitle}</div>
+          </Link>
+
+
         </div>
 
         <div class="navbar-end">
           <div class="navbar-item">
-          <div class="buttons">
+
+              <div class = "button is-dark has-text-white is-shadowless is-size-5" target="_blank">
+                  <a class="button is-dark has-text-white is-size-5" href = "awesome">Resources</a>
+              </div>
+
+
+              <div class="buttons">
                   <a class="button is-dark has-text-white is-size-5" href="https://mailchi.mp/03a1311e4965/cassandranetwork" target="_blank">Subscribe</a>
-                </div>
+              </div>
+
+
           </div>
+
         </div>
       </div>
 </nav>
