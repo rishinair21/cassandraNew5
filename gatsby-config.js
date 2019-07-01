@@ -42,5 +42,45 @@ module.exports = {
                 ],
             },
         },
+        {
+            resolve: 'gatsby-source-apiserver',
+            options: {
+                // Type prefix of entities from server
+                typePrefix: 'cassandra__',
+
+                // The url, this should be the endpoint you are attempting to pull data from
+                url: `http://admin.stage.leaves.anant.us/api/entries?access_token=N2Y1YmFlNzY4OTM3ZjE2OGMwODExODQ1ZDhiYmQ5OWYzMjhkZjhiMDgzZWU2Y2YyYzNkYzA5MDQ2NWRhNDIxYw&limit=10&order=desc&page=2&sort=created&tags=cassandra&perPage=200`,
+
+                method: 'get',
+
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+
+                data: {},
+
+                name: 'links',
+
+                localSave: true,
+
+                path: `${__dirname}/db/`,
+
+                verboseOutput: true,
+            },
+        },
+        {
+            resolve: `gatsby-source-rss-feed`,
+            options: {
+                url: `http://192.241.141.6:81/public.php?op=rss&id=-4&limit=500&key=k7ojwf5bd4b2e7638ff`,
+                name: `TTRS`,
+                // Optional
+                // Read parser document: https://github.com/bobby-brennan/rss-parser#readme
+                parserOption: {
+                    customFields: {
+                        item: ['entry:summary'],
+                    },
+                },
+            },
+        },
     ],
 }
