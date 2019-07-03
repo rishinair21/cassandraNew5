@@ -1,3 +1,23 @@
 header {
-    border: 1px solid red;
+    .navbar-menu {
+        padding: 10px 40px;
+        .logo-name {
+            a {
+                color: #000;
+                font-weight: 700;
+                font-size: 1.4rem;
+                text-decoration: none;
+            }
+        }
+        .navbar-items {
+            .navbar-nav {
+                padding: 8px;
+                a {
+                    font-size: 0.8rem;
+                    color: #000;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
 }

@@ -61,6 +61,8 @@ module.exports = {
 
                 name: 'links',
 
+                entityLevel: `_embedded.items`,
+
                 localSave: true,
 
                 path: `${__dirname}/db/`,
