@@ -1,4 +1,47 @@
 .hero-search {
     text-align: center;
     padding: 40px;
+
+    .hero-search-inner {
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .sub-title {
+            font-size: 18px;
+            color: #717171;
+            margin-bottom: 20px;
+        }
+
+        .project-by {
+            font-size: 13px;
+
+            a {
+                text-decoration: none;
+                color: #717171;
+            }
+        }
+    }
+}
+
+.search-input {
+
+    input {
+        background-color: #e9ecef;
+        font-size: 16px;
+        border: none;
+
+        &:focus {
+            outline: none !important;
+            box-shadow: none;
+            background-color: #e9ecef;
+        }
+    }
+
+    .input-group-prepend {
+        span {
+            border: none;
+        }
+    }
 }

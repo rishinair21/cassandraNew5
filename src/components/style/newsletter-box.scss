@@ -1,5 +1,40 @@
 .newsletter-box {
-    padding: 20px;
-    border: 1px solid #000;
+    padding: 15px;
     margin-bottom: 20px;
+    background-color: #2C3F72;
+    border-radius: 10px;
+
+    .title {
+        font-size: 20px;
+        font-weight: 500;
+        color: #fff;
+    }
+
+    .sub-title {
+        font-size: 14px;
+        color: #fff;
+        opacity: 0.5;
+    }
+
+    input {
+        font-size: 14px;
+        margin-top: 10px;
+        background-color: #202e56;
+        border: 0;
+
+        &:focus {
+            outline: none !important;
+            box-shadow: none;
+            background-color: #e9ecef;
+            background-color: #202e56;
+            color: #fff;
+        }
+    }
+
+    button {
+        font-size: 13px;
+        font-weight: 500;
+        text-transform: uppercase;
+        width: 100%;
+    }
 }

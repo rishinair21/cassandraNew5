@@ -64,7 +64,11 @@ export const pageQuery = graphql`
                 reading_time
                 domain_name
                 preview_picture
-                http_status
+                tags {
+                    label
+                    slug
+                    alternative_id
+                }
             }
         }
         videoList: allCassandraLinks(
@@ -91,7 +95,11 @@ export const pageQuery = graphql`
                 reading_time
                 domain_name
                 preview_picture
-                http_status
+                tags {
+                    label
+                    slug
+                    alternative_id
+                }
             }
         }
         openSourceList: allCassandraLinks(
@@ -118,7 +126,11 @@ export const pageQuery = graphql`
                 reading_time
                 domain_name
                 preview_picture
-                http_status
+                tags {
+                    label
+                    slug
+                    alternative_id
+                }
             }
         }
     }
