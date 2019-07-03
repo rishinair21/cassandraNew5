@@ -1,5 +1,32 @@
 .featured-video-section {
-    border: 1px solid #000;
     margin-bottom: 20px;
-    padding: 10px;
+    .video-card {
+        .ca-card {
+            margin-bottom: 20px;
+            .card-image {
+                height: 120px;
+                background-position: 50%;
+                background-size: cover;
+                background-repeat: no-repeat;
+                border-radius: 5px;
+                cursor: pointer;
+                .image-overlay {
+                    height: 100%;
+                    background-color: rgba(255, 0, 0, 0.3);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 5px;
+                }
+            }
+            .card-title {
+                font-size: 14px;
+                margin-top:20px;
+                padding: 5px;
+                border-left: 3px solid #8B58DB;
+                color: #707070;
+                cursor: pointer;
+            }
+        }
+    }
 }

@@ -9,7 +9,7 @@ function FeaturedArticles({ wallabagList }) {
             {_.map(wallabagList, (value, key) => (
                 <div key={key}>
                     {value.title}
-                    <img src={value.preview_picture} width="150" />
+                    {/* <img src={value.preview_picture} width="150" /> */}
                 </div>
             ))}
         </div>

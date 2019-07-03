@@ -70,7 +70,7 @@ export const pageQuery = graphql`
         videoList: allCassandraLinks(
             filter: { domain_name: { regex: "/youtube/" }, content: { ne: null } }
             sort: { fields: created_at, order: DESC }
-            limit: 12
+            limit: 8
         ) {
             nodes {
                 is_archived
