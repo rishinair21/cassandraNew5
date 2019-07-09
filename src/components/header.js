@@ -19,10 +19,7 @@ const Header = ({ siteTitle }) => (
                             <Link to="/">Resources</Link>
                         </Nav>
                         <Nav>
-                            <Link to="/">Videos</Link>
-                        </Nav>
-                        <Nav>
-                            <Link to="/">OSS Projects</Link>
+                            <Link to="/">News Feeds</Link>
                         </Nav>
                     </Nav>
                     <Nav>

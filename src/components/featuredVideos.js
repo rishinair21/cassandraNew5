@@ -6,6 +6,7 @@ import './style/featured-videos.scss'
 function FeaturedVideos({ videoList }) {
     return (
         <div className="featured-video-section">
+            <div className="heading">Talks</div>
             <div className="video-card">
                 {_.map(videoList, (value, key) => (
                     <div className="ca-card" key={key}>

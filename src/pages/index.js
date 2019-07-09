@@ -9,11 +9,13 @@ import FeaturedVideos from '../components/featuredVideos'
 import FeaturedArticles from '../components/featuredArticles'
 import FeaturedRepo from '../components/featuredRepo'
 import NewsLetterBox from '../components/newsletterBox'
+import NewsFeeds from '../components/newsFeeds'
 
 function IndexPage({ data }) {
     const videoList = data.videoList.nodes
     const wallabagList = data.wallabagList.nodes
     const openSourceList = data.openSourceList.nodes
+    const newsFeeds = data.newsFeeds.nodes
     return (
         <Layout>
             <SEO title="Cassandra Links | Anant Corporation Project" />
@@ -21,6 +23,8 @@ function IndexPage({ data }) {
                 <HeroSearch />
                 <Row>
                     <Col md="3">
+                        <NewsFeeds newsFeeds={newsFeeds} />
+                        <br />
                         <FeaturedVideos videoList={videoList} />
                     </Col>
                     <Col>
@@ -74,7 +78,7 @@ export const pageQuery = graphql`
         videoList: allCassandraLinks(
             filter: { domain_name: { regex: "/youtube/" }, content: { ne: null } }
             sort: { fields: created_at, order: DESC }
-            limit: 8
+            limit: 6
         ) {
             nodes {
                 is_archived
@@ -103,7 +107,7 @@ export const pageQuery = graphql`
             }
         }
         openSourceList: allCassandraLinks(
-            filter: { domain_name: { regex: "/github/" }, content: { ne: null } }
+            filter: { domain_name: { regex: "/github.com/" }, content: { ne: null } }
             sort: { fields: created_at, order: DESC }
             limit: 12
         ) {
@@ -131,6 +135,16 @@ export const pageQuery = graphql`
                     slug
                     alternative_id
                 }
+            }
+        }
+
+        newsFeeds: allFeedTtrs(limit: 6) {
+            nodes {
+                link
+                title
+                pubDate
+                id
+                author
             }
         }
     }
