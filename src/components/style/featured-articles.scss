@@ -14,7 +14,12 @@
         margin-bottom: 20px;
 
         .title {
-            color: #707070;
+            width: 80%;
+            font-size: 1.2rem;
+
+            a {
+                color: #727272
+            }
         }
 
         .card-image {

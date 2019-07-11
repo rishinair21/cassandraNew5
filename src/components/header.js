@@ -16,10 +16,10 @@ const Header = ({ siteTitle }) => (
                 <Navbar.Collapse id="responsive-navbar-nav" className="navbar-items">
                     <Nav className="mr-auto">
                         <Nav>
-                            <Link to="/awesome">Resources</Link>
+                            <Link to="/resources/page/1">Resources</Link>
                         </Nav>
                         <Nav>
-                            <Link to="/">News Feeds</Link>
+                            <Link to="/news-feed/page/1">News Feeds</Link>
                         </Nav>
                     </Nav>
                     <Nav>

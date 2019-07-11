@@ -14,9 +14,7 @@ function NewsFeeds({ newsFeeds }) {
                 <div key={key} className="news-feed-card">
                     <div className="card-head">
                         <div className="title">
-                            <a href={value.link} target="_blank" rel="noopener noreferrer">
-                                {value.title.slice(0, 70)}
-                            </a>
+                            <Link to={`/${value.id}`}>{value.title.slice(0, 70)}</Link>
                         </div>
                         <div className="published-date">{moment(value.pubDate).fromNow()}</div>
                     </div>

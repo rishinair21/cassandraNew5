@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { Container, Alert, Row, Col } from 'react-bootstrap'
 
 import Layout from '../components/layout'
@@ -9,6 +9,7 @@ import FeaturedVideos from '../components/featuredVideos'
 import FeaturedArticles from '../components/featuredArticles'
 import FeaturedRepo from '../components/featuredRepo'
 import NewsLetterBox from '../components/newsletterBox'
+import Contributor from '../components/contribute'
 import NewsFeeds from '../components/newsFeeds'
 
 function IndexPage({ data }) {
@@ -29,10 +30,17 @@ function IndexPage({ data }) {
                     </Col>
                     <Col>
                         <FeaturedArticles wallabagList={wallabagList} />
+
+                        <div className="load-more-resources">
+                            <Link to="/resources/page/2">
+                                <span>View More Articles</span>
+                            </Link>
+                        </div>
                     </Col>
                     <Col md="3">
                         <NewsLetterBox />
                         <FeaturedRepo openSourceList={openSourceList} />
+                        <Contributor />
                     </Col>
                 </Row>
             </Container>
@@ -47,7 +55,7 @@ export const pageQuery = graphql`
         wallabagList: allCassandraLinks(
             filter: { domain_name: { ne: "github.com" }, content: { ne: null } }
             sort: { fields: created_at, order: DESC }
-            limit: 24
+            limit: 18
         ) {
             nodes {
                 is_archived
@@ -60,6 +68,7 @@ export const pageQuery = graphql`
                 uid
                 title
                 url
+                id
                 created_at
                 updated_at
                 published_at

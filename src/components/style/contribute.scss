@@ -1,0 +1,32 @@
+.contribute-box {
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: rgba(3, 234, 65, 0.3);
+    border-radius: 10px;
+
+    .title {
+        font-size: 20px;
+        font-weight: 500;
+        color: rgb(87, 85, 85);
+    }
+
+    .sub-title {
+        font-size: 14px;
+        color: rgb(87, 85, 85);
+        opacity: 0.5;
+    }
+
+    .btn-01 {
+        a {
+            margin-top: 30px;
+            color: rgb(87, 85, 85);
+            border-radius: 20px;
+            background-color: #fff;
+            border: 1.5px solid rgb(87, 85, 85);
+            display: inline-block;
+            font-size: 15px;
+            padding: 4px 20px;
+            text-decoration: none;
+        }
+    }
+}
