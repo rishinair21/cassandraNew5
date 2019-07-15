@@ -21,6 +21,10 @@ const Header = ({ siteTitle }) => (
                         <Nav>
                             <Link to="/news-feed/page/1">News Feeds</Link>
                         </Nav>
+                        <Nav>
+                            <Link to="/awesome">Awesome Cassandra</Link>
+                        </Nav>
+
                     </Nav>
                     <Nav>
                         <Nav>
