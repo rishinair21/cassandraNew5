@@ -28,6 +28,9 @@ const Header = ({ siteTitle }) => (
                     </Nav>
                     <Nav>
                         <Nav>
+                            <a href="https://mailchi.mp/03a1311e4965/cassandranetwork"> Subscribe </a>
+                        </Nav>
+                        <Nav>
                             <Link to="/">Contribute</Link>
                         </Nav>
                         <Nav>
